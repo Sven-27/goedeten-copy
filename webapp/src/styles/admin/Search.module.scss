@@ -1,0 +1,43 @@
+
+.zip__container {
+    display: flex;
+    align-items: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    font-size: 0.7vw;
+    label {
+        padding-right: 0.5rem;
+        font-size: 0.7vw;
+    }
+    input {
+        width: auto;
+        padding: 0.3rem 0 0.3rem 0.3rem;
+        font-size: 0.7vw;    
+    }
+    button {
+        padding: 0.3rem;
+        margin-right: 0.5rem;
+        margin-left: 0.3rem;
+        font-size: 0.7vw;
+        width:auto;
+        border-radius: 0.2rem;
+	    border:  0.5 px solid black;
+	    color: black;
+    }
+    select {
+        padding: 0.3rem 0 0.4rem 0.3rem;
+        margin-right: 0.5rem;
+        align-items: center;
+        font-size: 0.7vw;
+    }
+    option {
+        font-size: 0.7vw;
+    }
+       
+}
+
+
+
+
+
+

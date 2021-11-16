@@ -1,0 +1,25 @@
+@import "styles/variables";
+.container {
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+    input, button {
+      margin: 15px;
+      padding:10px
+    }
+      
+}
+.formcontainer{
+  display: flex;
+  flex-direction: column;
+  input, button{
+    width: 20vw;
+    padding:10px;
+    margin:15px;
+  }
+  p {
+    color: red;
+  }
+}

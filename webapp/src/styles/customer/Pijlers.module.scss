@@ -1,0 +1,92 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap");
+
+.container {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	height: 100%;
+
+	.photo {
+		height: 18rem;
+		overflow: hidden;
+
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			height: 100%;
+			object-position: center;
+		}
+	}
+
+	@media (orientation: landscape) {
+		img {
+			height: 0%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.text {
+		background-color: #ffffff;
+		align-self: center;
+		font-family: "Open Sans", sans-serif;
+		width: 80%;
+		font-size: 16px;
+		padding-top: 1rem;
+
+		h2 {
+			font-family: "bushcraftone";
+			color: #1c3a2c;
+		}
+	}
+}
+
+// ---Bars---
+
+.bar1 {
+	display: flex;
+	width: 100%;
+	min-height: 5vh;
+	background: rgb(227, 222, 218);
+	background: radial-gradient(
+		circle,
+		rgba(227, 222, 218, 1) 26%,
+		rgba(248, 237, 229, 1) 100%
+	);
+}
+
+.bar2 {
+	display: flex;
+	width: 100%;
+	min-height: 5vh;
+	background-color: #f8ede5;
+	background: rgb(227, 222, 218);
+	background: radial-gradient(
+		circle,
+		rgba(227, 222, 218, 1) 26%,
+		rgba(248, 237, 229, 1) 100%
+	);
+}
+
+// ---Links---
+
+.links {
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	align-self: center;
+	padding: 1rem 0 1rem 0;
+}
+
+// ---breadcrumbs---
+
+.breadcrumb {
+	margin-top: -5vh;
+	height: 12vh;
+	margin-left: -0.6rem;
+}

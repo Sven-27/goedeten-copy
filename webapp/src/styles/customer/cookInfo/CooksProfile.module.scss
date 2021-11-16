@@ -1,0 +1,122 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.cooksProfile {
+  display: grid;
+  grid-template-columns: 10vw 80vw 10vw;
+  grid-template-rows: 11vh 30vh 0.75rem min-content 0.75rem 2rem 0.75rem min-content 0.75rem 3.5rem;
+  padding-left: 0%;
+  background-image: url("/assets/images/woodboard-bg.png");
+  height: 100%;
+
+  @include mqtp($laptop) {
+    grid-template-columns: 8vw 40vw 4vw 40vw 8vw;
+    grid-template-rows: 5rem 12.5rem min-content .75rem 3.5rem min-content 0.75rem 3rem;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  @include mqtl($landscape) {
+    grid-template-columns: 8vw 40vw 4vw 40vw 8vw;
+    grid-template-rows: 5rem 12.5rem min-content .75rem 3.5rem min-content 0.75rem 3rem;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  @include mqtl($desktop) {
+    grid-template-columns: 25vw 50vw 25vw;
+    grid-template-rows: 10vh 40vh 0.75rem min-content 0.75rem 2rem 0.75rem min-content 0.75rem 3.5rem;
+  }
+  
+  .photowrapper {
+    object-fit: cover;
+    grid-area: 2 / 2 / 3 / 3;
+
+    @include mqtl($landscape) {
+      grid-area: 2 / 2 / 3 / 3;
+    }
+  }
+
+  .accordion {
+    grid-area: 4 / 2 / 5 / 3;
+
+    
+    @include mqtp($laptop) {
+      grid-area: 2 / 4 / 4 / 5;
+    }
+
+    @include mqtl($landscape) {
+      grid-area: 2 / 4 / 4 / 5;
+    }
+
+    @include mqtl($desktop) {
+      grid-area: 4 / 2 / 5 / 3; 
+    }
+
+    path {
+      color: $darkgreen;
+    }
+  }
+
+  .dates {
+    grid-area: 6 / 2 / 7 / 3;
+    
+    @include mqtp($laptop) {
+      grid-area: 5 / 2 / 6 / 5;
+    }
+
+    @include mqtl($landscape) {
+      grid-area: 5 / 2 / 6 / 5;
+    }
+
+    @include mqtl($desktop) {
+      grid-area: 6 / 2 / 7 / 3;
+    }
+
+  }
+  .dishes {
+    margin: 0;
+    grid-area: 8 / 2 / 9 / 3;
+       
+    @include mqtp($laptop) {
+      grid-area: 6 / 2 / 7 / 5;
+    }
+
+    @include mqtl($landscape) {
+      grid-area: 6 / 2 / 7 / 5;
+    }
+
+    @include mqtl($desktop) {
+      grid-area: 8 / 2 / 9 / 3;
+    }
+
+  }
+
+  .links {
+    grid-area: 10 / 2 / 11 / 3;
+    text-align: center;
+       
+    @include mqtp($laptop) {
+      grid-area: 8 / 1 / 9 / 6;
+    }
+
+    @include mqtl($landscape) {
+      grid-area: 8 / 1 / 9 / 6;
+    }
+
+    @include mqtl($desktop) {
+      grid-area: 10 / 2 / 11 / 3;
+    }
+
+  }
+}
+
+
+
+
+
+
+
+
+

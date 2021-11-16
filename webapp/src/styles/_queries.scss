@@ -1,0 +1,36 @@
+// mobile landscape
+@mixin mqml($size) {
+	@media (max-width: $size) and (orientation: landscape) {
+		@content;
+	}
+}
+
+// mobile apple landscape
+@mixin iphoneSE($size) {
+	@media (max-width: $size) and (orientation: landscape) {
+		@content;
+	}
+}
+
+
+// tablet portrait
+@mixin mqtp($size) {
+	@media (min-width: $size) and (orientation: portrait) {
+		@content;
+	}
+}
+
+// tablet & desktop landscape
+@mixin mqtl($size) {
+	@media (min-width: $size) and (orientation: landscape) {
+		@content;
+	}
+}
+
+// small desktop?
+@mixin mqd($size) {
+	@media (max-width: $size) {
+		@content;
+	}
+}
+

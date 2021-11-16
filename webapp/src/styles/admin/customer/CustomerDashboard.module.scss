@@ -1,0 +1,57 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 20vh 30vh 40vh;
+    
+    h3{
+        padding-left: 10px;
+    }
+
+    .filter{
+        grid-column: 1 / span 3;
+        grid-row: 1 / 1;
+        background-color: beige;
+        margin: 3px;
+        display:flex;
+        flex-direction: column;
+
+        .filterList{
+            overflow: auto;
+            scrollbar-width: auto;
+            height:100%;
+        }
+    }
+
+    .location{
+        grid-column: 4 / 7;
+        grid-row: 1 / 1;
+        background-color:beige;
+        margin: 3px;
+        display:flex;
+        flex-direction: column;
+
+        .locationSelect{
+            overflow: auto;
+            scrollbar-width: auto;
+            height: 100%;
+        }
+    }
+    
+    .overview{
+        grid-column: 1 / 11;
+        grid-row: 2/4;
+        background-color:beige;
+        overflow: auto;
+        scrollbar-width: auto;
+        margin: 3px;
+        display: flex;
+        flex-direction: column;
+
+        .overviewList{
+            overflow: auto;
+            scrollbar-width: thin;
+            height: 100%
+        }
+    }
+
+}

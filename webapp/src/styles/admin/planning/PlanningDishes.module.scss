@@ -1,0 +1,68 @@
+@import "styles/variables";
+.container {
+    display: flex;
+    flex-direction: row;
+    // align-content: space-between;
+    justify-content: space-between;
+    // overflow: auto;
+
+    td {
+        padding: 3px;
+    }
+
+    tr:hover {
+        background-color: $beige
+    }
+
+    .select {
+        margin-left: 2rem;
+        margin-top: 0rem;
+        width: 2.5 rem;
+        height: 2rem;
+        font-size: 1 rem;
+
+
+        &::before {
+            width: 0 rem;
+            margin-bottom: 0 rem;
+        }
+
+        label {
+            padding-top: 0;
+            font-weight: 700;
+        }
+
+
+        svg {
+            width: 2rem;
+            height: 1.4rem;
+        }
+    }
+
+
+    span {
+        font-size: small;
+        margin-right: 20px;
+    }
+
+    label {
+        font-size: small;
+        margin: 0;
+    }
+
+    div {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+   
+    .currentQuantity {
+        width: 12%;
+    }
+    .planned {
+        margin-left: 2rem;
+        font-weight: 700;
+    }
+
+
+}

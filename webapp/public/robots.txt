@@ -1,0 +1,46 @@
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Slurp         #Slurp is Yahoo
+User-agent: DuckDuckBot
+
+Allow: /
+Allow: /goedeten
+Allow: /privacy
+Allow: /contact
+Allow: /voorwaarden
+Allow: /stichting
+Allow: /initiatiefnemers
+Allow: /duurzaamheid
+Allow: /cooperatiedh
+Allow: /terms
+Allow: /faq
+Allow: /cooks_static
+Allow: /pijler/*
+
+Disallow: /admin/*
+Disallow: /api/*
+Disallow: /cook/*
+Disallow: /dish/*
+Disallow: /admin
+Disallow: /cooks
+Disallow: /dishes
+Disallow: /home
+Disallow: /pijlers
+Disallow: /purchase
+Disallow: /payment
+Disallow: /deliveryDetails
+
+Noindex: /admin/*
+Noindex: /api/*
+Noindex: /cook/*
+Noindex: /dish/*
+Noindex: /admin
+Noindex: /cooks
+Noindex: /dishes
+Noindex: /home
+Noindex: /pijlers
+Noindex: /purchase
+Noindex: /payment
+Noindex: /deliveryDetails
+
+Sitemap: https://goed-eten.azurewebsites.net/api/sitemap.xml

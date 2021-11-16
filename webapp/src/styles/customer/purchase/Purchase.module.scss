@@ -1,0 +1,96 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.purchase {
+	align-items: center;
+	display: grid;
+	flex-direction: column;
+	height: 100%;
+	background: $white;
+
+	.specifics {
+		width: 100%;
+		flex: 0.05;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $lightgreen;
+		color: $darkgreen;
+		font-weight: bold;
+		padding: 0.25rem;
+		border: 1px solid $darkgreen;
+	}
+
+	.header {
+		display: flex;
+		width: 100vw;
+		flex: 0.3;
+		justify-content: center;
+		align-items: center;
+		background-image: url("/assets/images/background.jpg");
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-size: cover;
+
+		h1 {
+			font-size: 2.2rem;
+			color: $beige;
+			text-align: center;
+			margin-top: 3.5rem;
+			filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+			-webkit-filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+
+			@include mqml($mobile_ls) {
+				margin: 0.5rem 0 1.5rem;
+				font-size: 2.5rem;
+			}
+
+			@include mqtp($tablet) {
+				font-size: 4.5rem;
+
+				margin-top: 1rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				font-size: 4rem;
+			}
+
+			@include mqtl($laptop) {
+				font-size: 6rem;
+			}
+
+			@include mqtl($desktop) {
+				font-size: 5rem;
+			}
+		}
+	}
+
+	.receipt {
+		display: flex;
+		flex-direction: row;
+		flex: 0.5;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.buttonCenter {
+		background: $white;
+
+		.greenButton {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			font-size: 1.25rem;
+			margin-top: 0.75rem;
+		}
+		.greenButtonDisabled {			
+			opacity: .3;
+		}
+
+		.totalText {
+			font-weight: bold;
+		}
+	}
+}

@@ -1,0 +1,11 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.faq {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3rem;
+}

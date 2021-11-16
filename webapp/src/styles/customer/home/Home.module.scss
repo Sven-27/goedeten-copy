@@ -1,0 +1,119 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.home {
+	height: 100%;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.slogan {
+		display: flex;
+		width: 100vw;
+		flex: 0.29;
+		justify-content: center;
+		align-items: center;
+		background-image: url("/assets/images/background.jpg");
+		background-repeat: no-repeat;
+		background-position: top;
+		background-size: cover;
+
+		.title {
+			display: flex;
+			margin-top: 2rem;
+			justify-content: center;
+			align-items: center;
+			width: 100vw;
+			height: 100%;
+
+			h1 {
+				font-size: 2.7rem;
+				filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+				-webkit-filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+				color: $beige;
+
+				@include mqd($mobile_xs) {
+					margin-top: 1.3rem;
+				}
+
+				@include mqd($mobile_s) {
+					font-size: 2.7rem;
+				}
+
+				@include mqml($mobile_ls) {
+					margin: 0.5rem 0 1.5rem;
+					font-size: 3rem;
+				}
+
+				@include mqtp($tablet) {
+					font-size: 4.5rem;
+				}
+
+				@include mqtl($tablet_ls) {
+					font-size: 4rem;
+					margin-bottom: 1rem;
+				}
+
+				@include mqtp($tablet_l) {
+					font-size: 8rem;
+				}
+
+				@include mqtl($laptop) {
+					font-size: 6rem;
+				}
+			}
+
+			@include mqml($mobile_ls) {
+				width: 100%;
+				text-align: center;
+			}
+
+			@include mqtl($tablet_ls) {
+				margin-top: 4rem;
+			}
+		}
+	}
+	.calendar {
+		width: 100vw;
+		flex: 0.06;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		padding: 0.5rem 0;
+		border-top: 1px solid $brown;
+		border-bottom: 1px solid $brown;
+
+		ul {
+			width: 100%;
+			display: flex;
+			justify-content: space-evenly;
+
+			li {
+				list-style-type: none;
+
+				.home__calendarLink {
+					font-size: 1.1rem;
+					font-weight: 900;
+					text-decoration: none;
+				}
+			}
+		}
+
+		@include mqml($mobile_ls) {
+			padding: 0.1rem 0;
+		}
+	}
+
+	.dishes {
+		width: 100%;
+		flex: 0.37;
+	}
+
+	.cooks {
+		width: 100%;
+		flex: 0.28;
+	}
+}

@@ -1,0 +1,204 @@
+@import "styles/variables";
+@import "styles/queries";
+
+.submitbuttons {
+    grid-area: submitbuttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    //margin: 1rem;
+
+
+}
+
+.pic {
+    grid-area: pic;
+    margin-left: 10px;
+    
+
+    img {
+        //width: 400px;
+        max-width: 80%;
+        max-height: 50vh;
+        object-fit: "cover";
+        border-radius: 4px;
+        @include mqtl(1280px) {
+            max-height: 60vh; 
+        }
+        @include mqtl(1920px) {
+            max-height: 40vh; 
+        }
+
+    }
+
+
+}
+
+.name {
+    grid-area: name;
+    margin-left: 1rem;
+    
+
+
+}
+
+.price {
+    grid-area: price;
+    margin-left: 1rem;
+
+
+}
+.nameshort {
+    grid-area: nameshort;
+    margin-left: 1rem;
+
+
+}
+
+.maxQ {
+    grid-area: maxQ;
+    margin-left: 1rem;
+
+}
+
+.picbuttons {
+    grid-area: picbuttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1rem;
+
+}
+
+.tab {
+    grid-area: tab;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+
+.cuisine {
+    grid-area: cuisine;
+    margin-left: 1rem;
+
+
+}
+
+.category {
+    grid-area: category;
+    margin-left: 1rem;
+}
+.vat {
+    grid-area: vat;
+    margin-left: 1rem;
+}
+
+.allergens {
+    
+    grid-area: allergens;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: 1px solid $darkslategrey;
+    border-radius: 5px;
+    button {
+        margin: 1.5rem !important ;
+    }
+
+
+}
+
+.cook {
+    grid-area: cook;
+    margin-left: 1rem;    
+    margin-bottom: 1rem;
+}
+
+.pillar {   
+    grid-area: pillar;    
+    margin: 1rem;
+}
+
+
+.container {
+    
+    height:100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows:  auto;
+    grid-gap: 0px;
+    grid-template-areas:
+        ". . . submitbuttons"
+        "pic pic price vat "
+        "pic pic tab tab "
+        "pic pic tab tab "
+        "pic pic tab tab "
+        "picbuttons picbuttons . .  "
+        "name name  allergens allergens"
+        "nameshort cook  pillar pillar"
+        "maxQ cook  pillar pillar"
+        "cuisine cook  pillar pillar"
+        "category cook  pillar pillar";
+
+
+    border: 2px solid $darkslategrey;
+    border-radius: 5px;
+
+
+    input, textarea {
+        margin: 3px;
+        padding-top: 8px;
+        width: 18vw;
+    }
+     textarea {
+        width: 33vw;
+
+        @include mqtl(1280px) {
+            width: 39vw; 
+        }
+        @include mqtl(1920px) {
+            width: 28vw; 
+        }
+
+    }
+
+    button {
+        margin: 0.3rem;
+    }
+
+    select {
+        padding: 8px;        
+    }
+    .selectCook {
+        padding: 0px;    
+        width: 10vw;    
+    }
+    .selects {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        width: 18vw;
+    }
+    .vatselect {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        width: 10vw;
+    }
+    .paper{
+        max-width: 35vw;
+        @include mqtl(1280px) {
+            max-width: 43vw; 
+        }
+        @include mqtl(1920px) {
+            max-width: 35vw; 
+        }
+
+    }
+    p{
+        margin: 3px;
+    }
+
+
+
+}

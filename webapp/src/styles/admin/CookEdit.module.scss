@@ -1,0 +1,105 @@
+@import "styles/variables";
+.submitbuttons {
+    grid-area: submitbuttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 1rem;
+
+
+}
+
+.pic {
+    grid-area: pic;
+    margin: 10px;
+    img {
+        //width: 400px;
+        height: 400px;
+        object-fit: "cover";
+        border-radius: 4px;
+        
+    }
+    
+   
+}
+
+.picbuttons {
+    grid-area: picbuttons;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1rem;
+
+}
+
+.tab {
+    grid-area: tab;
+    margin: 1rem;
+}
+
+.name {
+    grid-area: name;
+    margin: 1rem;
+
+
+}
+
+.location {
+    grid-area: location;
+    margin: 1rem;
+}
+
+.address {
+    grid-area: address;
+    margin: 1rem;
+   
+}
+
+.email {
+    grid-area: email;
+    margin: 1rem;
+}
+
+.tel {
+    grid-area: tel;
+    margin: 1rem;
+}
+
+.active {
+    grid-area: active;
+    margin: 1rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "pic submitbuttons"
+        "pic tab "
+        "pic tab "
+        "pic tab "
+        "picbuttons . "
+        "name address "
+        "location email "
+        "active tel ";
+    
+    border: 2px solid $darkslategrey;
+    border-radius: 5px;   
+ 
+
+        input {
+            margin: 10px;
+            width: 25rem;
+        }
+        button{
+            margin: 0.3rem;
+        }
+        .selects {
+            width: 28rem;
+        }
+        
+       
+       
+}
+

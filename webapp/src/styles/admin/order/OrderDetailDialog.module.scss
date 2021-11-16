@@ -1,0 +1,80 @@
+@import "styles/variables";
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        ". submitbuttons"
+        "details transactions"
+        "deliveries deliveries";
+    border: 2px solid $darkslategrey;
+    border-radius: 5px;   
+        // input {
+        //     margin: 10px;
+        //     width: 25rem;
+        // }
+        button{
+            margin: 0.3rem;
+        }
+        .selects {
+            width: 28rem;
+        }
+        
+
+
+    .submitbuttons{
+        grid-area: submitbuttons;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        // margin: 1rem;
+        // background-color: aqua;
+    }
+
+    .details{
+        grid-area: details;
+        margin: 1rem;
+        .inputs{
+            display: grid;
+            grid-template-rows: auto;
+            grid-template-columns: 1fr 1fr; 
+            p {
+                padding: 0.2rem;
+            }
+            .textfield {
+                margin: 0.3rem 0.2rem;
+            }
+            .orderInfo{
+                padding-bottom: 1rem;
+            }
+        }
+    }
+
+    .transactions{
+        grid-area: transactions;
+        padding: 1rem;  
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .transactionTable {
+            width: 100%;
+            padding: 0.2rem;
+        }
+        // margin: 1rem;
+    }
+
+    .deliveries{
+        grid-area: deliveries;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 1rem;
+        // margin: 1rem;
+    }
+        
+    
+}
+

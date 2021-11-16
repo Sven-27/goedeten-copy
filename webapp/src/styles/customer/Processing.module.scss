@@ -1,0 +1,66 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.background {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    height: 100%;
+    align-items: center;
+
+    .logo {
+        margin-top: 2rem;
+
+        @include mqtl($desktop) {
+            margin-top: 4rem;
+            margin-left: 80%;
+        }
+
+    }
+
+
+    .content {
+        background-image: url("/assets/images/backgroundimage.png");
+        width: 80%;
+        border: 2px solid $brown;
+        border-radius: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+
+        @include mqtl($desktop) {
+            width: 40%;
+            margin-top: 4rem;
+        }
+
+        span {
+            width: 90%;
+            margin-bottom: 1rem;
+
+            @include mqtl($desktop) {
+                font-size: 1.3rem;
+            }
+        }
+
+        h1 {
+            margin-top: 1rem;
+            font-size: 2rem;
+            color: $darkgreen;
+            width: 80%;
+
+            @include mqtl($desktop) {
+                font-size: 3rem;
+
+            }
+        }
+    }
+
+    .cirkel {
+        margin-top: 2rem;
+        align-self: center;
+        text-align: center;
+    }
+}

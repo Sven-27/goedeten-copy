@@ -1,0 +1,265 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.header {
+	height: 4rem;
+	width: 100vw;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.logo {
+		width: 100%;
+		height: 100%;
+		border-radius: 50%;
+		margin-left: 0.75rem;
+		margin-top: 1.8rem;
+		flex: 1;
+
+		img {
+			display: flex;
+			border-radius: 50%;
+			border: solid 3px $darkslategrey;
+			cursor: pointer;
+			filter: drop-shadow(0%);
+			filter: gray;
+			-webkit-filter: drop-shadow(0%);
+			filter: none;
+
+			&:hover {
+				filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+				-webkit-filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+			}
+
+			// @include mqtp($tablet) {
+			// 	width: 4.15rem;
+			// 	height: 4.15rem;
+			// }
+		}
+
+		// @include mqtp($tablet) {
+		// 	width: 4.3;
+		// }
+
+		@include mqml($tablet_l) {
+			visibility: visible;
+			margin-left: 1.25rem;
+			margin-top: 1.5rem;
+			width: 3rem;
+		}
+
+		// @include mqtp($tablet) {
+		// 	margin-top: 2.5rem;
+		// 	margin-left: 1.5rem;
+		// 	width: 5rem;
+		// }
+
+		@include mqtl($tablet_ls) {
+			margin-left: 2rem;
+			margin-bottom: 0.9rem;
+		}
+	}
+
+	.links {
+		display: none;
+	}
+
+	.header__container {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		.active-link {
+			text-decoration: underline;
+		}
+
+		.cloche {
+			height: 100%;
+			margin-top: 0.6rem;
+
+			// @include mqtp($tablet) {
+			// 	margin-bottom: -1.6rem;
+			// 	display: flex;
+			// 	align-items: center;
+			// }
+
+			@include mqtl($tablet_ls) {
+				margin-right: 1.3rem;
+				margin-bottom: 0.2rem;
+			}
+
+			@include mqtl($landscape) {
+				margin-right: 0.5rem;
+			}
+		}
+
+		.header__links {
+			// @include mqd($tablet_l){
+			position: fixed;
+			top: 4rem;
+			right: 0;
+			width: 301.15px;
+			font-size: 1.2rem;
+			padding: 0.5rem 0.2rem;
+			z-index: 20;
+			margin-right: 2.28125rem;
+			text-align: center;
+			display: block;
+			// background-image: url("/assets/images/woodboard-bg.png");
+			// background-position: left;
+			background-color: rgba(255, 255, 219, 0.95);
+			border: 2.1px solid $darkgreen;
+			border-radius: 5px;
+
+			@include mqml($mobile_ls) {
+				// height: 82%;
+				// overflow: scroll;
+				margin-right: 3rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				// height: auto;
+				margin-right: 3.4rem;
+				margin-top: -0.6rem;
+			}
+
+			// }
+		}
+		.hidden {
+			// @include mqd($tablet_l){
+			display: none;
+			// }
+		}
+
+		.header__list {
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			list-style-type: none;
+			margin-bottom: 0.5rem;
+
+			.header__link {
+				display: inline-flex;
+				text-align: center;
+				text-decoration: none;
+				color: $darkgreen;
+				@include mqtl($tablet_ls) {
+					font-size: 1rem;
+				}
+			}
+
+			h3 {
+				font-family: "bushcraft-distress";
+				color: $darkgreen;
+				padding-bottom: 0;
+				margin-top: 4.32px;
+
+				&:hover {
+					font-family: "bushcraft-distress";
+					color: $red;
+				}
+			}
+
+			// @include mqtl($tablet_ls){
+			//   display: flex;
+			//   flex-direction: row;
+			// }
+		}
+	}
+
+	.menu {
+		margin-right: 0.28125rem;
+		height: 100%;
+		width: 4rem;
+		// display: none;
+		// margin-left: 0.75rem;
+
+		@include mqtl($landscape) {
+			margin-right: 0.3125rem;
+		}
+
+		@include mqml($mobile_ls) {
+			margin-right: 0.78125rem;
+		}
+
+		@include mqtp($tablet) {
+			margin-right: -0.1875rem;
+			margin-left: 0.5rem;
+		}
+
+		@include mqtl($tablet_ls) {
+			margin-right: 1.0625rem;
+		}
+
+		@include mqd($tablet) {
+			display: grid;
+			place-items: center;
+		}
+
+		.menuIcon,
+		.roundedIcon {
+			background-color: $olivegreen;
+			color: $beige;
+			border: solid 2.1px $darkgreen;
+			width: 3.0625rem;
+			height: auto;
+			cursor: pointer;
+			border-radius: 50%;
+			padding: 0.4rem;
+			margin-top: 0.9375rem;
+			filter: drop-shadow(0%);
+			filter: gray;
+			-webkit-filter: drop-shadow(0%);
+			filter: none;
+
+			&:hover {
+				filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+				-webkit-filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+			}
+
+			@include mqtl($tablet_ls) {
+				margin-top: 0.3125rem;
+			}
+		}
+	}
+
+	@include mqtl($tablet_ls) {
+		background-image: url("/assets/images/woodboard-bg.png");
+		background-repeat: no-repeat;
+		background-size: cover;
+		border-bottom: 5px dotted $darkgreen;
+
+		.links {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-evenly;
+			align-items: center;
+			text-align: center;
+			flex: 0.45;
+
+			a {
+				font-family: "bushcraftone";
+				text-decoration: none;
+				color: $darkslategrey;
+				font-size: 1.2rem;
+				margin: 1.2rem;
+				font-weight: bold;
+
+				&:hover {
+					border-bottom: 3px solid $darkgreen;
+				}
+			}
+		}
+		.header__container {
+			margin: 0 0 0 1.5rem;
+		}
+
+		.menu {
+			margin: 0 1rem;
+		}
+	}
+}

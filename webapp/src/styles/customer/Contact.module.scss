@@ -1,0 +1,164 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.container {
+  background-color: #ffffff;
+	width: 100%;
+  height: 100%;
+
+  .photo {
+		display: block;
+		height: 18rem;
+		object-fit: cover;
+		object-position: center;
+		width: 100%;
+		background-image: url("/assets/images/initiatiefnemersbanner.png");
+  }
+
+  .bar {
+		// align-items: flex-start;
+		// justify-content: flex-start;
+		background: linear-gradient(
+			180deg,
+			rgba(240, 224, 206, 0.5) 50%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		display: flex;
+		flex-direction: column;
+		height: 50px;
+		width: 100%;
+
+		@include mqtp(415px) {
+			height: 75px;
+		}
+
+		@include mqml(812px) {
+			height: 50px;
+		}
+
+		@include mqtl(813px) {
+			height: 75px;
+		}
+
+		@include iphoneSE(320px) {
+			height: 35px;
+		}
+
+		.breadcrumb {
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+	}
+
+
+  .heading {
+    color: $darkgreen;
+    font-size: 2rem;
+    font-family: "bushcraftone";
+    margin-bottom: 1rem;
+    padding-bottom: 20px;
+    padding-top: 0px;
+  }
+  
+  .contactcontainer {
+    align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin-left: 2.5%;
+		padding-top: 2rem;
+    margin-right: 2.5%;
+    width: 95%;
+
+    .contacts {
+		a, a:hover, a:focus, a:active {
+			text-decoration: none;
+			color: inherit;
+	  }
+
+			//width: 100%;
+			padding-bottom: 20px;
+			padding-top: 15px;
+
+			@include mqtp(415px) {
+				//width: 100%;
+			}
+
+			@include mqml(812px) {
+				//width: 75%;
+			}
+
+			@include mqtl(813px) {
+				//width: 75%;
+			}
+
+			@include iphoneSE(320px) {
+				span {
+					font-size: 13.5px;
+				}
+      }
+      
+      .contact {
+
+        .contacttype {
+
+          .contacticon {
+            color: $darkgreen;
+          }
+        }
+
+        .contactinfo {
+          color: $darkgreen;
+        }
+      }
+
+    }
+    
+    .calendarButton {
+			@include iphoneSE(320px) {
+				width: 75px;
+			}
+		}
+  }
+}
+
+.bar1 {
+	display: flex;
+	width: 100%;
+	min-height: 5vh;
+	background: rgb(227,222,218);
+	background: radial-gradient(circle, rgba(227,222,218,1) 26%, rgba(248,237,229,1) 100%);
+}
+
+.bar2 {
+	display: flex;
+	width: 100%;
+	min-height: 5vh;
+	background-color: #f8ede5;
+	background: rgb(227,222,218);
+	background: radial-gradient(circle, rgba(227,222,218,1) 26%, rgba(248,237,229,1) 100%);
+}
+
+
+// ---Links---
+
+.links {
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	align-items: center;
+	padding: 1rem 0 1rem 0;
+}
+
+//---breadcrumbs---
+
+.breadcrumb {
+
+	margin-top: -7vh;
+	height: 12vh;
+}
+
+
+
+

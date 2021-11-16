@@ -1,0 +1,73 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.portions {
+	display: flex;
+	border-radius: 5pt;
+	background: $lightgreen;
+	color: $darkgreen;
+	align-items: center;
+	justify-content: center;
+
+	.portions__container{
+
+		.buttons {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 2rem;
+
+			.input {
+				border: none;
+				background-color: $lightgreen;
+				color: $darkgreen;
+				font-size: 1.4rem;
+				font-weight: bold;
+				text-shadow: 1px 1px $beige;
+				// text-align: center;
+			}
+
+			button {
+				border: none;
+				background-color: $lightgreen;
+				color: $darkgreen;
+				display: flex;
+				cursor: pointer;
+				// width: 2rem;
+				padding: 0 0.5rem;
+
+				.portionIcon {
+					height: 1.75rem;
+					width: 1.75rem;
+					color: $darkgreen;
+					background: $lightgreen;
+
+					&:active {
+						color: $beige;
+					}
+
+					@include mqtl(1025px){
+					  &:hover{
+						color: $beige;
+					  }
+					}
+				}
+			}
+		}
+
+		.text {
+
+			.oneLeft, 
+			.maxPortions {
+				font-size: 0.7rem;
+				color: $red;
+			
+				@include mqtl($desktop) {
+					font-size: 1rem;
+					padding-top: 0.25rem;
+				}
+			}
+    	}
+	}
+}

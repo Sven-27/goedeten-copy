@@ -1,0 +1,133 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.container {
+	background-image: url("/assets/images/woodboard-bg.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+
+	.dish {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		//justify-content: center;
+		align-items: center;
+
+		.slogan {
+			.title {
+				margin-top: 2.5rem;
+				margin-bottom: 1rem;
+				width: 75vw;
+
+				h1 {
+					font-size: 2.7rem;
+					filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+					-webkit-filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+					color: $beige;
+					text-align: center;
+					padding-top: 0.5rem;
+
+					@include mqml($mobile_ls) {
+						margin: 0.5rem 0 1.5rem;
+						font-size: 3rem;
+					}
+
+					@include mqtp($tablet) {
+						font-size: 4.5rem;
+					}
+
+					@include mqtl($tablet_ls) {
+						font-size: 4rem;
+						margin-bottom: 1rem;
+					}
+
+					@include mqtl($laptop) {
+						font-size: 6rem;
+					}
+
+					@include mqtl($desktop) {
+						font-size: 5rem;
+					}
+				}
+
+				@include mqml($mobile_ls) {
+					margin-bottom: 0;
+				}
+
+				@include mqtp($tablet) {
+					width: 60vw;
+				}
+			}
+		}
+
+		.dishes_calendar {
+			width: 90%;
+
+			// @include mqml($mobile_ls){
+			//   width: 100%;
+			// }
+
+			// @include mqtp($tablet) {
+			//   width: 100%;
+			// }
+
+			// @include mqtl($tablet_ls){
+			//   width: 100%;
+			// }
+
+			// @include mqtl($laptop){
+			//   width: 90%;
+			//   margin-left: 5%;
+			//   margin-right: 5%;
+			// }
+
+			// @include mqtl($desktop) {
+			//   width: 90%;
+			//   margin-left: 5%;
+			//   margin-right: 5%;
+			// }
+		}
+
+		.staticDishGridList {
+			// width: 90%;
+			// margin-left: 5%;
+			// margin-right: 5%;
+			margin-top: 1rem;
+		}
+
+		.buttons {
+			padding-top: 1.5rem;
+			padding-bottom: 1.5rem;
+
+			@include mqml($mobile_ls) {
+				padding-top: 1, 5rem;
+				padding-bottom: 1.5rem;
+			}
+
+			@include mqtp($tablet) {
+				padding-top: 3rem;
+				padding-bottom: 3rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				padding-top: 2.5rem;
+				padding-bottom: 2.5rem;
+			}
+
+			@include mqtl($laptop) {
+				padding-top: 5rem;
+				padding-bottom: 5rem;
+			}
+
+			@include mqtl($desktop) {
+				padding-top: 5rem;
+				padding-bottom: 5rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,278 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+// .dishInfo {
+// 	height: 100%;
+// 	width: 100%;
+// 	background-image: url("/assets/images/woodboard-bg.png");
+
+// 	@include mqtp($laptop) {
+// 		background-size: cover;
+// 		background-attachment: fixed;
+// 	}
+
+// 	@include mqtl($landscape) {
+// 		background-size: cover;
+// 		background-attachment: fixed;
+// 	}
+
+// 	@include mqtl($desktop) {
+// 		background-size: cover;
+// 		background-attachment: fixed;
+// 	}
+
+.dishInfo {
+	height: 100%;
+	width: 100%;
+	background-image: url("/assets/images/woodboard-bg.png");
+	display: grid;
+	row-gap: 1vh;
+	justify-self: center;
+	grid-template-columns: 10vw 80vw 10vw;
+	grid-template-rows: 10vh 30vh min-content 3rem 3rem 8vh;
+	grid-template-areas: " . . . " ". main ." ". acc ." ". portions ." ". cart ." ". back .";
+
+	@include mqtp($laptop) {
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	@include mqtl($landscape) {
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	@include mqtl($desktop) {
+		background-size: cover;
+		background-attachment: fixed;
+	}
+
+	.main {
+		grid-area: main;
+		list-style: none;
+
+		.uitverkocht {
+			color: $beige;
+			font-family: "bushcraft-distress";
+			position: absolute;
+			z-index: 1;
+			height: 40%;
+			width: 100%;
+			top: 30%;
+			font-size: 2rem;
+			// margin-top: 3.75rem;
+			border-bottom: 2px solid $beige;
+			border-top: 2px solid $beige;
+			backdrop-filter: blur(3px);
+			padding-bottom: 0.25rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			@include mqtp($tablet) {
+				// font-size: 3rem;
+				backdrop-filter: blur(6px);
+			}
+
+			@include mqtl($tablet_ls) {
+				backdrop-filter: blur(4px);
+			}
+
+			@include mqtl($desktop) {
+				font-size: 3rem;
+			}
+		}
+
+		.afterEleven {
+			color: black;
+			z-index: 2;
+			position: absolute;
+			width: 98%;
+			display: flex;
+			height: 40%;
+			top: 30%;
+			align-items: center;
+			justify-content: center;
+			padding: 0.2rem;
+
+			background-color: $lightbrown;
+			font-size: 1rem;
+			border: 1px solid $brown;
+			margin-left: 1%;
+		}
+
+		button {
+			padding: 0;
+		}
+
+		.iconImage {
+			height: 2.4rem;
+			margin: 0 0.1rem;
+			cursor: default;
+			/* 				&:hover {
+					height: 2.5rem;
+				}
+				&:active {
+					height: 2.5rem;
+				} */
+			@include mqml($mobile_ls) {
+				height: 2.1rem;
+			}
+		}
+
+		div {
+			font-weight: bold;
+			color: $beige;
+		}
+
+		button {
+			width: fit-content;
+		}
+
+		span {
+			color: $beige;
+			margin-right: 0.5rem;
+			font-weight: bold;
+		}
+
+		@include mqtp($laptop) {
+			grid-area: 2 / 2 / 3 / 3;
+		}
+
+		@include mqtl($landscape) {
+			grid-area: 2 / 2 / 3 / 3;
+		}
+
+		@include mqtl($desktop) {
+			grid-area: 2 / 2 / 3 / 3;
+		}
+	}
+
+	.dishInfo__accordion {
+		grid-area: acc;
+		path {
+			color: $darkgreen;
+		}
+
+		@include mqtp($laptop) {
+			grid-area: 2 / 4 / 9 / 5;
+		}
+
+		@include mqtl($landscape) {
+			grid-area: 2 / 4 / 9 / 5;
+		}
+
+		@include mqtl($desktop) {
+			grid-area: 3 / 2 / 4 / 3;
+		}
+
+		.dishName {
+			font-size: 1rem;
+			font-style: italic;
+			font-weight: bold;
+		}
+
+		.titles {
+			font-size: 1rem;
+			font-weight: bold;
+		}
+
+		.letop {
+			font-size: 0.8rem;
+			font-style: italic;
+		}
+	}
+
+	a {
+		color: $lightgreen;
+
+		&:hover {
+			color: $olivegreen;
+		}
+	}
+
+	.portions {
+		display: flex;
+		border-radius: 5pt;
+		background: $lightgreen;
+		grid-area: portions;
+		color: $darkgreen;
+		align-items: center;
+		justify-content: center;
+
+		@include mqtp($laptop) {
+			grid-area: 4 / 2 / 5 / 3;
+		}
+
+		@include mqtl($landscape) {
+			grid-area: 4 / 2 / 5 / 3;
+		}
+
+		@include mqtl($desktop) {
+			grid-area: 4 / 2 / 5 / 3;
+		}
+	}
+
+	.cartButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $darkgreen;
+		grid-area: cart;
+		border-radius: 5pt;
+
+		button {
+			background-color: $darkgreen;
+			border: none;
+			width: 100%;
+		}
+
+		@include mqtp($laptop) {
+			grid-area: 6 / 2 / 7 / 3;
+		}
+
+		@include mqtl($landscape) {
+			grid-area: 6 / 2 / 7 / 3;
+		}
+
+		@include mqtl($desktop) {
+			grid-area: 5 / 2 / 6 / 3;
+		}
+	}
+
+	.backButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		grid-area: back;
+
+		@include mqtp($laptop) {
+			grid-area: 9 / 2 / 10 / 3;
+		}
+
+		@include mqtl($landscape) {
+			grid-area: 9 / 2 / 10 / 3;
+		}
+
+		@include mqtl($desktop) {
+			grid-area: 6 / 2 / 7 / 3;
+		}
+	}
+
+	@include mqtp($laptop) {
+		grid-template-columns: 8vw 40vw 4vw 40vw 8vw;
+		grid-template-rows: 5rem 12.6rem 0.5vh 3rem 0.5vh 3rem 0.5vh 1fr 3rem;
+	}
+
+	@include mqtl($landscape) {
+		grid-template-columns: 8vw 40vw 4vw 40vw 8vw;
+		grid-template-rows: 5rem 12.6rem 0.5vh 3rem 0.5vh 3rem 0.5vh 1fr 3rem;
+	}
+
+	@include mqtl($desktop) {
+		grid-template-columns: 25vw 50vw 25vw;
+		grid-template-rows: 10vh 40vh 1fr 4.5rem 4.5rem 4.5rem;
+	}
+}
+// }

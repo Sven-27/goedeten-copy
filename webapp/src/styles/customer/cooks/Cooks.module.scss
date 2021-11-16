@@ -1,0 +1,106 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.cooks {
+	height: 100%;
+	width: 100vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-image: url("/assets/images/woodboard-bg.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+
+	.slogan {
+		display: flex;
+		width: 100vw;
+		flex: 0.29;
+		justify-content: center;
+		align-items: center;
+		background-image: url("/assets/images/background.jpg");
+		background-repeat: no-repeat;
+		background-position: bottom;
+		background-size: cover;
+		border-bottom: 2px solid $darkgreen;
+
+		.title {
+			margin-top: 2.5rem;
+			// margin-bottom: 1rem;
+			width: 75vw;
+
+			h1 {
+				font-size: 2.2rem;
+				margin-top: 0.6rem;
+				filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+				-webkit-filter: drop-shadow(0.3rem 0.3rem 0.2rem $darkgreen);
+				color: $beige;
+				text-align: center;
+
+				@include mqml($mobile_ls) {
+					margin: 0.5rem 0 1.5rem;
+					font-size: 3rem;
+				}
+
+				@include mqtp($tablet) {
+					font-size: 4.5rem;
+				}
+
+				@include mqtl($tablet_ls) {
+					font-size: 4rem;
+					margin-bottom: 1rem;
+				}
+
+				@include mqtl($laptop) {
+					font-size: 6rem;
+				}
+
+				@include mqtl($desktop) {
+					font-size: 5rem;
+				}
+			}
+
+			@include mqml($mobile_ls) {
+				margin-bottom: 0;
+			}
+
+			@include mqtp($tablet) {
+				width: 60vw;
+			}
+
+			@include mqtl($laptop) {
+				margin-top: 5rem;
+			}
+		}
+	}
+
+	.cooks__goed_eten {
+		display: flex;
+		justify-content: center;
+		color: $darkslategrey;
+		margin-bottom: 3rem;
+
+		h1 {
+			font-size: 2rem;
+
+			@include mqtp($tablet) {
+				font-size: 4rem;
+				margin-bottom: 0.75rem;
+			}
+
+			@include mqtl($laptop) {
+				font-size: 3rem;
+			}
+
+			@include mqtl($desktop) {
+				font-size: 3.5rem;
+			}
+		}
+	}
+}
+
+// deze stuck van css kan ik nergens vinden in module components/customer/cook/cooks.tsx
+// Grid wordt daar helemaal niet gebruikt
+//media queries ( type(orientation/ max min size)) staat niet in mixin

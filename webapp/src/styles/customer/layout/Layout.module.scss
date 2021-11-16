@@ -1,0 +1,14 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.container{
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+
+.layout{
+  flex: 1;
+}
+
+}

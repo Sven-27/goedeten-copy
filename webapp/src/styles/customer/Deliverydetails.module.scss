@@ -1,0 +1,131 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.deliverydetails {
+	height: 100%;
+	background-image: url("/assets/images/woodboard-bg.png");
+	display: grid;
+	place-items: center;
+
+		.gelogo {
+		margin: 3.5rem 1rem 1rem 1rem;
+
+		@include mqtl($landscape) {
+			margin-top: 2rem;
+		}
+
+		@include mqtl($tablet_ls) {
+			margin-top: 3.5rem;
+		}
+
+		img {
+			@include mqtp($tablet) {
+				height: 6.5rem;
+			}
+
+			@include mqtp($tablet_l) {
+				height: 7rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				height: 6.5rem;
+			}
+
+			@include mqtl($desktop) {
+				height: 7.5rem;
+			}
+		}
+	}
+
+	.title {
+		margin: 3.5rem 1rem 1rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-shadow: 4px 4px 0 $darkgreen;
+		color: $lightgreen;
+		font-size: 0.5rem;
+
+		.subtitle {
+			text-shadow: none;
+			color: black;
+			font-size: 1.75rem;
+			margin-top: -0.3rem;
+		}
+	}
+
+	.container {
+		width: 85%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 1vw;
+		margin: 0.5rem;
+		background-color: $lightbrown;
+
+		form {
+			width: 85%;
+			display: flex;
+			flex-direction: column;
+			padding: 0.5rem;
+			margin: 0.5rem;
+			background-color: $white;
+			border: 1px solid $brown;
+			border-radius: 5pt;
+
+			.error {
+				font-size: 0.9rem;
+			}
+		}
+
+		p {
+			width: 85%;
+			display: flex;
+			justify-content: center;
+			text-align: center;
+			font-size: small;
+			font-style: italic;
+		}
+	}
+
+	.greenButton {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.25rem;
+		margin-top: 0.75rem;
+	}
+
+	.totalText {
+		font-weight: bold;
+	}
+
+	.tekstBlock {
+		background-color: white;
+		border: 1px solid $brown;
+		border-radius: 5pt;
+		padding: 1rem;
+		margin: 1rem;
+
+		@include mqtl($landscape) {
+			width: 85%;
+		}
+
+		@include mqtp($tablet) {
+			width: 85%;
+		}
+
+		p {
+			width:100%;		
+			border: 1px solid $darkgreen;
+			border-radius: 5pt;
+			// margin: 0.25rem 0;
+			padding: 0.5rem;
+			background-color: $lightbrownButton;
+			text-justify: inter-word;
+		}
+	}
+}

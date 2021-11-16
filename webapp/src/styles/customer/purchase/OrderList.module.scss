@@ -1,0 +1,242 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.listContainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	margin: 0.5rem 0;
+
+	.list1 {
+		width: 50%;
+		@include mqtp($mobile_s) {
+			flex: 1;
+		}
+	}
+
+	.list2 {
+		width: 100%;
+		flex: 1;
+	}
+
+	.list {
+		display: flex;
+		flex-direction: column;
+		height: 60vh;
+		border: 1px solid $brown;
+		border-radius: 5pt;
+		overflow-y: scroll;
+		background: url("/assets/images/backgroundimage.png");
+		margin: 0 0.5rem;
+
+		.date {
+			align-self: center;
+			margin: 0.5rem;
+			padding: 0.25rem 1rem;
+			border-radius: 1rem;
+			border: 2px solid $brown;
+			color: $brown;
+			background: $white;
+		}
+
+		p {
+			display: flex;
+			justify-content: center;
+			font-size: 1rem;
+			font-weight: 400;
+		}
+
+		h4 {
+			margin-left: 1.8rem;
+			margin-top: 1rem;
+			font-weight: 400;
+			text-decoration: underline;
+			font-size: 1rem;
+			text-decoration: none;
+		}
+		// .dishesContainer {
+		.container {
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			margin: 0.5rem 0;
+			margin-left: 1rem;
+
+			.leftContainer {
+				display: flex;
+				align-items: center;
+				padding: 0;
+				height: 2.3rem;
+
+				.deleteButton {
+					width: 1.5rem;
+					height: 1rem;
+					margin-left: 0.3rem;
+					box-shadow: none;
+
+					.deleteIcon {
+						width: 1.5rem;
+						height: 1.2rem;
+
+						&:hover {
+							color: $darkgreen;
+						}
+					}
+				}
+
+				h4 {
+					font-size: 1rem;
+					flex: 1;
+					font-weight: 600;
+					text-decoration: underline;
+					margin-left: 0;
+					margin-bottom: 0.5rem;
+					text-decoration: none;
+					color: $darkgreen;
+					padding-bottom: 0.3rem;
+				}
+
+				p {
+					font-size: 1rem;
+					display: flex;
+					justify-content: flex-end;
+					margin-right: 1rem;
+				}
+			}
+
+			.rightContainer {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.numberOfDishes {
+					font-size: 1rem;
+					font-weight: 400;
+					margin-left: 2.5rem;
+				}
+
+				.select {
+					margin-left: 0.7rem;
+					margin-bottom: 0.2rem;
+					width: 3rem;
+					height: 1.6rem;
+					font-size: 0.9rem;
+
+					&::before {
+						width: 1.3rem;
+						margin-bottom: 0.2rem;
+					}
+
+					label {
+						padding-top: 0;
+						font-weight: 600;
+					}
+
+					svg {
+						width: 1.9rem;
+						height: 1.4rem;
+					}
+				}
+
+				.calculate {
+					width: 35%;
+					display: flex;
+					justify-content: flex-start;
+					text-decoration: none;
+					margin-left: 0.5rem;
+					font-size: 1rem;
+
+					span {
+						margin: 0 0.6rem;
+						font-weight: 400;
+					}
+
+					@include mqml($mobile_ls) {
+						width: 40%;
+					}
+
+					@include mqtl($tablet) {
+						width: 33%;
+					}
+				}
+
+				p {
+					font-size: 1rem;
+					font-weight: 400;
+					display: flex;
+					align-items: flex-start;
+				}
+			}
+		}
+		// }
+
+		.totalContainer {
+			position: sticky;
+			margin-top: 30vh;
+			bottom: 0.5rem;
+			// margin: 2.5rem 0 0.5rem;
+			padding-bottom: 0.5rem;
+			width: 100%;
+			background: $white;
+			border-top: 2px solid $brown;
+			border-bottom: 2px solid $brown;
+			z-index: 2;
+
+			@include mqml($mobile_ls) {
+				margin-top: 15vh;
+			}
+
+			@include mqtp($tablet) {
+				margin-top: 40vh;
+			}
+
+			@include mqtl($laptop) {
+				margin-top: 40vh;
+			}
+
+			.deliveryCost {
+				display: flex;
+				margin-top: 0.5rem;
+				width: 100%;
+				font-style: italic;
+				font-weight: 400;
+
+				p {
+					justify-content: flex-start;
+					flex: 1;
+					margin-left: 1.6rem;
+					font-size: 1rem;
+					font-weight: 400;
+				}
+
+				span {
+					margin-right: 1rem;
+					font-size: 1rem;
+				}
+			}
+
+			.totalCost {
+				width: 100%;
+				margin-top: 0.5rem;
+				margin-left: 1.2rem;
+				display: flex;
+				justify-content: space-between;
+
+				p {
+					font-size: 1rem;
+					font-weight: 600;
+					margin-left: 0.3rem;
+				}
+
+				span {
+					margin-right: 2.2rem;
+					font-weight: 600;
+					font-size: 1rem;
+				}
+			}
+		}
+	}
+}

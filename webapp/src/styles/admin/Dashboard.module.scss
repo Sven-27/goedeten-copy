@@ -1,0 +1,45 @@
+@import "styles/variables";
+
+.grid_container {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	padding: 1rem;
+	max-width: 16rem;
+	grid-template-areas: "cardarea";
+
+	.cardarea {
+		padding-top: 4rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+		grid-template-areas:
+			". . ."
+			". . ."
+			". . .";
+		grid-area: cardarea;
+	}
+
+	.card {
+		box-shadow: 5px 5px 7px #888888;
+
+		.plaatje {
+			margin-bottom: -4px;
+		}
+
+		.title {
+			display: grid;
+			background-color: #98bf82;
+			justify-content: center;
+			align-content: center;
+			padding: 1rem;
+			font-size: large;
+			font-weight: 600;
+			color: $darkslategrey;
+			text-align: -moz-center;
+		}
+		&:hover {
+			box-shadow: 0px 0px 0px #888888;
+		}
+	}
+}

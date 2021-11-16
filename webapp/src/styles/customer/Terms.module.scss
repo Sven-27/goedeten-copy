@@ -1,0 +1,67 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.container {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-image: url("/assets/images/backgroundimage.png");
+
+	.gelogo {
+		margin: 1rem;
+		img {
+			@include mqtp($tablet) {
+				height: 6.5rem;
+			}
+
+			@include mqtp($tablet_l) {
+				height: 7rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				height: 6.5rem;
+			}
+
+			@include mqtl($desktop) {
+				height: 7.5rem;
+			}
+		}
+	}
+
+	.title {
+		text-align: center;
+
+		h1 {
+			margin-top: 2rem;
+			font-size: 2rem;
+			font-family: "bushcraftone";
+			color: black;
+			text-shadow: none;
+		}
+	}
+
+	.terms {
+		width: 85%;
+		margin-top: 1rem;
+
+		h2 {
+			margin-top: 1rem;
+			font-weight: bold;
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			justify-content: center;
+			background: transparent;
+		}
+
+		ul {
+			margin-top: 1rem;
+			margin-left: 2rem;
+		}
+	}
+}

@@ -1,0 +1,267 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.payment {
+	height: 100%;
+
+	.gelogo {
+		margin: 3.5rem 1rem 1rem 1rem;
+
+		@include mqtl($landscape) {
+			margin-top: 2rem;
+		}
+
+		@include mqtl($tablet_ls) {
+			margin-top: 3.5rem;
+		}
+
+		img {
+			@include mqtp($tablet) {
+				height: 6.5rem;
+			}
+
+			@include mqtp($tablet_l) {
+				height: 7rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				height: 6.5rem;
+			}
+
+			@include mqtl($desktop) {
+				height: 7.5rem;
+			}
+		}
+	}
+
+	.container {
+		display: flex;
+		background-image: url("/assets/images/woodboard-bg.png");
+		background-size: cover;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+		background-attachment: fixed;
+
+		.title {
+			margin: 3.5rem 1rem 1rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-shadow: 4px 4px 0 $darkgreen;
+			color: $lightgreen;
+			font-size: 0.5rem;
+
+			.subtitle {
+				text-shadow: none;
+				color: black;
+				font-size: 1.75rem;
+				margin-top: -0.5rem;
+			}
+		}
+
+		.blocks {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 85%;
+			padding: 2rem 0;
+			background-color: $lightbrown;
+
+			.costsBlock {
+				width: 85%;
+				display: flex;
+				flex-direction: column;
+				background-color: $beige;
+				border: 1px solid $brown;
+				padding: 1rem;
+				background-color: white;
+				border-radius: 5pt;
+
+				@include mqtl($landscape) {
+					width: 20rem;
+				}
+
+				@include mqtp($tablet) {
+					width: 20rem;
+				}
+
+				.Ideal {
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+				}
+
+				.costs {
+					margin-top: 0.5rem;
+
+					div {
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+					}
+				}
+
+				button {
+					align-self: center;
+					margin-top: 1rem;
+					margin-bottom: 0;
+				}
+
+				.loadCircle {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					margin-top: 1rem;
+				}
+			}
+
+			.tekstBlock {
+				width: 85%;
+				display: flex;
+				flex-direction: column;
+				background-color: white;
+				border: 1px solid $brown;
+				border-radius: 5pt;
+				padding: 1rem;
+				margin-top: 1rem;
+
+				@include mqtl($landscape) {
+					width: 20rem;
+				}
+
+				@include mqtp($tablet) {
+					width: 20rem;
+				}
+
+				p {
+					border: 1px solid $darkgreen;
+					border-radius: 5pt;
+					margin: 0.25rem 0;
+					padding: 0.5rem;
+					// background-color: rgba(152, 191, 130, 0.2);
+					background-color: $lightbrownButton;
+					text-justify: inter-word;
+
+					a {
+						color: $lightgreen;
+						font-weight: 500;
+
+						&:hover {
+							color: $darkgreen;
+						}
+					}
+
+					input {
+						width: 1rem;
+						height: 1rem;
+						display: flex;
+						-webkit-appearance: none;
+						-moz-appearance: none;
+						-o-appearance: none;
+						appearance: none;
+						border: 1px solid $darkgreen;
+						border-radius: 4px;
+						outline: none;
+						cursor: pointer;
+						background-color: rgba(245, 245, 220, 0.5);
+
+						&:checked {
+							background-color: $darkgreen;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+
+							&::before {
+								content: "✓";
+								color: $beige;
+								font-size: 0.65rem;
+								font-weight: 700;
+							}
+						}
+					}
+				}
+
+				.checkbox {
+					display: flex;
+					flex-direction: row;
+					align-items: flex-end;
+
+					input {
+						height: 1.1rem;
+						width: 1.1rem;
+						-webkit-appearance: none;
+						-moz-appearance: none;
+						-o-appearance: none;
+						appearance: none;
+						border: 1px solid $darkgreen;
+						border-radius: 4px;
+						outline: none;
+						cursor: pointer;
+						background-color: $lightbrown;
+
+						&:checked {
+							background-color: $darkgreen;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+
+							&::before {
+								content: "✓";
+								color: $beige;
+								font-size: 0.65rem;
+								font-weight: 700;
+							}
+						}
+
+						&:active {
+							border: 2px solid $darkgreen;
+						}
+					}
+				}
+
+				.email__label {
+					border: 1px solid $darkgreen;
+					border-radius: 5pt;
+					margin: 0.25rem 0;
+					padding: 0.5rem;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					background-color: rgba(236, 223, 212, 0.3);
+					//background-color: $lightbrownButton;
+
+					.closeIcon {
+						display: flex;
+						justify-content: flex-end;
+						color: $darkgreen;
+						margin-right: -0.25rem;
+					}
+				}
+
+				.inputEmail {
+					width: 100%;
+					margin-top: 0.5rem;
+					padding: 0.15rem 0.25rem;
+				}
+
+				button {
+					margin-bottom: 0;
+					align-self: center;
+				}
+
+				// // // 	// .emailForm {
+				// // // 	// 	border: 1px solid red;
+				// // // 	// }
+				// // 	}
+				// }
+			}
+		}
+	}
+
+	button {
+		margin: 0.8rem 0;
+	}
+}

@@ -1,0 +1,167 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.footer {
+	border-style: dotted none none none;
+	border-width: 5px;
+	padding: 0.5rem 0;
+	width: 100vw;
+	background-image: url("/assets/images/woodboard-bg.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-origin: border-box;
+	background-size: cover;
+	z-index: 1;
+	display: flex;
+
+	.container {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+
+		.logo {
+			display: flex;
+			flex: 0.275;
+			justify-content: flex-start;
+			align-items: center;
+			margin-left: 1.3rem;
+
+			.goedetenlink {
+				height: 100%;
+				text-decoration: none;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				img {
+					filter: drop-shadow(0%);
+					filter: gray;
+					-webkit-filter: drop-shadow(0%);
+					filter: none;
+
+					&:hover {
+						filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+						-webkit-filter: drop-shadow(0rem 0.1rem 0.1rem $darkslategrey);
+					}
+					@include mqd($mobile_s) {
+						width: 6rem;
+					}
+
+					@include mqml($mobile_ls) {
+						width: 7rem;
+					}
+
+					@include mqtp($tablet) {
+						width: 11rem;
+					}
+
+					@include mqtl($tablet_ls) {
+						width: 9rem;
+					}
+
+					@include mqtl($desktop) {
+						width: 11rem;
+					}
+				}
+			}
+		}
+
+		.links {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			flex: 0.45;
+
+			.link {
+				text-decoration: none;
+				color: $darkslategrey;
+				font-size: 0.7rem;
+				font-weight: 500;
+				flex: 0.33;
+
+				&:hover {
+					color: $red;
+					font-weight: bold;
+				}
+
+				&:active {
+					color: $olivegreen;
+				}
+
+				@include mqd($mobile_s) {
+					font-size: 0.8rem;
+				}
+
+				@include mqml($mobile_ls) {
+					font-size: 0.8rem;
+				}
+
+				@include mqtp($tablet) {
+					font-size: 0.95rem;
+				}
+
+				@include mqtl($tablet_ls) {
+					font-size: 0.95rem;
+				}
+			}
+
+			@include mqml($mobile_ls) {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+			}
+
+			@include mqtl($tablet_ls) {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+			}
+
+      
+    }
+
+		.icons {
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			flex: 0.275;
+			margin-right: 0.75rem;
+
+			.socialMediaIcon {
+				font-size: 1.3rem;
+				margin: 0 0.5rem;
+				color: $darkslategrey;
+				cursor: pointer;
+
+				&:hover {
+					color: $red;
+				}
+
+				&:active {
+					color: $olivegreen;
+				}
+
+				@include mqml($mobile_ls) {
+					font-size: 1.7rem;
+				}
+
+				@include mqtp($tablet) {
+					font-size: 2.4rem;
+					margin-left: 1rem;
+				}
+
+				@include mqtl($tablet_ls) {
+					font-size: 2.5rem;
+					margin-left: 1rem;
+				}
+			}
+		}
+
+	@include mqtp($tablet) {
+		padding: 0.5rem 0;
+	}
+}
+}

@@ -1,0 +1,101 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.goedeten {
+	height: 100%;
+	background-color: $lightbrown;
+	display: grid;
+	place-items: center;
+
+	.gelogo {
+		margin: 1rem;
+		img {
+			@include mqtp($tablet) {
+				height: 6.5rem;
+			}
+
+			@include mqtp($tablet_l) {
+				height: 7rem;
+			}
+
+			@include mqtl($tablet_ls) {
+				height: 6.5rem;
+			}
+
+			@include mqtl($desktop) {
+				height: 7.5rem;
+			}
+		}
+	}
+
+	.buttons {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.gecontainer {
+		display: flex;
+
+		flex-direction: row;
+		padding: 1vw 2vw 1vw 2vw;
+
+		.geimage {
+			z-index: 1;
+			position: absolute;
+			img {
+				width: 6rem;
+				height: 6rem;
+				border-radius: 50%;
+				border: 2px solid $darkgreen;
+				&:hover {
+					border-color: $lightgreen;
+				}
+			}
+		}
+
+		.accordion {
+			width: 80vw;
+
+			.accCooperatiedh {
+				width: 83%;
+			}
+
+			h1 {
+				margin-bottom: 1rem;
+				font-size: 1.2rem;
+				color: $darkgreen;
+
+				@include mqml($mobile_ls) {
+					padding-left: 5vw;
+					font-size: 1.25rem;
+				}
+
+				@include mqtp($tablet) {
+					padding-left: 6vw;
+					font-size: 1.25rem;
+				}
+
+				@include mqtl($laptop) {
+					font-size: 1.25rem;
+					padding-left: 6vw;
+				}
+			}
+
+			p {
+				font-size: 0.9rem;
+			}
+		}
+
+		&:hover {
+			img {
+				border-color: $lightgreen;
+			}
+
+			h1 {
+				color: $lightgreen;
+			}
+		}
+	}
+}

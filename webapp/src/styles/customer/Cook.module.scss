@@ -1,0 +1,10 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.cook {
+  height: 100%;
+  /*background: blanchedalmond;*/
+  display: grid;
+  place-items: center;
+}
