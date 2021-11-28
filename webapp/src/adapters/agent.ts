@@ -16,7 +16,7 @@ import { IVatCategory } from "models/VatCategory";
 import { IOrderEasy, IRedirectResult } from "models/Purchase";
 import { IOrder, IStatus } from "models/Order"
 
-axios.defaults.baseURL = 'https://goed-eten-webapi.azurewebsites.net/';
+axios.defaults.baseURL = 'https://goed-eten-api.azurewebsites.net/';
 //axios.defaults.baseURL = 'https://localhost:5001/';
 
 // use cookies
