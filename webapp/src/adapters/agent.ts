@@ -56,7 +56,8 @@ const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const imgConfig = {
     headers: {
-        "content-type": "multipart/form-data"
+        "content-type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*"
     }
 };
 
