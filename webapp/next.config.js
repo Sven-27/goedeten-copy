@@ -1,7 +1,10 @@
 const { calendarFormat } = require("moment-timezone");
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 // next.config.js
-module.exports = {
+module.exports = withBundleAnalyzer({
     images: {
       domains: ['testblobbee.blob.core.windows.net', 'goedetendenhaag.nl', 'media-cdn.tripadvisor.com', 'i1.wp.com', 'goedeten.blob.core.windows.net', 'image.freepik.com', ''],
     },
@@ -25,7 +28,7 @@ module.exports = {
 
         return config
     }
-  }
+  });
 
 
     
