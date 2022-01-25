@@ -1,6 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { IZipcode, IZipcodeCheck } from "models/Zipcode";
-import { ICookPaginatedRequest, IDishPaginatedRequest, IPaginatedList, IPaginatedRequest, IZipPaginatedRequest } from 'models/PaginatedList';
+import { 
+    ICookPaginatedRequest, 
+    IDishPaginatedRequest, 
+    IPaginatedList, 
+    IPaginatedRequest, 
+    IZipPaginatedRequest } from 'models/PaginatedList';
 import { IAllergen } from "models/Allergen";
 import { IDailyDish, IDishAvailability, IDishPlanning } from "models/DishAvailability";
 import { IDish } from "models/Dish";
@@ -10,7 +15,7 @@ import { IDishCategory } from "models/DishCategory";
 import { ICuisine } from "models/Cuisine";
 import { ILocation } from 'models/Location';
 import { IUser, IUserFormValues } from "models/User";
-import { store, useStore } from "contexts/admin/store";
+import { store } from "contexts/admin/store";
 import { ICustomer } from "models/Customer";
 import { IVatCategory } from "models/VatCategory";
 import { IOrderEasy, IRedirectResult } from "models/Purchase";
@@ -31,12 +36,6 @@ const sleep = (delay: number) => {
     })
 }
 axios.interceptors.request.use(config => {
-	// let token:string|null = ""
-    //     // if(typeof window === "undefined"){
-    //     //     token = store.commonStore.token
-    //     // } else {
-    //         token = nookies.get().userInfo
-    //     // }
     const token = store.commonStore.token;
     if (token) config.headers.Authorization = `Bearer ${token}`
     return config
