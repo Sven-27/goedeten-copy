@@ -84,9 +84,9 @@ const Dishes = () => {
       //    dateStore.selectedDay.id == date.id
       //  )) && 
       !dishesStore.dishRegistryFiltered.length
-         ?
-          <h1>This is a test</h1>
-         : 
+         ? (
+             <h1>This is a test</h1>
+           ) : ( 
 			<ImageList
 				rowHeight="auto"
 				className={styles.grid}
@@ -185,7 +185,7 @@ const Dishes = () => {
 					)}
 				</Carousel>
 			</ImageList>
-}
+           )}
 			<section className={styles.buttonCenter}>
 				<Link href={"/dishes"}>
 					<button className={styles.generalButton}>ALLE GERECHTEN</button>
