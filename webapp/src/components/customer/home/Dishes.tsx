@@ -13,9 +13,10 @@ import { observer } from "mobx-react";
 import Cloche from "./Cloche";
 import { CartItem } from "models/Cart";
 import { DateTime } from "luxon";
+import dates from "data/datesObject"
 
 const Dishes = () => {
-	const { dishesStore, cartStore } = useStore();
+	const { dishesStore, cartStore, dateStore } = useStore();
 
 	const handleAddItem = (dish: IDailyDish) => {
 		const dishId = dishesStore.selectedDish
@@ -78,11 +79,18 @@ const Dishes = () => {
 
 	return (
 		<div className={styles.dishGridList}>
+      {
+      //  dateStore.dateRegistry.filter(date => (
+      //    dateStore.selectedDay.id == date.id
+      //  )) && 
+      !dishesStore.dishRegistryFiltered.length
+         ?
+          <h1>This is a test</h1>
+         : 
 			<ImageList
 				rowHeight="auto"
 				className={styles.grid}
 				cols={1}
-				// key={info.id}
 			>
 				<Carousel
 					isRTL={false}
@@ -90,7 +98,9 @@ const Dishes = () => {
 					pagination={true}
 					showArrows={false}
 				>
-					{dishesStore.dishRegistryFiltered.map(
+					{
+          
+          dishesStore.dishRegistryFiltered.map(
 						(tile: IDailyDish, index: number) => (
 							<ImageListItem key={`tile_${index}`} className={styles.tile}>
 								<ImageListItemBar
@@ -102,7 +112,6 @@ const Dishes = () => {
 								/>
 
 								{tile.currentQuantity == 0 && (
-									// cartStore.NLTime !>= cartStore.todayAfterEleven && (
 									<Link href={`/dish/${tile.dishId}`}>
 										<a
 											onClick={() => (dishesStore.selectedDish = tile)}
@@ -150,7 +159,6 @@ const Dishes = () => {
 										</IconButton>
 									}
 									actionIcon={
-										// <Link href={`/dish/${tile.dishId}`}>
 										<a>
 											<IconButton
 												className={styles.icon}
@@ -165,13 +173,11 @@ const Dishes = () => {
 												}
 												onClick={() => {
 													handleAddItem((dishesStore.selectedDish = tile));
-													//   Disabled(tile.date);
 												}}
 											>
 												<Cloche />
 											</IconButton>
 										</a>
-										// </Link>
 									}
 								/>
 							</ImageListItem>
@@ -179,6 +185,7 @@ const Dishes = () => {
 					)}
 				</Carousel>
 			</ImageList>
+}
 			<section className={styles.buttonCenter}>
 				<Link href={"/dishes"}>
 					<button className={styles.generalButton}>ALLE GERECHTEN</button>
