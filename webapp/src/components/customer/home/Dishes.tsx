@@ -80,12 +80,9 @@ const Dishes = () => {
 	return (
 		<div className={styles.dishGridList}>
       {
-      //  dateStore.dateRegistry.filter(date => (
-      //    dateStore.selectedDay.id == date.id
-      //  )) && 
       !dishesStore.dishRegistryFiltered.length
          ? (
-             <h1>This is a test</h1>
+             <p className={styles.message}>Helaas wordt er vandaag niet gekookt. Kijk in de kalender wanneer er weer gekookt wordt.</p>
            ) : ( 
 			<ImageList
 				rowHeight="auto"
