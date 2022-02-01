@@ -1,9 +1,8 @@
 ﻿import { makeAutoObservable, runInAction } from "mobx";
 import agent from "adapters/agent";
 import { Dish, IDish } from "models/Dish";
-import { DailyDish, IDailyDish } from "models/DishAvailability";
+import { IDailyDish } from "models/DishAvailability";
 import DateStore from "./dateStore";
-import { makePersistable } from "mobx-persist-store";
 
 export default class DishesStore {
 	private dateStore: DateStore;
@@ -12,14 +11,7 @@ export default class DishesStore {
 		makeAutoObservable(this);
 		this.dateStore = dateStore;
 		this.loadDishes();
-		// makePersistable(
-		//   this,
-		//   {
-		//     name: 'DishStore',
-		//     properties:['selectedDish',],
-		//     storage: window.localStorage,
-		//   }
-		// )
+
 	}
 
 	private _dishesRegistry = new Map<number, IDailyDish>();
@@ -33,7 +25,6 @@ export default class DishesStore {
 		let dish = JSON.stringify(this._selectedDish);
 		if (typeof window !== "undefined") {
 			window.localStorage.setItem("selectedDish", dish);
-			//console.log("setLocalStorageDish");
 		}
 	}
 

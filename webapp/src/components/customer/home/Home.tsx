@@ -1,6 +1,3 @@
-// import Dates from "./Dates"
-// import Dishes from "./Dishes"
-// import Cooks from "./Cooks"
 import styles from "styles/customer/home/Home.module.scss"
 import dynamic from 'next/dynamic'
 
