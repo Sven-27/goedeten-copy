@@ -9,7 +9,6 @@ import routes from "data/routes";
 import dynamic from "next/dynamic";
 import { NextLink } from "./NextLink";
 import Link from "next/link";
-import agent from "adapters/agent";
 import { useStore } from "contexts/customer/store";
 
 const Cloche = dynamic(() => import("./Cloche"), { ssr: false });
@@ -67,6 +66,7 @@ const Header = () => {
 						/>
 					</a>
 				</Link>
+        <Link href="/procedure"><a className={styles.greenButton}>Hoe het werkt</a></Link>
 			</div>
 
 			<section className={styles.links}>
