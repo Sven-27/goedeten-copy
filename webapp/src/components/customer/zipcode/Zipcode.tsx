@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "styles/customer/Zipcode.module.scss";
 import { Logos } from "data/logos";
@@ -10,8 +10,6 @@ import { observer } from "mobx-react";
 import { useStore } from "contexts/customer/store";
 import agent from "adapters/agent";
 import { useStateSafe } from "data/useStateSafe"; //custom hook
-import { makeStyles } from "@material-ui/core/styles";
-import LinearProgress from "@material-ui/core/LinearProgress";
 import LinearDeterminate from "./Loadbar";
 
 type IZipcodeForm = {
@@ -81,10 +79,6 @@ const Zipcode = () => {
 		});
 		return res;
 	};
-
-	// useEffect(()=>{
-	//   registerEmail()
-	// }, [])
 
 	const {
 		register,
@@ -160,14 +154,16 @@ const Zipcode = () => {
 						className={styles.zipcodeForm}
 						onSubmit={handleSubmit(onSubmitZipcode)}
 					>
-						<label className={styles.label} htmlFor="input">
+						<div className={styles.label} >
 							<h2 className={styles.title}>
 								Wil je weten of wij ook bij jou bezorgen?
 							</h2>
 							<p className={styles.subtitle}>
 								Vul dan je postcode in om te zien of het binnen ons bezorggebied
-								valt.
+								valt of wil je weten 
+                <Link href="/procedure"><a className={styles.greenButton}>Hoe het werkt</a></Link>
 							</p>
+          
 							<p>Voor 11.00 besteld = tussen 17.00 - 19.00 in huis.</p>
 							<p>
 								Klik{" "}
@@ -176,7 +172,7 @@ const Zipcode = () => {
 								</Link>{" "}
 								voor meer informatie over GoedEten!
 							</p>
-						</label>
+						</div>
 						<div className={styles.inputContainer}>
 							<input
 								{...register("zipcode", {

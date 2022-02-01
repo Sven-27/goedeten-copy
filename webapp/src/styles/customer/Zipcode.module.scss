@@ -84,16 +84,13 @@
 				z-index: 1;
 
 				.label {
-					// font-weight: 500;
 					padding: 0.5rem;
-					// color: $darkgreen;
 					text-align: center;
 
 					.title {
 						font-size: 1rem;
 						font-weight: bold;
-						// line-height: 1.7;
-						margin: 1rem;
+						margin: 0 1rem;
 
 						@include mqtp($tablet) {
 							font-size: 2rem;
@@ -111,8 +108,14 @@
 					.subtitle {
 						font-size: 0.8rem;
 						font-weight: bold;
-						// line-height: 1.7;
 						margin: 1rem;
+
+            .greenButton{
+              display: block;
+              margin: auto;
+              margin-top: 0.2rem;
+              border-radius: 30px;
+            }
 
 						@include mqtp($tablet) {
 							font-size: 1.3rem;
@@ -162,10 +165,6 @@
 				}
 
 				.inputContainer {
-					// position: relative;
-					// margin-top: 0;
-					// margin-right: 0;
-
 					display: flex;
 					justify-content: center;
 					align-items: center;
@@ -177,8 +176,7 @@
 					background-color: transparent;
 
 					.input {
-						// height: 100%;
-						font-weight: 600;
+	   				font-weight: 600;
 						border: none;
 						outline: none;
 						background: transparent;
@@ -187,13 +185,7 @@
 						font-size: 1rem;
 
 						@include mqtp($tablet) {
-							// flex: 1;
-							// height: 100%;
 							font-size: 1.3rem;
-
-							// @-moz-document url-prefix() {
-							// 	width: 41%;
-							// }
 						}
 
 						@include mqtp($tablet_l) {
@@ -206,9 +198,6 @@
 					}
 
 					.buttonSearch {
-						// position: absolute;
-						// z-index: 2;
-
 						background-color: $darkgreen;
 						border: 2px;
 						outline: none;
@@ -224,20 +213,6 @@
 						font-weight: 500;
 						font-size: 0.9rem;
 					}
-
-					// @include mqtp($tablet) {
-					// 	width: 43%;
-					// 	height: 2.1rem;
-					// }
-
-					// @include mqtp($tablet_l) {
-					// 	width: 50%;
-					// 	height: 2.6rem;
-					// }
-
-					// @include mqtl($tablet_ls) {
-					// 	height: 2rem;
-					// }
 				}
 
 				@include mqtp($tablet) {
@@ -261,10 +236,6 @@
 			flex-direction: column;
 			margin-top: 3vh;
 
-			// align-items: center;
-			// border-radius: 5px;
-			// color: $darkgreen;
-
 			.emailForm {
 				background-color: rgba(236, 223, 212, 0.7);
 				backdrop-filter: blur(2px);
@@ -279,16 +250,8 @@
 				.email__label {
 					padding: 0.5rem;
 					text-align: center;
-					// margin-top: 0.5rem;
-					// height: 4rem;
-					// width: 100%;
-					// display: flex;
-					// justify-content: space-between;
 
 					.closeIcon {
-						// position: absolute;
-						// margin-top: 0;
-						// margin-right: 0.5rem;
 						width: 100%;
 						color: $darkgreen;
 						display: flex;
@@ -299,29 +262,12 @@
 							width: 1.5rem;
 							height: 1.5rem;
 							color: $darkgreen;
-
-							// @include mqtp($tablet) {
-							// 	width: 2rem;
-							// 	height: 2rem;
-							// }
-
-							// @include mqtp($tablet_l) {
-							// 	margin-top: 0;
-							// 	width: 2.5rem;
-							// 	height: 2.5rem;
-							// }
-
-							// @include mqtl($tablet_ls) {
-							// 	width: 2rem;
-							// 	height: 2rem;
-							// }
 						}
 					}
 
 					.subtitle {
 						font-size: 0.8rem;
 						font-weight: bold;
-						// line-height: 1.7;
 						margin: 0 1rem 1rem;
 
 						@include mqtp($tablet) {
@@ -342,8 +288,6 @@
 						font-weight: 500;
 						margin-bottom: 0.3rem;
 
-						// line-height: 1.4;
-						// color: $darkgreen;
 						@include mqtp($tablet) {
 							font-size: 1.3rem;
 						}
@@ -355,43 +299,7 @@
 						@include mqtl($tablet_ls) {
 							font-size: 1.3rem;
 						}
-						// @include mqtp($tablet) {
-						// 	flex: 1;
-						// 	font-size: 1.9rem;
-						// 	padding-left: 0.6rem;
-						// }
-
-						// @include mqtp($tablet_l) {
-						// 	font-size: 2.3rem;
-						// }
-
-						// @include mqtl($tablet_ls) {
-						// 	font-size: 1.6rem;
-						// 	height: 4rem;
-						// }
 					}
-
-					// @include mqml($tablet_ls) {
-					// 	height: 3rem;
-					// }
-
-					// @include mqtp($tablet) {
-					// 	height: 6.5rem;
-					// 	padding: 0.6rem 0;
-					// 	margin-bottom: 0.3rem;
-					// }
-
-					// @include mqtp($tablet_l) {
-					// 	padding: 0.3rem 0;
-					// }
-
-					// @include mqtl($tablet_ls) {
-					// 	height: 6rem;
-					// }
-
-					// @include mqtl($laptop) {
-					// 	height: 5rem;
-					// }
 				}
 
 				.inputEmail {
