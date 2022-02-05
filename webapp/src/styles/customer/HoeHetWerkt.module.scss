@@ -3,6 +3,49 @@
 @import "styles/queries";
 
 .hoehetwerkt{
-  height: 100vh;
-  background: black;
+  height: 100%;
+  padding: 1rem 1.2rem;
+  color: $darkgreen;
+
+  .ontvangen{
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.3rem;
+
+    h1{
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .svg_container{
+      // background: red;
+      height: 4rem;
+      width: 50%;
+      display: flex;
+
+      .line_top{
+        stroke: $olivegreen;
+        stroke-width: 2px;
+      }
+
+      .line_horizontal{
+        stroke: $olivegreen;
+        stroke-width: 2px;
+      }
+
+      .line_left{
+        stroke: $olivegreen;
+        stroke-width: 2px;
+      }
+
+      .triangle_left{
+        fill: $olivegreen;
+      }
+
+      .line_right{
+        stroke: $olivegreen;
+        stroke-width: 2px;
+      }
+     }
+  }
 }
