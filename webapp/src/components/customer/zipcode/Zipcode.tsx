@@ -161,7 +161,7 @@ const Zipcode = () => {
 							<p className={styles.subtitle}>
 								Vul dan je postcode in om te zien of het binnen ons bezorggebied
 								valt of wil je weten 
-                <Link href="/procedure"><a className={styles.greenButton}>Hoe het werkt</a></Link>
+                <Link href="/hoehetwerkt"><a className={styles.greenButton}>Hoe het werkt</a></Link>
 							</p>
           
 							<p>Voor 11.00 besteld = tussen 17.00 - 19.00 in huis.</p>
