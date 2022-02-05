@@ -1,0 +1,25 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.hoehetwerkt{
+  height: 100%;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  color: $darkgreen;
+
+  .ontvangen{
+    display: grid;
+    place-items: center;
+    margin-bottom: 0.3rem;
+
+    h1{
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    p{
+      font-size: 0.8rem;
+    }
+  }
+}

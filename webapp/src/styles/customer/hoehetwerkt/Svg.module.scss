@@ -2,25 +2,11 @@
 @import "styles/variables";
 @import "styles/queries";
 
-.hoehetwerkt{
-  height: 100%;
-  padding: 1rem 1.2rem;
-  color: $darkgreen;
-
-  .ontvangen{
-    display: grid;
-    place-items: center;
-    margin-bottom: 0.3rem;
-
-    h1{
-      font-size: 1.1rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .svg_container{
+.svg_container{
       // background: red;
-      height: 4rem;
+      height: 2.4rem;
       width: 50%;
+      max-width: 500px;
       display: flex;
 
       .line_top{
@@ -31,6 +17,7 @@
       .line_horizontal{
         stroke: $olivegreen;
         stroke-width: 2px;
+        width: 95%;
       }
 
       .line_left{
@@ -45,7 +32,6 @@
       .line_right{
         stroke: $olivegreen;
         stroke-width: 2px;
+        
       }
      }
-  }
-}

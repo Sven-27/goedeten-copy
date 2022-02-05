@@ -1,5 +1,5 @@
 import Layout from "components/customer/layout/Layout";
-import HoeHetWerkt from "components/customer/HoeHetWerkt";
+import HoeHetWerkt from "components/hoehetwerkt/HoeHetWerkt";
 
 const Hoehetwerkt = () => {
 
