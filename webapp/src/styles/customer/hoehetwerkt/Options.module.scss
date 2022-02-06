@@ -1,0 +1,59 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.options{
+  width: 100%;
+  // background: red;
+  display: flex;
+  justify-content: space-between;
+  margin-top: -5px;
+
+  .image{
+    width: 40px;
+    object-fit: contain;
+    position: absolute;
+    top: 7px;
+    left: 45px;
+  }
+
+  .text{
+    font-size: 0.7rem;
+    text-align: center;
+    color: $beige;
+    position: absolute;
+    top: 35px;
+    padding-inline: 0.3rem;
+  }
+
+  .message{
+    font-size: 0.7rem;
+    background: $olivegreen;
+    color: $beige;
+    border-radius: 5px;
+    position: absolute;
+    top: 90px;
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .options_one{
+  width: 130px;
+  height: 130px;
+  background: $darkgreen;
+  border-radius: 50%;  
+  margin-left: -65px;
+  position: relative;
+  
+  } 
+
+  .options_two{
+  width: 130px;
+  height: 130px;
+  background: $darkgreen;
+  border-radius: 50%;  
+  margin-right: -65px;
+  position: relative;
+  }
+}
