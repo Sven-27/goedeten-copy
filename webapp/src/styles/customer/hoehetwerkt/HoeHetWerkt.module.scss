@@ -15,8 +15,12 @@
   .ontvangen{
     display: grid;
     place-items: center;
-    margin-bottom: 3.3rem;
+    margin-bottom: 2rem;
     width: 100%;
+
+    @include mqtl($tablet_l){
+      margin-bottom: 0.6rem;
+    }
 
     h1{
       font-size: 1.1rem;
@@ -66,7 +70,7 @@
   }
 
   .hr_lines{
-    width: 90%;
+    width: 95%;
     height: 1px;
     margin: auto;
     background: #c5c5c5;
