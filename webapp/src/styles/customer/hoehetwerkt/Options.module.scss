@@ -54,22 +54,31 @@
     color: $beige;
     border-radius: 5px;
     position: absolute;
-    top: 110px;
+    top: 100px;
     padding: 0.4rem 0.5rem;
     text-align: center;
     font-style: italic;
     
+    @include mqd($mobile_s){
+      top: 90px;
+    }
+
+    @include mqml($mobile_ls){
+      top: 90px;
+    }
 
     @include mqtp($tablet){
-      width: 12rem;
-      margin-left: -21px;
-      font-size: 0.9rem;
+      width: 11rem;
+      margin-left: -14px;
+      font-size: 0.8rem;
+      top: 105px;
     }
 
     @include mqtl($tablet_l){
       width: 12rem;
       margin-left: -21px;
-      font-size: 0.9rem;
+      font-size: 0.7rem;
+      top: 105px;
     }
   }
 
