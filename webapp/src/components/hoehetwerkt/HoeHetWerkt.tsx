@@ -15,9 +15,9 @@ const HoeHetWerkt = () => {
         <Options />
         </div>
       </section>
-      <hr/>
-      <hr/>
-      <hr/>
+      <hr className={styles.hr_lines}/>
+      <hr className={styles.hr_lines}/>
+      <hr className={styles.hr_lines}/>
     </main>
   );
 };

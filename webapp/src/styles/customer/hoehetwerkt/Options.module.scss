@@ -15,6 +15,14 @@
     position: absolute;
     top: 7px;
     left: 45px;
+
+    @include mqtp($tablet){
+      left: 55px;
+    }
+
+    @include mqtl($tablet_l){
+      left: 55px;
+    }
   }
 
   .text{
@@ -24,6 +32,20 @@
     position: absolute;
     top: 35px;
     padding-inline: 0.3rem;
+
+    span{
+      text-transform: uppercase;
+      font-weight: 600;
+      color: $brown;
+    }
+
+    @include mqtp($tablet){
+      font-size: 0.9rem;
+    }
+
+    @include mqtl($tablet_l){
+      font-size: 0.9rem;
+    }
   }
 
   .message{
@@ -32,10 +54,23 @@
     color: $beige;
     border-radius: 5px;
     position: absolute;
-    top: 90px;
-    padding: 0.2rem 0.5rem;
+    top: 110px;
+    padding: 0.4rem 0.5rem;
     text-align: center;
     font-style: italic;
+    
+
+    @include mqtp($tablet){
+      width: 12rem;
+      margin-left: -21px;
+      font-size: 0.9rem;
+    }
+
+    @include mqtl($tablet_l){
+      width: 12rem;
+      margin-left: -21px;
+      font-size: 0.9rem;
+    }
   }
 
   .options_one{
@@ -46,6 +81,17 @@
   margin-left: -65px;
   position: relative;
   
+  @include mqtp($tablet){
+    width: 150px;
+    height: 150px;
+    margin-left: -73px;
+  }
+
+  @include mqtl($tablet_l){
+    width: 150px;
+    height: 150px;
+    margin-left: -73px;
+  }
   } 
 
   .options_two{
@@ -55,5 +101,17 @@
   border-radius: 50%;  
   margin-right: -65px;
   position: relative;
+
+  @include mqtp($tablet){
+    width: 150px;
+    height: 150px;
+    margin-right: -73px;
+  }
+
+  @include mqtl($tablet_l){
+    width: 150px;
+    height: 150px;
+    margin-right: -73px;
+  }
   }
 }
