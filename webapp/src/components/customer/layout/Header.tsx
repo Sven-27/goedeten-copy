@@ -66,7 +66,7 @@ const Header = () => {
 						/>
 					</a>
 				</Link>
-        <Link href="/hoehetwerkt"><a className={styles.greenButton}>Hoe het werkt</a></Link>
+        <Link href="/hoehetwerkt"><a className={styles.greenButton}>Zo werkt het</a></Link>
 			</div>
 
 			<section className={styles.links}>
