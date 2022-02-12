@@ -5,21 +5,48 @@
 .kies_maaltijd{
   display: grid;
   grid-template: repeat(6, auto) / 45px auto;
-  gap: 7px 0;
+  gap: 7px 5px;
   padding-inline: 0.1rem; 
+  width: 100%;
+  max-width: 600px;
+
+  @include mqtl($tablet_l){
+      max-width: 730px;
+    }
 
   p{
     font-size: 0.85rem;
+
+    @include mqtp($tablet){
+      font-size: 1.2rem;
+    }
+
+    @include mqtl($tablet_l){
+      font-size: 1.2rem;
+    }
+    @include mqtl($laptop){
+      font-size: 1rem;
+    }
   }
 
  .arrowOne{
     color: $lightgreen;
     grid-area: 1/1/2/1;
-    margin-left: 0.3rem;
+    font-size: 2rem;
+
+    @include mqtp($tablet){
+      font-size: 2.3rem;
+    }
+
+    @include mqtl($tablet_l){
+      font-size: 2.3rem;
+    }
   }
 
   .text1{
     grid-area: 1/2/2/3;
+    display: flex;
+    align-self: center;
 
   }
   .text_options{
@@ -33,7 +60,15 @@
   .arrowTwo{
     color: $lightgreen;
     grid-area: 3/1/4/1;
-    margin-left: 0.3rem;
+    font-size: 2rem;
+
+    @include mqtp($tablet){
+      font-size: 2.3rem;
+    }
+
+    @include mqtl($tablet_l){
+      font-size: 2.5rem;
+    }
   }
 
   .text2{
@@ -49,9 +84,27 @@
     place-items: center;
     grid-area: 4/1/5/1;
 
+    @include mqtp($tablet){
+      width: 40px;
+      height: 40px;
+    }
+
+    @include mqtl($tablet_l){
+      width: 40px;
+      height: 40px;
+    }
+
     .cloche_img{
       width: 27px;
       margin-bottom: 0.2rem;
+
+      @include mqtp($tablet){
+      width: 32px;
+    }
+
+      @include mqtl($tablet_l){
+      width: 32px;
+    }
     } 
   }
 
