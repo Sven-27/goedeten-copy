@@ -13,7 +13,7 @@
   }
 
  .arrowOne{
-    color: $olivegreen;
+    color: $lightgreen;
     grid-area: 1/1/2/1;
     margin-left: 0.3rem;
   }
@@ -31,7 +31,7 @@
   }
 
   .arrowTwo{
-    color: $olivegreen;
+    color: $lightgreen;
     grid-area: 3/1/4/1;
     margin-left: 0.3rem;
   }
@@ -62,7 +62,7 @@
     align-items: center;
 
     span{
-      background: $olivegreen;
+      background: $lightgreen;
       padding: 0.2rem 0.5rem;
       border-radius: 3px;
       color: $beige;
@@ -79,7 +79,7 @@
     margin-bottom: 10px;
     
     .text5{
-      background: $olivegreen;
+      background: $lightgreen;
       padding: 0.2rem 0.5rem;
       border-radius: 3px;
       color: $beige;
