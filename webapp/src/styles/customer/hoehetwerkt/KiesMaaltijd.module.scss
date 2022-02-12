@@ -1,0 +1,90 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.kies_maaltijd{
+  display: grid;
+  grid-template: repeat(6, auto) / 45px auto;
+  gap: 7px 0;
+  padding-inline: 0.1rem; 
+
+  p{
+    font-size: 0.85rem;
+  }
+
+ .arrowOne{
+    color: $olivegreen;
+    grid-area: 1/1/2/1;
+    margin-left: 0.3rem;
+  }
+
+  .text1{
+    grid-area: 1/2/2/3;
+
+  }
+  .text_options{
+    grid-area: 2/2/3/3;
+    text-transform: uppercase;
+    font-style: italic;
+    background: none;
+    color: $darkgreen;
+  }
+
+  .arrowTwo{
+    color: $olivegreen;
+    grid-area: 3/1/4/1;
+    margin-left: 0.3rem;
+  }
+
+  .text2{
+    grid-area: 3/2/4/2;
+  }
+
+  .cloche_container{
+    width: 35px;
+    height: 35px;
+    background: $beige;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    grid-area: 4/1/5/1;
+
+    .cloche_img{
+      width: 27px;
+      margin-bottom: 0.2rem;
+    } 
+  }
+
+  .text3{
+    grid-area:4/2/5/2;
+    display: flex;
+    align-self: center;
+    align-items: center;
+
+    span{
+      background: $olivegreen;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      color: $beige;
+      font-style: italic;
+    }
+  }
+  
+  .text4{
+    grid-area: 5/2/6/2;
+  }
+
+  .text5_container{
+    grid-area: 6/2/7/2;
+    margin-bottom: 10px;
+    
+    .text5{
+      background: $olivegreen;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      color: $beige;
+      font-style: italic;
+      text-align: center;
+    }
+  }
+}

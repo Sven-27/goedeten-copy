@@ -1,6 +1,7 @@
 import styles from "styles/customer/hoehetwerkt/HoeHetWerkt.module.scss"
 import Arrow from "./Arrow"
 import Options from "./Options"
+import KiesMaaltijd from "./KiesMaaltijd";
  
 const HoeHetWerkt = () => {
   return (
@@ -16,6 +17,10 @@ const HoeHetWerkt = () => {
         </div>
       </section>
       <hr className={styles.hr_lines}/>
+      <section className={styles.kies_maaltijdContainer}>
+        <h1>Kies de maaltijd waar jij trek in hebt</h1>
+        <KiesMaaltijd />
+      </section>
       <hr className={styles.hr_lines}/>
       <hr className={styles.hr_lines}/>
     </main>

@@ -1,5 +1,5 @@
 import styles from "styles/customer/hoehetwerkt/Arrow.module.scss"
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt'
 
 const Arrow = () => {
   return (
