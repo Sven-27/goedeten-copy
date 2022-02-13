@@ -26,12 +26,10 @@ const KiesMaaltijd = () => {
         Daar kun je het overzicht van jouw bestelling(en) zien,
         eventueel nog toevoegen/aanpassen en uiteindelijk betalen.
       </p>
-      <span className={styles.text5_container}>
-        <p className={styles.text5}>
+      <p className={styles.text5}>
           Heb je voor meerdere dagen besteld, dan wordt er ook
           op meerdere dagen bezorgd.
         </p>
-      </span>
     </div>
   )
 }

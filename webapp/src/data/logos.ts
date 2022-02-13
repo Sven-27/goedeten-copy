@@ -1,34 +1,6 @@
-type Logo = {
-	cloche: string;
-	duurzaamBeige: string;
-	duurzaamDonkergroen: string;
-	duurzaamGeel: string;
-	duurzaamGroen: string;
-	kopStaartBeige: string;
-	kopStaartDonkerGroen: string;
-	kopStaartGeel: string;
-	kopStaartGroen: string;
-	lokaalBeige: string;
-	lokaalDonkerGroen: string;
-	lokaalGeel: string;
-	lokaalGroen: string;
-	plantaardigBeige: string;
-	plantaardigDonkerGroen: string;
-	plantaardigGeel: string;
-	plantaardigGroen: string;
-	seizoenBeige: string;
-	seizoenDonkerGroen: string;
-	seizoenGeel: string;
-	seizoenGroen: string;
-	tomaatLogo: string;
-	tomaatLogoGroen: string;
-	tomaatText: string;
-	tomaatTextDonkerGroen: string;
-	tomaatTextTaglineBeige: string;
-	tomaatTextTaglineDonkerGroen: string;
-};
+import { ILogos } from "models/logos"
 
-export const Logos: Logo = {
+export const Logos: ILogos = {
 	cloche: "/assets/images/logos/cloche.svg",
 	duurzaamBeige: "/assets/images/logos/duurzaamBeige.svg",
 	duurzaamDonkergroen: "/assets/images/logos/duurzaamDonkerGroen.svg",
@@ -55,6 +27,5 @@ export const Logos: Logo = {
 	tomaatText: "/assets/images/logos/tomaatText.svg",
 	tomaatTextDonkerGroen: "/assets/images/logos/tomaatTextDonkerGroen.svg",
 	tomaatTextTaglineBeige: "/assets/images/logos/tomaatTextTaglineBeige.svg",
-	tomaatTextTaglineDonkerGroen:
-		"/assets/images/logos/tomaatTextTaglineDonkerGroen.svg",
+	tomaatTextTaglineDonkerGroen: "/assets/images/logos/tomaatTextTaglineDonkerGroen.svg",
 };

@@ -127,17 +127,14 @@
     grid-area: 5/2/6/2;
   }
 
-  .text5_container{
+  .text5{
     grid-area: 6/2/7/2;
     margin-bottom: 10px;
-    
-    .text5{
-      background: $lightgreen;
-      padding: 0.2rem 0.5rem;
-      border-radius: 3px;
-      color: $beige;
-      font-style: italic;
-      text-align: center;
-    }
+    background: $lightgreen;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    color: $beige;
+    font-style: italic;
+    text-align: center;
   }
 }

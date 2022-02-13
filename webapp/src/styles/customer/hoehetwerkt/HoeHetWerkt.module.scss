@@ -88,4 +88,22 @@
     background: #c5c5c5;
     border: none;
   }
+
+  .koksContainer{
+    display: grid;
+    place-items: center;
+    
+    h1{
+      margin-top: 0.3rem;
+    }
+  }
+
+  .duurzaamContainer{
+    display: grid;
+    place-items: center;
+
+    h1{
+      margin-top: 0.3rem;
+    }
+  }
 }
