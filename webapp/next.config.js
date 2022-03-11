@@ -9,6 +9,7 @@ module.exports = withBundleAnalyzer({
       // ssr and displayName are configured by default
       styledComponents: true,
     },
+    generateEtags: false,
     swcMinify: true,  
     images: {
       domains: ['testblobbee.blob.core.windows.net', 'goedetendenhaag.nl', 'media-cdn.tripadvisor.com', 'i1.wp.com', 'goedeten.blob.core.windows.net', 'image.freepik.com', ''],

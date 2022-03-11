@@ -27,6 +27,10 @@ namespace Logic.DataTransferObjects
         public string DishCategoryName { get; set; }
         public int VatCategoryId { get; set; }
         public int MaxQuantity { get; set; }
+
+        // Temp solution, use big text field to store the ingredients
+        public string AllIngredientsField { get; set; }
+
         public ICollection<IngredientDto> Ingredients { get; set;}
         public ICollection<AllergenDto> Allergens { get; set;}
        // public ICollection<DishAvailabilityDto> DishAvailabilities{ get; set; }

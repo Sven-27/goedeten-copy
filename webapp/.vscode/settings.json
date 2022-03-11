@@ -3,5 +3,7 @@
   "appService.zipIgnorePattern": [
     "node_modules{,/**}",
     ".vscode{,/**}"
-  ]
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/4bfa69e2-f3b4-4c42-95ba-cdeef706b80f/resourceGroups/rg-goed-eten/providers/Microsoft.Web/sites/goed-eten-app",
+  "appService.deploySubpath": "."
 }

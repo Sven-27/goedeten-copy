@@ -41,8 +41,14 @@ namespace Data.DataObjects
         public int VatCategoryId { get; set; }
         public VatCategory VatCategory { get; set; }
 
-
+        /// <summary>
+        /// Todo fix the order of the ingredients
+        /// </summary>
+        // Temp on hold, we need to be able to set the order of the ingredients!
         public ICollection<Ingredient> Ingredients { get; set; }
+        // Temp solution, use big text field to store the ingredients
+        public string AllIngredientsField { get; set; }
+
         public ICollection<Allergen> Allergens { get; set; }
         public ICollection<DishAvailability> DishAvailabilities { get; set; }
 

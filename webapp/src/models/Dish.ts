@@ -23,7 +23,10 @@ export interface IDish {
   vatCategoryId: number
   maxQuantity: number
   allergens: IAllergen[]
-  ingredients:IIngredient[]
+  // Temp solution, use big text field to store the ingredients
+  allIngredientsField: string;
+  // Shoul;d not be used right now
+  ingredients:IIngredient[];
 }
 
 export class Dish implements IDish {
@@ -48,5 +51,6 @@ export class Dish implements IDish {
   vatCategoryId = 2
   maxQuantity = 0
   allergens = []
+  allIngredientsField= ""
   ingredients = []
 }

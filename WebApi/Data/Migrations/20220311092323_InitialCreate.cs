@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class ONE : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -142,9 +142,9 @@ namespace Data.Migrations
                     AddHouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Zipcode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Details = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Dietdetails = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -275,7 +275,8 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderId = table.Column<int>(type: "int", nullable: false),
                     TransactionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TransactionStatus = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    TransactionStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TransactionDateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -311,7 +312,8 @@ namespace Data.Migrations
                     CookId = table.Column<int>(type: "int", nullable: false),
                     CuisineId = table.Column<int>(type: "int", nullable: false),
                     DishCategoryId = table.Column<int>(type: "int", nullable: false),
-                    VatCategoryId = table.Column<int>(type: "int", nullable: false)
+                    VatCategoryId = table.Column<int>(type: "int", nullable: false),
+                    AllIngredientsField = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -433,9 +435,9 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DeliveryId = table.Column<int>(type: "int", nullable: false),
-                    DishId = table.Column<int>(type: "int", nullable: false),
-                    OrderDeliveryId = table.Column<int>(type: "int", nullable: true)
+                    OrderDeliveryId = table.Column<int>(type: "int", nullable: false),
+                    DishAvailabilityId = table.Column<int>(type: "int", nullable: false),
+                    DishId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -453,7 +455,7 @@ namespace Data.Migrations
                         principalSchema: "GoedEten",
                         principalTable: "OrderDelivery",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -572,7 +574,11 @@ namespace Data.Migrations
                 schema: "GoedEten",
                 table: "User",
                 columns: new[] { "Id", "Name", "NeedsPasswordReset", "PasswordHash", "PasswordSalt", "ResetCodeHash", "ResetCodeSalt", "Role", "Username" },
-                values: new object[] { 1, "GoedEtenAdmin", false, new byte[] { 51, 248, 48, 20, 45, 54, 28, 147, 187, 111, 63, 64, 186, 117, 235, 57, 187, 32, 98, 79, 99, 156, 97, 159, 148, 184, 118, 158, 63, 54, 64, 230, 47, 194, 11, 145, 10, 166, 142, 216, 178, 232, 163, 90, 27, 127, 211, 25, 44, 3, 129, 13, 118, 253, 112, 170, 228, 180, 198, 51, 145, 187, 40, 11 }, new byte[] { 198, 190, 183, 146, 255, 130, 196, 15, 67, 5, 23, 46, 56, 61, 4, 63, 220, 237, 125, 247, 240, 47, 23, 171, 182, 153, 108, 146, 137, 224, 197, 7, 7, 5, 64, 5, 141, 2, 162, 227, 159, 224, 150, 68, 99, 46, 200, 79, 8, 236, 109, 99, 129, 141, 152, 244, 194, 15, 213, 3, 188, 249, 223, 145, 74, 70, 136, 31, 176, 110, 214, 98, 213, 173, 114, 108, 45, 60, 149, 50, 179, 190, 136, 243, 147, 57, 57, 194, 187, 174, 163, 104, 41, 176, 66, 46, 218, 243, 116, 182, 244, 126, 159, 200, 123, 90, 147, 201, 190, 137, 76, 233, 130, 62, 200, 25, 214, 82, 20, 164, 149, 246, 202, 121, 199, 108, 174, 27 }, new byte[] { 202, 64, 201, 112, 237, 117, 137, 138, 83, 45, 58, 206, 56, 43, 119, 35, 68, 71, 38, 32, 231, 152, 117, 156, 57, 93, 21, 62, 51, 15, 103, 51, 172, 126, 229, 33, 190, 190, 153, 70, 249, 72, 232, 255, 64, 210, 59, 145, 215, 106, 117, 49, 150, 225, 22, 252, 75, 222, 65, 180, 197, 191, 41, 190 }, new byte[] { 233, 70, 84, 121, 51, 221, 219, 211, 185, 120, 50, 116, 143, 34, 204, 122, 222, 183, 29, 250, 82, 125, 32, 12, 203, 144, 226, 254, 237, 178, 245, 7, 96, 200, 205, 93, 77, 95, 191, 37, 221, 227, 174, 123, 204, 236, 47, 24, 30, 62, 78, 56, 242, 90, 153, 152, 127, 78, 85, 115, 175, 253, 221, 113, 195, 122, 42, 118, 230, 161, 23, 10, 190, 136, 169, 149, 101, 229, 37, 161, 99, 249, 69, 35, 167, 97, 148, 254, 159, 154, 201, 212, 191, 210, 248, 84, 6, 30, 99, 194, 149, 202, 8, 90, 59, 86, 45, 158, 35, 131, 118, 39, 227, 47, 6, 76, 65, 139, 205, 184, 44, 9, 102, 34, 18, 210, 70, 22 }, 3, "admin@goedetendenhaag.nl" });
+                values: new object[,]
+                {
+                    { 1, "GoedEtenAdmin", false, new byte[] { 62, 7, 179, 74, 121, 47, 194, 56, 159, 75, 120, 171, 40, 219, 21, 121, 65, 48, 173, 68, 75, 151, 200, 150, 30, 190, 185, 216, 33, 224, 93, 29, 100, 226, 4, 204, 6, 24, 182, 246, 159, 199, 59, 174, 169, 147, 69, 110, 227, 215, 190, 37, 94, 180, 142, 149, 169, 118, 180, 70, 27, 142, 212, 102 }, new byte[] { 245, 145, 48, 48, 35, 67, 186, 47, 160, 10, 184, 158, 241, 107, 5, 143, 96, 120, 148, 92, 227, 52, 71, 225, 222, 61, 229, 0, 193, 56, 183, 16, 197, 255, 180, 168, 47, 113, 176, 79, 239, 43, 139, 144, 5, 244, 78, 237, 3, 138, 125, 173, 80, 144, 51, 217, 67, 220, 252, 5, 40, 191, 191, 63, 19, 200, 52, 60, 103, 143, 187, 126, 201, 49, 153, 1, 117, 146, 8, 187, 45, 157, 28, 79, 13, 24, 19, 254, 86, 12, 34, 84, 154, 153, 214, 114, 8, 41, 9, 3, 61, 89, 215, 10, 16, 32, 161, 81, 198, 12, 252, 7, 18, 134, 96, 141, 174, 89, 20, 133, 177, 248, 22, 91, 57, 187, 225, 35 }, new byte[] { 191, 45, 234, 153, 28, 215, 95, 138, 71, 7, 173, 63, 210, 34, 73, 69, 238, 252, 140, 37, 52, 129, 131, 156, 144, 89, 106, 175, 90, 251, 246, 75, 212, 65, 102, 138, 46, 175, 19, 184, 180, 147, 167, 94, 81, 177, 209, 94, 153, 131, 64, 197, 243, 138, 7, 106, 161, 145, 26, 212, 191, 111, 230, 18 }, new byte[] { 174, 22, 100, 209, 192, 25, 7, 60, 42, 5, 20, 194, 98, 53, 234, 50, 17, 86, 165, 75, 0, 137, 25, 241, 66, 109, 123, 186, 146, 182, 182, 217, 173, 12, 37, 71, 43, 149, 165, 10, 175, 46, 74, 230, 123, 77, 225, 36, 91, 138, 232, 205, 17, 89, 159, 66, 80, 9, 213, 89, 236, 152, 228, 61, 193, 30, 205, 220, 230, 96, 0, 8, 36, 186, 243, 57, 115, 35, 34, 197, 237, 99, 110, 99, 54, 236, 221, 125, 83, 87, 223, 1, 112, 7, 135, 113, 48, 95, 103, 231, 140, 249, 117, 48, 210, 35, 216, 109, 8, 234, 47, 206, 81, 184, 191, 151, 58, 101, 134, 22, 141, 61, 236, 104, 5, 225, 166, 247 }, 3, "admin@goedetendenhaag.nl" },
+                    { 2, "Developers(don't delete)", false, new byte[] { 62, 7, 179, 74, 121, 47, 194, 56, 159, 75, 120, 171, 40, 219, 21, 121, 65, 48, 173, 68, 75, 151, 200, 150, 30, 190, 185, 216, 33, 224, 93, 29, 100, 226, 4, 204, 6, 24, 182, 246, 159, 199, 59, 174, 169, 147, 69, 110, 227, 215, 190, 37, 94, 180, 142, 149, 169, 118, 180, 70, 27, 142, 212, 102 }, new byte[] { 245, 145, 48, 48, 35, 67, 186, 47, 160, 10, 184, 158, 241, 107, 5, 143, 96, 120, 148, 92, 227, 52, 71, 225, 222, 61, 229, 0, 193, 56, 183, 16, 197, 255, 180, 168, 47, 113, 176, 79, 239, 43, 139, 144, 5, 244, 78, 237, 3, 138, 125, 173, 80, 144, 51, 217, 67, 220, 252, 5, 40, 191, 191, 63, 19, 200, 52, 60, 103, 143, 187, 126, 201, 49, 153, 1, 117, 146, 8, 187, 45, 157, 28, 79, 13, 24, 19, 254, 86, 12, 34, 84, 154, 153, 214, 114, 8, 41, 9, 3, 61, 89, 215, 10, 16, 32, 161, 81, 198, 12, 252, 7, 18, 134, 96, 141, 174, 89, 20, 133, 177, 248, 22, 91, 57, 187, 225, 35 }, new byte[] { 191, 45, 234, 153, 28, 215, 95, 138, 71, 7, 173, 63, 210, 34, 73, 69, 238, 252, 140, 37, 52, 129, 131, 156, 144, 89, 106, 175, 90, 251, 246, 75, 212, 65, 102, 138, 46, 175, 19, 184, 180, 147, 167, 94, 81, 177, 209, 94, 153, 131, 64, 197, 243, 138, 7, 106, 161, 145, 26, 212, 191, 111, 230, 18 }, new byte[] { 174, 22, 100, 209, 192, 25, 7, 60, 42, 5, 20, 194, 98, 53, 234, 50, 17, 86, 165, 75, 0, 137, 25, 241, 66, 109, 123, 186, 146, 182, 182, 217, 173, 12, 37, 71, 43, 149, 165, 10, 175, 46, 74, 230, 123, 77, 225, 36, 91, 138, 232, 205, 17, 89, 159, 66, 80, 9, 213, 89, 236, 152, 228, 61, 193, 30, 205, 220, 230, 96, 0, 8, 36, 186, 243, 57, 115, 35, 34, 197, 237, 99, 110, 99, 54, 236, 221, 125, 83, 87, 223, 1, 112, 7, 135, 113, 48, 95, 103, 231, 140, 249, 117, 48, 210, 35, 216, 109, 8, 234, 47, 206, 81, 184, 191, 151, 58, 101, 134, 22, 141, 61, 236, 104, 5, 225, 166, 247 }, 3, "niels.gras.bee@outlook.com" }
+                });
 
             migrationBuilder.InsertData(
                 schema: "GoedEten",
@@ -580,8 +586,8 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Name", "Value" },
                 values: new object[,]
                 {
-                    { 3, "ZERO", 0m },
                     { 4, "NONE", 0m },
+                    { 3, "ZERO", 0m },
                     { 1, "HIGH", 21m },
                     { 2, "LOW", 9m }
                 });
@@ -592,6 +598,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 207, true, "Amsterdam", "1092" },
                     { 206, true, "Amsterdam", "1091" },
                     { 205, true, "Amsterdam", "1090" },
                     { 204, true, "Amsterdam", "1089" },
@@ -606,15 +613,13 @@ namespace Data.Migrations
                     { 195, true, "Amsterdam", "1080" },
                     { 194, true, "Amsterdam", "1079" },
                     { 193, true, "Amsterdam", "1078" },
-                    { 207, true, "Amsterdam", "1092" },
                     { 199, true, "Amsterdam", "1084" },
                     { 208, true, "Amsterdam", "1093" },
                     { 217, true, "Rotterdam", "3003" },
                     { 210, true, "Amsterdam", "1095" },
                     { 191, true, "Amsterdam", "1076" },
                     { 225, true, "Rotterdam", "3011" },
-                    { 224, true, "Rotterdam", "3010" },
-                    { 223, true, "Rotterdam", "3009" }
+                    { 224, true, "Rotterdam", "3010" }
                 });
 
             migrationBuilder.InsertData(
@@ -623,6 +628,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 223, true, "Rotterdam", "3009" },
                     { 222, true, "Rotterdam", "3008" },
                     { 221, true, "Rotterdam", "3007" },
                     { 220, true, "Rotterdam", "3006" },
@@ -636,7 +642,7 @@ namespace Data.Migrations
                     { 211, true, "Amsterdam", "1096" },
                     { 209, true, "Amsterdam", "1094" },
                     { 190, true, "Amsterdam", "1075" },
-                    { 160, true, "Amsterdam", "1045" },
+                    { 159, true, "Amsterdam", "1044" },
                     { 188, true, "Amsterdam", "1073" },
                     { 168, true, "Amsterdam", "1053" },
                     { 167, true, "Amsterdam", "1052" },
@@ -646,8 +652,8 @@ namespace Data.Migrations
                     { 163, true, "Amsterdam", "1048" },
                     { 162, true, "Amsterdam", "1047" },
                     { 161, true, "Amsterdam", "1046" },
+                    { 160, true, "Amsterdam", "1045" },
                     { 226, true, "Rotterdam", "3012" },
-                    { 159, true, "Amsterdam", "1044" },
                     { 158, true, "Amsterdam", "1043" },
                     { 157, true, "Amsterdam", "1042" },
                     { 156, true, "Amsterdam", "1041" },
@@ -663,8 +669,7 @@ namespace Data.Migrations
                     { 184, true, "Amsterdam", "1069" },
                     { 183, true, "Amsterdam", "1068" },
                     { 182, true, "Amsterdam", "1067" },
-                    { 181, true, "Amsterdam", "1066" },
-                    { 180, true, "Amsterdam", "1065" }
+                    { 181, true, "Amsterdam", "1066" }
                 });
 
             migrationBuilder.InsertData(
@@ -673,6 +678,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 180, true, "Amsterdam", "1065" },
                     { 179, true, "Amsterdam", "1064" },
                     { 178, true, "Amsterdam", "1063" },
                     { 177, true, "Amsterdam", "1062" },
@@ -682,7 +688,7 @@ namespace Data.Migrations
                     { 173, true, "Amsterdam", "1058" },
                     { 171, true, "Amsterdam", "1056" },
                     { 227, true, "Rotterdam", "3013" },
-                    { 257, true, "Rotterdam", "3043" },
+                    { 258, true, "Rotterdam", "3044" },
                     { 229, true, "Rotterdam", "3015" },
                     { 282, true, "Rotterdam", "3068" },
                     { 281, true, "Rotterdam", "3067" },
@@ -713,8 +719,7 @@ namespace Data.Migrations
                     { 294, true, "Rotterdam", "3080" },
                     { 293, true, "Rotterdam", "3079" },
                     { 292, true, "Rotterdam", "3078" },
-                    { 291, true, "Rotterdam", "3077" },
-                    { 290, true, "Rotterdam", "3076" }
+                    { 291, true, "Rotterdam", "3077" }
                 });
 
             migrationBuilder.InsertData(
@@ -723,6 +728,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 290, true, "Rotterdam", "3076" },
                     { 289, true, "Rotterdam", "3075" },
                     { 288, true, "Rotterdam", "3074" },
                     { 287, true, "Rotterdam", "3073" },
@@ -754,8 +760,8 @@ namespace Data.Migrations
                     { 261, true, "Rotterdam", "3047" },
                     { 260, true, "Rotterdam", "3046" },
                     { 259, true, "Rotterdam", "3045" },
-                    { 258, true, "Rotterdam", "3044" },
                     { 153, true, "Amsterdam", "1038" },
+                    { 257, true, "Rotterdam", "3043" },
                     { 256, true, "Rotterdam", "3042" },
                     { 255, true, "Rotterdam", "3041" },
                     { 254, true, "Rotterdam", "3040" },
@@ -763,8 +769,7 @@ namespace Data.Migrations
                     { 252, true, "Rotterdam", "3038" },
                     { 251, true, "Rotterdam", "3037" },
                     { 250, true, "Rotterdam", "3036" },
-                    { 249, true, "Rotterdam", "3035" },
-                    { 247, true, "Rotterdam", "3033" }
+                    { 249, true, "Rotterdam", "3035" }
                 });
 
             migrationBuilder.InsertData(
@@ -773,6 +778,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 247, true, "Rotterdam", "3033" },
                     { 152, true, "Amsterdam", "1037" },
                     { 121, true, "'s-Gravenhage", "2593" },
                     { 150, true, "Amsterdam", "1035" },
@@ -813,8 +819,7 @@ namespace Data.Migrations
                     { 56, true, "'s-Gravenhage", "2528" },
                     { 73, true, "'s-Gravenhage", "2545" },
                     { 37, true, "'s-Gravenhage", "2509" },
-                    { 35, true, "'s-Gravenhage", "2507" },
-                    { 15, true, "'s-Gravenhage", "2288" }
+                    { 35, true, "'s-Gravenhage", "2507" }
                 });
 
             migrationBuilder.InsertData(
@@ -823,6 +828,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 15, true, "'s-Gravenhage", "2288" },
                     { 14, true, "'s-Gravenhage", "2287" },
                     { 13, true, "'s-Gravenhage", "2286" },
                     { 12, true, "'s-Gravenhage", "2285" },
@@ -863,8 +869,7 @@ namespace Data.Migrations
                     { 130, true, "Amsterdam", "1015" },
                     { 129, true, "Amsterdam", "1014" },
                     { 128, true, "Amsterdam", "1013" },
-                    { 127, true, "Amsterdam", "1012" },
-                    { 126, true, "Amsterdam", "1011" }
+                    { 127, true, "Amsterdam", "1012" }
                 });
 
             migrationBuilder.InsertData(
@@ -873,6 +878,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 126, true, "Amsterdam", "1011" },
                     { 125, true, "'s-Gravenhage", "2597" },
                     { 124, true, "'s-Gravenhage", "2596" },
                     { 123, true, "'s-Gravenhage", "2595" },
@@ -913,8 +919,7 @@ namespace Data.Migrations
                     { 87, true, "'s-Gravenhage", "2559" },
                     { 86, true, "'s-Gravenhage", "2558" },
                     { 85, true, "'s-Gravenhage", "2557" },
-                    { 84, true, "'s-Gravenhage", "2556" },
-                    { 83, true, "'s-Gravenhage", "2555" }
+                    { 84, true, "'s-Gravenhage", "2556" }
                 });
 
             migrationBuilder.InsertData(
@@ -923,6 +928,7 @@ namespace Data.Migrations
                 columns: new[] { "Id", "Active", "LocationName", "Zip" },
                 values: new object[,]
                 {
+                    { 83, true, "'s-Gravenhage", "2555" },
                     { 82, true, "'s-Gravenhage", "2554" },
                     { 81, true, "'s-Gravenhage", "2553" },
                     { 80, true, "'s-Gravenhage", "2552" },
@@ -956,23 +962,23 @@ namespace Data.Migrations
             migrationBuilder.InsertData(
                 schema: "GoedEten",
                 table: "Dish",
-                columns: new[] { "Id", "CookId", "CuisineId", "Description", "DishCategoryId", "Heating", "MaxQuantity", "Name", "P1", "P2", "P3", "P4", "P5", "Photo", "PriceLarge", "ShortName", "VatCategoryId" },
+                columns: new[] { "Id", "AllIngredientsField", "CookId", "CuisineId", "Description", "DishCategoryId", "Heating", "MaxQuantity", "Name", "P1", "P2", "P3", "P4", "P5", "Photo", "PriceLarge", "ShortName", "VatCategoryId" },
                 values: new object[,]
                 {
-                    { 1, 1, 2, "Wokgerecht met brocoli, pompoen en kikkererwten ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 40, "The Souk", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgega22upbs5kr.png", 10m, "The Souk", 2 },
-                    { 2, 2, 4, "Falafelburger met kikkererwten op een laagje van humus ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 24, "Vega burger", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedetendenhaag.nl/wp-content/uploads/2018/03/Wraps-soep-en-burgers-9-1-1.jpg", 5m, "Vega burger", 2 },
-                    { 3, 3, 2, "Soep met pepers, kip en taugé, getopt met een half eitje ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Turmeric Power", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fger4lbsgyk3fp.png", 8m, "Turmeric Power", 2 },
-                    { 4, 4, 4, "Burger met kaas en tomaat, met een salade van veldsla, paprika en pijnboompitjes ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 34, "Beef burger", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgevbrrosgpmpq.png", 5m, "Beef burger", 2 },
-                    { 5, 5, 2, " ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten ", 20, "Jakarta", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgegc204gy2bhr.png", 5m, "Jakarta", 2 },
-                    { 6, 6, 3, "Wrap met groentes en currykruiden ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 25, "Maaltijdwrap vega", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgexjoarfatwz4.png", 9m, "Wrap vega", 2 },
-                    { 7, 6, 2, "", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Curry-no-curry", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgefxorvmah1ce.png", 19.50m, "Curry", 2 },
-                    { 8, 7, 2, "Saoto soep is een heldere kippensoep uit de Javaanse keuken. Gemaakt van verse kruiden en geserveerd met gepluiste kip, gekookt ei, tauge, gebakken aardappel, vermicelli, knoflook en uien. Eventueel met witte rijst.", 2, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 50, "Saoto soup", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge2gkstyijwzr.png", 5m, "Saoto soup", 2 },
-                    { 9, 3, 3, "Lekkere tortilla wraps gevuld met Mexicaans gekruide kip en paprika", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Maaltijdwrap kip", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge4eo1lfon53j.png", 3m, "Wrap kip", 2 },
-                    { 10, 5, 2, " Umami: de hartige smaak naast zoet, zuur, zout en bitter.  ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 20, "Umami", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgehwykzk2hnnb.png", 3m, "Umami", 2 },
-                    { 11, 6, 2, "It’s peanutty and noodley. It’s a friend to all vegetables. It’s salad that’s… not really a salad. ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 35, "Spicy peanut", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgeo3b024zwxiv.png", 3m, "Spicy peanut", 2 },
-                    { 12, 1, 7, "Gemaakt van wilde zwarte rijst, wilde rode rijst en ronde zilvervliesrijst ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 24, "Risotto van drie soorten rijst met seizoensgroenten en oude kaas", "Alle verse ingrediënten (groenten, zuivel) die voor de risotto gebruikt worden worden komen uit de omgeving van Den Haag (>50km). Minimaal 75% van de droogwaren zijn biologisch geproduceerde grondstoffen uit Europa. ", "Alle verse ingrediënten (groenten, zuivel) die gebruikt worden zijn seizoensgebonden. Daarom kunnen de groenten en de bereiding ervan verschillen per seizoen", "", "", "", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge11l21pejl0x.jpg", 12.50m, "Risotto", 2 },
-                    { 13, 4, 5, "Eigengemaakte pastabladen met gestoofd rundvlees en bechamelsaus ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 20, "Lasagne", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgev30lyf0wotx.png", 3m, "Lasagne", 2 },
-                    { 14, 3, 6, "Humus, baba hanoush, tabouleh en Yemenitische foel ", 2, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 15, "Meze", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgeicvd2fcsmjc.jpg", 3m, "Meze", 2 }
+                    { 1, null, 1, 2, "Wokgerecht met brocoli, pompoen en kikkererwten ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 40, "The Souk", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgega22upbs5kr.png", 10m, "The Souk", 2 },
+                    { 2, null, 2, 4, "Falafelburger met kikkererwten op een laagje van humus ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 24, "Vega burger", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedetendenhaag.nl/wp-content/uploads/2018/03/Wraps-soep-en-burgers-9-1-1.jpg", 5m, "Vega burger", 2 },
+                    { 3, null, 3, 2, "Soep met pepers, kip en taugé, getopt met een half eitje ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Turmeric Power", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fger4lbsgyk3fp.png", 8m, "Turmeric Power", 2 },
+                    { 4, null, 4, 4, "Burger met kaas en tomaat, met een salade van veldsla, paprika en pijnboompitjes ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 34, "Beef burger", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgevbrrosgpmpq.png", 5m, "Beef burger", 2 },
+                    { 5, null, 5, 2, " ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten ", 20, "Jakarta", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgegc204gy2bhr.png", 5m, "Jakarta", 2 },
+                    { 6, null, 6, 3, "Wrap met groentes en currykruiden ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 25, "Maaltijdwrap vega", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgexjoarfatwz4.png", 9m, "Wrap vega", 2 },
+                    { 7, null, 6, 2, "", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Curry-no-curry", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgefxorvmah1ce.png", 19.50m, "Curry", 2 },
+                    { 8, null, 7, 2, "Saoto soep is een heldere kippensoep uit de Javaanse keuken. Gemaakt van verse kruiden en geserveerd met gepluiste kip, gekookt ei, tauge, gebakken aardappel, vermicelli, knoflook en uien. Eventueel met witte rijst.", 2, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 50, "Saoto soup", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge2gkstyijwzr.png", 5m, "Saoto soup", 2 },
+                    { 9, null, 3, 3, "Lekkere tortilla wraps gevuld met Mexicaans gekruide kip en paprika", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 30, "Maaltijdwrap kip", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge4eo1lfon53j.png", 3m, "Wrap kip", 2 },
+                    { 10, null, 5, 2, " Umami: de hartige smaak naast zoet, zuur, zout en bitter.  ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 20, "Umami", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgehwykzk2hnnb.png", 3m, "Umami", 2 },
+                    { 11, null, 6, 2, "It’s peanutty and noodley. It’s a friend to all vegetables. It’s salad that’s… not really a salad. ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 35, "Spicy peanut", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgeo3b024zwxiv.png", 3m, "Spicy peanut", 2 },
+                    { 12, null, 1, 7, "Gemaakt van wilde zwarte rijst, wilde rode rijst en ronde zilvervliesrijst ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 24, "Risotto van drie soorten rijst met seizoensgroenten en oude kaas", "Alle verse ingrediënten (groenten, zuivel) die voor de risotto gebruikt worden worden komen uit de omgeving van Den Haag (>50km). Minimaal 75% van de droogwaren zijn biologisch geproduceerde grondstoffen uit Europa. ", "Alle verse ingrediënten (groenten, zuivel) die gebruikt worden zijn seizoensgebonden. Daarom kunnen de groenten en de bereiding ervan verschillen per seizoen", "", "", "", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fge11l21pejl0x.jpg", 12.50m, "Risotto", 2 },
+                    { 13, null, 4, 5, "Eigengemaakte pastabladen met gestoofd rundvlees en bechamelsaus ", 1, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 20, "Lasagne", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgev30lyf0wotx.png", 3m, "Lasagne", 2 },
+                    { 14, null, 3, 6, "Humus, baba hanoush, tabouleh en Yemenitische foel ", 2, "Opwarmen in magnetron op 500W 8 min. Opwarmen in hetelucht oven 200gr 20 minuten", 15, "Meze", "Verhaaltje over waarom Lokaal", "Verhaaltje over waarom Seizoensgebonden", "Verhaaltje over waarom Duurzaam voor je lijf", "Verhaaltje over waarom Van knol tot blaad", "Verhaaltje over waarom Plantaardige Eiwitten", "https://goedeten.blob.core.windows.net/goed-eten/dishes%2Fgeicvd2fcsmjc.jpg", 3m, "Meze", 2 }
                 });
 
             migrationBuilder.CreateIndex(
