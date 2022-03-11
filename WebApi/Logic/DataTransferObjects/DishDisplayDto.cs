@@ -20,5 +20,7 @@
         public int DishCategoryId { get; set; }
         public int VatCategoryId { get; set; }
         public int MaxQuantity { get; set; }
+        // Temp Field for storing all ingredients text
+        public string AllIngredientsField { get; set; }
     }
 }

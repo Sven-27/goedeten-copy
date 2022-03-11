@@ -1,0 +1,1 @@
+﻿ALTER TABLE [GoedEten].[Dish] ADD AllIngredientsField NVARCHAR(500)

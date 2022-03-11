@@ -149,9 +149,12 @@ namespace WebApi.Controllers
         {
             try
             {
-                if (list == null) list = new List<int>();
-                var result = await _dishService.SetIngredients(dishId, list);
-                return Ok(result);
+                // Todo Needs rework
+                //Temp offline, needs rework
+                //if (list == null) list = new List<int>();
+                //var result = await _dishService.SetIngredients(dishId, list);
+                //return Ok(result);
+                return Ok();
             }
             catch
             {
