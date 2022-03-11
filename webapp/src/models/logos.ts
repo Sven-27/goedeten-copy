@@ -26,4 +26,5 @@ export type ILogos = {
 	tomaatTextDonkerGroen: string;
 	tomaatTextTaglineBeige: string;
 	tomaatTextTaglineDonkerGroen: string;
+  accolade: string
 };

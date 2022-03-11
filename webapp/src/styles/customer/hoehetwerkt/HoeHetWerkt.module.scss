@@ -49,15 +49,8 @@
       }
     }
 
-    .vertical_line{
-    display: inline-block;
-    border-left: 2px solid $lightgreen;
-    margin: auto;
-    height: 15px;
-
-  }
     .option_container{
-      width: 60%;
+      width: 100%;
       max-width: 550px;
       display: flex;
       flex-direction: column;
