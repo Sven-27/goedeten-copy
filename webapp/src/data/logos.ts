@@ -28,5 +28,5 @@ export const Logos: ILogos = {
 	tomaatTextDonkerGroen: "/assets/images/logos/tomaatTextDonkerGroen.svg",
 	tomaatTextTaglineBeige: "/assets/images/logos/tomaatTextTaglineBeige.svg",
 	tomaatTextTaglineDonkerGroen: "/assets/images/logos/tomaatTextTaglineDonkerGroen.svg",
-	accolade: "/assets/images/logos/accolade.svg",
+	accolade: "/assets/images/logos/accolade.png",
 };

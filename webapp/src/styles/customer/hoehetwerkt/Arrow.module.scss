@@ -10,38 +10,119 @@
       margin-top: 10px;
 
       .arrowContainerLeft{
+        width: 50%;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
 
         .calendarButton_selected{
           width: 4.4rem;
           height: 1.5rem;
-          margin-left: 40px;
+
+          @include mqtp($tablet){
+            width: 7rem;
+            height: 2rem;
+          }
+
+          @include mqml($mobile_ls){
+            width: 6rem;
+          } 
+
+          @include mqtl($tablet_l){
+            width: 7rem;
+            height: 2rem;
+          }
+        }
+
+        .arrowLine{
+          width: 3px;
+          height: 40px;
+          background: $lightgreen;
+          margin-top: 5px;
+
+          @include mqtp($tablet){
+            height: 65px;
+          }
+
+          @include mqml($mobile_ls){
+            height: 62px;
+          }
+
+          @include mqtl($tablet_l){
+            margin-top: -5px;
+            height: 60px;
+          }
         }
 
         .arrowIconLeft{
-          transform: rotate(90deg);
-          height: 2rem;
-          width: 2rem;
+          margin-top: -13px;
+          height: 1.7rem;
+          width: 1.7rem;
           color: $lightgreen;
         }
       }
 
       .arrowContainerRight{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
 
         .spanContainer{
+          width: 100%;
           display: flex;
+          justify-content: space-between;
 
           .calendarButton{
             width: 4.8rem;
             height: 1.5rem;
-            margin-left: 5px;
+
+            @include mqtp($tablet){
+              width: 7rem;
+              height: 2rem;
+            }
+        
+            @include mqml($mobile_ls){
+              width: 6rem;
+            } 
+
+            @include mqtl($tablet_l){
+            width: 7rem;
+            height: 2rem;
+          }
+          }
+
+          .extraButton{
+            @include mqd($mobile_lxs){
+              display: none;
+            }  
+          }
+
+          @include mqml($mobile_ls){
+            justify-content: space-evenly;
           }
         }
 
         .accolade{
           width: 10rem;
+
+          @include mqtp($tablet){
+            width: 22rem;
+          }
+
+          @include mqml($mobile_ls){
+            width: 19rem;
+            margin-top: 5px;
+          }
+
+          @include mqtl($tablet_l){
+             width: 20rem;
+             margin-top: -10px;
+          }
         }
 
         .arrowIconRight{
+          margin-top: -2px;
           transform: rotate(90deg);
           height: 2rem;
           width: 2rem;
