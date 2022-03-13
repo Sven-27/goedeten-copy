@@ -1,0 +1,96 @@
+@import "styles/utilities";
+@import "styles/variables";
+@import "styles/queries";
+
+.bezorging{
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+
+  .itemContainer{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+
+    .calendarButton_selected{
+      width: 4.8rem;
+      margin: auto;
+
+      @include mqtp($tablet){
+        width: 7.6rem;
+        height: 2.1rem;
+        font-size: 1.1rem;
+      }
+
+        @include mqml($mobile_ls){
+          width: 7rem;
+          font-size: 1rem;
+        }
+
+        @include mqtl($tablet_l){
+          width: 7.5rem;
+          height: 2rem;
+          font-size: 1rem;
+        }
+    }
+
+    .calendarButton{
+      width: 4.8rem;
+      margin: auto;
+
+      @include mqtp($tablet){
+        width: 7.6rem;
+        height: 2.1rem;
+        font-size: 1.1rem;
+      }
+
+      @include mqml($mobile_ls){
+          width: 7rem;
+          font-size: 1rem;
+        }
+
+      @include mqtl($tablet_l){
+        width: 7.5rem;
+        height: 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    .arrows{
+      transform: rotate(90deg);
+      color: $lightgreen;
+      width: 2rem;
+      height: 2rem;
+      margin-top: 5px;
+
+      @include mqtp($tablet){
+        width: 3rem;
+        height: 3rem;
+      }
+
+      @include mqtl($tablet_l){
+        width: 3rem;
+        height: 3rem;
+      }
+    }
+
+    .bezorgTijd{
+      font-size: 0.7rem;
+      padding-inline: 0.5rem;
+      color: $darkgreen;
+      font-weight: 700;
+
+      @include mqtp($tablet){
+        font-size: 1rem;
+      }
+
+      @include mqml($mobile_ls){
+        font-size: 1rem;
+      }
+
+      @include mqtl($tablet_l){
+        font-size: 1rem;
+      }
+    }
+  }
+}

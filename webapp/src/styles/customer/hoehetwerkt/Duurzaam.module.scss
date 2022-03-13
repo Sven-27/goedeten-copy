@@ -4,7 +4,7 @@
 
 .duurzaam{
   display: grid;
-  grid-template: repeat(4, auto) / 45px auto;
+  grid-template: repeat(4, auto) / 45px repeat(3, auto);
   gap: 7px 5px;
   padding-inline: 0.1rem; 
   width: 100%;
@@ -29,26 +29,9 @@
     }
   }
 
-  .arrowOne{
-    color: $lightgreen;
-    grid-area: 1/1/2/1;
-    font-size: 2rem;
-
-    @include mqtp($tablet){
-      font-size: 2.3rem;
-    }
-
-    @include mqtl($tablet_l){
-      font-size: 2.3rem;
-    }
-  }
-
-    .text1{
-      grid-area: 1/2/2/3;
-    }
-
     .logos{
-      grid-area: 2/2/3/3;
+      margin-top: 5px;
+      grid-area: 1/1/2/3;
       
 
       .logo{
@@ -68,28 +51,8 @@
     }
 
     .text_options{
-      grid-area: 3/2/4/3;
-      text-transform: uppercase;
-      font-style: italic;
+      grid-area: 2/1/3/3;
       background: none;
       color: $darkgreen;
-  }
-
-  .arrowTwo{
-    color: $lightgreen;
-    grid-area: 4/1/5/2;
-    font-size: 2rem;
-
-    @include mqtp($tablet){
-      font-size: 2.3rem;
-    }
-
-    @include mqtl($tablet_l){
-      font-size: 2.5rem;
-    }
-  }
-
-  .text2{
-    grid-area: 4/2/5/3;
   }
 }

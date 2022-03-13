@@ -4,11 +4,19 @@
 
 .koks{
   display: grid;
-  grid-template: repeat(3, auto) / 45px auto;
+  grid-template: repeat(3, auto) / 70px repeat(2, auto);
   gap: 7px 5px;
   padding-inline: 0.1rem; 
   width: 100%;
-  max-width: 600px;
+  max-width: 650px;
+
+  @include mqtp($tablet){
+    grid-template-columns: 100px repeat(2, auto);
+  }
+
+  @include mqtl($tablet_l){
+    grid-template-columns: 100px repeat(2, auto);
+  }
 
   @include mqtl($tablet_l){
       max-width: 730px;
@@ -29,17 +37,21 @@
     }
   }
 
-  .arrowOne{
-    color: $lightgreen;
-    grid-area: 1/1/2/1;
-    font-size: 2rem;
+  .calendarButton{
+    width: 4rem;
+    height: 1.4rem;
 
     @include mqtp($tablet){
-      font-size: 2.3rem;
+      width: 5.9rem;
+      height: 2rem;
+      font-size: 1rem;
     }
 
     @include mqtl($tablet_l){
-      font-size: 2.3rem;
+      width: 5.9rem;
+      height: 2rem;
+      font-size: 1rem;
+      align-self: flex-start;
     }
   }
 
@@ -55,18 +67,12 @@
       color: $darkgreen;
   }
 
-  .arrowTwo{
-    color: $lightgreen;
-    grid-area: 3/1/4/1;
-    font-size: 2rem;
-
-    @include mqtp($tablet){
-      font-size: 2.3rem;
-    }
-
-    @include mqtl($tablet_l){
-      font-size: 2.5rem;
-    }
+  .jitske{
+    grid-area: 3/1/4/2;
+    width: 3rem;
+    border-radius: 50%;
+    border: 1px solid $lightgreen;
+    margin: 0 auto;
   }
 
   .text2{
