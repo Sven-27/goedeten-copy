@@ -2,6 +2,8 @@ import { ILogos } from "models/logos"
 
 export const Logos: ILogos = {
 	cloche: "/assets/images/logos/cloche.svg",
+	clocheHealt: "/assets/images/logos/clochealt.svg",
+	clocheRed: "/assets/images/logos/cloche-red.png",
 	duurzaamBeige: "/assets/images/logos/duurzaamBeige.svg",
 	duurzaamDonkergroen: "/assets/images/logos/duurzaamDonkerGroen.svg",
 	duurzaamGeel: "/assets/images/logos/duurzaamGeel.svg",

@@ -1,5 +1,7 @@
 export type ILogos = {
 	cloche: string;
+  clocheHealt: string;
+  clocheRed: string;
 	duurzaamBeige: string;
 	duurzaamDonkergroen: string;
 	duurzaamGeel: string;
