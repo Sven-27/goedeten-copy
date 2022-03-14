@@ -95,13 +95,11 @@
       @include mqtp($tablet){
         width: 150px;
         height: 150px;
-        // margin-left: -73px;
       }
     
       @include mqtl($tablet_l){
         width: 150px;
         height: 150px;
-        // margin-left: -73px;
       }
     }    
   }
@@ -121,13 +119,11 @@
       @include mqtp($tablet){
         width: 150px;
         height: 150px;
-        // margin-right: -73px;
       }
 
       @include mqtl($tablet_l){
         width: 150px;
         height: 150px;
-        // margin-right: -73px;
       }
     }
   }

@@ -41,6 +41,13 @@
     width: 4rem;
     height: 1.4rem;
 
+    &:hover{
+      cursor: default;
+      background: $lightbrown;
+	    color: $brown;
+    	border: 2px solid $brown;
+    }
+
     @include mqtp($tablet){
       width: 5.9rem;
       height: 2rem;

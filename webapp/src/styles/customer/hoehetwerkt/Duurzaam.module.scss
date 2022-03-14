@@ -10,6 +10,10 @@
   width: 100%;
   max-width: 600px;
 
+  @include mqtp($tablet){
+    grid-template-columns: 150px repeat(5, auto);
+  }
+
   @include mqtl($tablet_l){
       max-width: 730px;
     }
@@ -63,6 +67,11 @@
       .menuLogo{
         width: 2.5rem;
         height: 2.5rem;
+
+        @include mqtp($tablet){
+          width: 3.5rem;
+          height: 3.5rem;
+        }
       }
 
       .overGoedeten{
@@ -71,12 +80,18 @@
         position: absolute;
         bottom: 10px;
         left: 30px;
+
+        @include mqtp($tablet){
+          width: 7rem;
+        }
       }
     }
 
     .menu{
       padding-left: 0.4rem;
       grid-area: 3/2/4/4;
+      display: flex;
+      align-items: center;
     }
 
     .of{
@@ -89,6 +104,10 @@
     .footerLogo{
       grid-area: 5/1/6/2;
       width: 6rem;
+
+      @include mqtp($tablet){
+        width: 8rem;
+      }
     }
 
     .infoGoedEten{
