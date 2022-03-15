@@ -220,13 +220,13 @@ namespace Logic.Services
                 {
                     response = await omniKassa.RetrieveAnnouncement(notification);
                     // string str_response =  Newtonsoft.Json.JsonConvert.SerializeObject(response);
-                    // await _emailService.TestEmail("niels.gras.bee@outlook.com", "Response", str_response).ConfigureAwait(false);
+                    // await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Response", str_response).ConfigureAwait(false);
                     var results = _mapper.Map<List<MerchantOrderResult>, List<OrderTransaction>>(response.OrderResults);
                     // string str_results =  Newtonsoft.Json.JsonConvert.SerializeObject(results);
-                    // await _emailService.TestEmail("niels.gras.bee@outlook.com", "Results", str_results).ConfigureAwait(false);
+                    // await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Results", str_results).ConfigureAwait(false);
                     var addTransactions = await _orderRepository.AddTransactions(results);
                     //string str_addTransactions =  Newtonsoft.Json.JsonConvert.SerializeObject(addTransactions);
-                    //await _emailService.TestEmail("niels.gras.bee@outlook.com", "Transactions", str_addTransactions).ConfigureAwait(false);
+                    //await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Transactions", str_addTransactions).ConfigureAwait(false);
                 }
                 while (response.MoreOrderResultsAvailable);
             }
@@ -234,7 +234,7 @@ namespace Logic.Services
             {
                 Debug.WriteLine(ex.Message);
                 string str_response =  Newtonsoft.Json.JsonConvert.SerializeObject(ex.Message);
-                await _emailService.TestEmail("niels.gras.bee@outlook.com", "Error in RetrieveUpdates", str_response).ConfigureAwait(false);
+                await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Error in RetrieveUpdates", str_response).ConfigureAwait(false);
                 return false;
             }
 

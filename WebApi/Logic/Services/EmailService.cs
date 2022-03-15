@@ -43,8 +43,17 @@ namespace Logic.Services
 
         public async Task<bool> TestEmail(string email, string title, string body)
         {
-            await _mailKitService.SendEmailAsync(email, title, TestEmailText(body)).ConfigureAwait(false);
-            return true;
+            try
+            {
+                await _mailKitService.SendEmailAsync(email, title, TestEmailText(body)).ConfigureAwait(false);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                return false;
+            }
+
         }
         public async Task<bool> SendDishOverviewMessage(string location, string email)
         {
