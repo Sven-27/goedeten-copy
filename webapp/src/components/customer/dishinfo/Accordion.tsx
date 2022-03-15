@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import MuiAccordion from "@material-ui/core/Accordion";
 import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
@@ -8,6 +8,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { IDish } from "models/Dish";
 import styles from "styles/customer/dishInfo/DishInfo.module.scss";
 import Link from "next/link";
+import agent from "adapters/agent";
 
 const Accordion = withStyles({
 	root: {
@@ -68,8 +69,16 @@ interface Props {
 }
 
 export default function CustomizedAccordions({ info }: Props) {
-	const [expanded, setExpanded] = React.useState<string | false>("");
+	const [expanded, setExpanded] = useState<string | false>("");
+  const [ingredients, setIngredients] = useState<string>("");
 	const ref = useRef<any>();
+
+  // useEffect(() => {
+  //   const getIngredients = async() => {
+  //     const response = await agent.
+  //   }
+  //   getIngredients()
+  // }, [])
 
 	useEffect(() => {
 		const onBodyClick = (event: any) => {
@@ -137,18 +146,19 @@ export default function CustomizedAccordions({ info }: Props) {
 				<AccordionDetails>
 					<Typography className={styles.titles}>Ingrediënten:</Typography>
 					<Typography>
-						{info.ingredients.map((item) => item.name).join(", ")}
+						{/* {info.ingredients.map((item) => item.name).join(", ")} */}
 						<br></br>
+            {info.allIngredientsField}
 						<br></br>
 					</Typography>
-					<Typography className={styles.letop}>
+					{/* <Typography className={styles.letop}>
 						<b>* Let op:</b> De ingrediënten kunnen altijd afwijken ivm het
 						gebruik van seizoensproducten. Wanneer je een allergie /
 						intolerantie hebt, geef dit dan aan het einde door bij het
 						afrekenen.
-					</Typography>
+					</Typography> */}
 			 </AccordionDetails>
-				<AccordionDetails>
+				{/* <AccordionDetails>
 					<Typography className={styles.titles}>Allergenen:</Typography>
 					<Typography className={styles.geen}>
 						{info.allergens.length !== 0 ? (
@@ -163,7 +173,7 @@ export default function CustomizedAccordions({ info }: Props) {
 						verschillende (soorten) gerechten bereid worden, hierdoor kunnen er
 						altijd sporen van allergenen voorkomen in de gerechten.
 					</Typography>
-				</AccordionDetails>
+				</AccordionDetails> */}
 			</Accordion>
 			<Accordion
 				expanded={expanded === "panel3"}
