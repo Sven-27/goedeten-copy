@@ -31,8 +31,8 @@ export const Logos: ILogos = {
 	tomaatTextTaglineBeige: "/assets/images/logos/tomaatTextTaglineBeige.svg",
 	tomaatTextTaglineDonkerGroen: "/assets/images/logos/tomaatTextTaglineDonkerGroen.svg",
 	accolade: "/assets/images/logos/accolade.png",
-  jitske: "assets/images/jitske.png",
-  footerLogo: "assets/images/logos/footer-logo.png",
-  menuLogo: "assets/images/logos/menu-logo.png",
-  overGoedeten: "assets/images/logos/over-goedeten.png",
+  jitske: "/assets/images/jitske.png",
+  footerLogo: "/assets/images/logos/footer-logo.png",
+  menuLogo: "/assets/images/logos/menu-logo.png",
+  overGoedeten: "/assets/images/logos/over-goedeten.png",
 };
