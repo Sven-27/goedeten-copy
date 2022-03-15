@@ -5,18 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using WepApi.Infrastructure;
-using OmniKassa;
-using System.Collections.Specialized;
-using OmniKassa.Model.Response;
 using OmniKassa.Exceptions;
-using OmniKassa.Model.Enums;
-using OmniKassa.Model;
-using OmniKassa.Model.Order;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
 using OmniKassa.Model.Response.Notification;
-using Endpoint = OmniKassa.Endpoint;
 using System;
 using System.Diagnostics;
 
@@ -29,11 +19,9 @@ namespace WebApi.Controllers
     {
         private readonly IOrderService _service;
         private static ApiNotification _notification;
-        private readonly IEmailService _emailService;
-        public OrderController(IOrderService service, IEmailService emailService)
+        public OrderController(IOrderService service)
         {
             _service = service;
-            _emailService = emailService;
         }
 
         [AllowAnonymous]
@@ -41,8 +29,6 @@ namespace WebApi.Controllers
         public async Task<IActionResult> OmniNotify([FromBody] ApiNotification notification)
         {
             _notification = notification;
-            // string str_notification = Newtonsoft.Json.JsonConvert.SerializeObject(notification);
-            // await _emailService.TestEmail("niels.gras.bee@outlook.com", "Notification", str_notification).ConfigureAwait(false);
             await RetrieveUpdates();
             return new OkObjectResult("");
         }
