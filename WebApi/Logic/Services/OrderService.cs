@@ -112,40 +112,14 @@ namespace Logic.Services
                     Quantity = item.Quantity
                 })
                 .ToList();
-
-            var updateIds = listUpdates.Select(d => d.Id).ToList();
-            if (!updateIds.Any())
-            {
-                return new RedirectResult("nosupply");
-            }
-
             try
             {
-                var dishAvailabilities = await _dishAvailabilityRepository
-                    .GetAll()
-                    .Where(d => updateIds.Contains(d.Id))
-                    .ToListAsync()
-                    .ConfigureAwait(false);
+    
 
-                foreach (var listUpdate in listUpdates)
+                if (!await _dishAvailabilityRepository.Update(listUpdates, true))
                 {
-                    var dishAvailability = dishAvailabilities.SingleOrDefault(d => d.Id == listUpdate.Id);
-                    if (dishAvailability != null)
-                    {
-                        if (dishAvailability.CurrentQuantity - listUpdate.Quantity >= 0)
-                        {
-                            dishAvailability.CurrentQuantity -= listUpdate.Quantity;
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
-
-                    await _dishAvailabilityRepository.Update(dishAvailability).ConfigureAwait(false);
+                    throw new Exception("Update dish availability failed => Create Order service!");
                 }
-                
-
                 try
                 {
                     var sum_dishes = data.Cart.Sum(c => c.Quantity * c.Price);
@@ -174,7 +148,6 @@ namespace Logic.Services
                         orderDeliveries.Add(newDelivery);
                     }
 
-                    ;
                     var newOrder = new OrderDto
                     {
                         OrderDate = data.OrderDate,
@@ -213,28 +186,11 @@ namespace Logic.Services
                 }
                 catch (Exception ex)
                 {
-                    var undoDishAvailabilities = await _dishAvailabilityRepository
-                        .GetAll()
-                        .Where(d => updateIds.Contains(d.Id))
-                        .ToListAsync()
-                        .ConfigureAwait(false);
-
-                    foreach (var listUpdate in listUpdates)
-                    {
-                        var dishAvailability = undoDishAvailabilities.SingleOrDefault(d => d.Id == listUpdate.Id);
-                        if (dishAvailability != null)
-                        {
-                            dishAvailability.CurrentQuantity += listUpdate.Quantity;
-                        }
-
-                        await _dishAvailabilityRepository.Update(dishAvailability).ConfigureAwait(false);
-                    }
+                    //await _dishAvailabilityRepository.Update(listUpdates, false);
                     Debug.WriteLine(ex.Message);
                     throw new Exception(ex.Message);
                 }
 
-                //}
-                // await _dishAvailabilityRepository.Update(listUpdates, false);
                 return new RedirectResult("nosupply");
             }
             catch (Exception ex)

@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Data.Repositories
@@ -51,7 +50,8 @@ namespace Data.Repositories
                 .AsNoTracking().Where(o => o.Id == Id)
                 .Include(o => o.Deliveries).ThenInclude(d => d.DishOrders).ThenInclude(dishOrder => dishOrder.Dish).ThenInclude(dishOrder => dishOrder.Cook)
                 .Include(o => o.Transactions)
-                .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync()
+                .ConfigureAwait(false);
 
             return dish;
         }
@@ -66,7 +66,8 @@ namespace Data.Repositories
                     order = await _mainDbContext.Orders
                             .Include(o => o.Transactions)
                             .Include(o => o.Deliveries).ThenInclude(d => d.DishOrders)
-                            .SingleOrDefaultAsync(o => o.Id == transaction.OrderId);
+                            .SingleOrDefaultAsync(o => o.Id == transaction.OrderId)
+                            .ConfigureAwait(false);
                     order.Transactions.Add(transaction);
 
                     if ((int)order.Status < 3)
@@ -86,25 +87,7 @@ namespace Data.Repositories
                                                             }))
                                                             .ToList();
 
-                        var updateIds = listUpdates.Select(d => d.Id).ToList();
-
-                        var undoDishAvailabilities = await _dishAvailabilityRepository
-                            .GetAll()
-                            .Where(d => updateIds.Contains(d.Id))
-                            .ToListAsync()
-                            .ConfigureAwait(false);
-
-                        foreach (var listUpdate in listUpdates)
-                        {
-                            var dishAvailability = undoDishAvailabilities.SingleOrDefault(d => d.Id == listUpdate.Id);
-                            if (dishAvailability != null)
-                            {
-                                dishAvailability.CurrentQuantity += listUpdate.Quantity;
-                            }
-
-                            await _dishAvailabilityRepository.Update(dishAvailability).ConfigureAwait(false);
-                        }
-                        //await _dishAvailabilityRepository.Update(listUpdates, false);
+                        await _dishAvailabilityRepository.Update(listUpdates, false).ConfigureAwait(false);
                     }
                     await _mainDbContext.SaveChangesAsync();
                 }

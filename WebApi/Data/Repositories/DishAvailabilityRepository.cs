@@ -25,7 +25,7 @@ namespace Data.Repositories
         Task<DishAvailability> GetByIdWithTracking(int id);
         Task<DishAvailability> Create(DishAvailability entity);
         Task Update(DishAvailability entity);
-        //Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract);
+        Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract);
         Task Delete(int id);
         Task<List<DishAvailabilityDisplay>> GetByPeriod(DateTime date, int numDays);
         Task<List<DishAvailabilityPlanning>> GetByDate(DateTime date, int id);
@@ -62,48 +62,70 @@ namespace Data.Repositories
 
         }
 
-        //public async Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract)
-        //{
-            //try
-            //{
-            //    foreach (DishAvailabilityOrder entity in entities)
-            //    {
-            //        var updateItem = 
-            //            await _mainDbContext.Set<DishAvailability>()
-            //                .AsNoTracking()
-            //                .SingleOrDefaultAsync(e => e.Id == entity.Id).ConfigureAwait(false);
+        public async Task<DishAvailability> GetDetachedDishAvailability(int id)
+        {
+            var dishAvailability = await _mainDbContext.DishAvailabilities
+                .SingleOrDefaultAsync(u => u.Id == id)
+                .ConfigureAwait(false);
+            // Now detach it to avoid:
+            // The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked.
+            // When attaching existing entities, ensure that only one entity instance with a given key value is attached
+            _mainDbContext.Entry(dishAvailability).State = EntityState.Detached;
+            return dishAvailability;
+        }
 
-            //        _mainDbContext.Entry(updateItem).State = EntityState.Detached;
+        public async Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract)
+        {
+            var strategy = _mainDbContext.Database.CreateExecutionStrategy();
 
-            //        if (subtract)
-            //        {
-            //            if (updateItem.CurrentQuantity - entity.Quantity >= 0)
-            //            {
-            //                updateItem.CurrentQuantity -= entity.Quantity;
-            //                // _mainDbContext.Set<DishAvailability>().Update(updateItem);
-            //            }
-            //            else
-            //            {
-            //                throw new Exception("Supply quantity too low!");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            updateItem.CurrentQuantity += entity.Quantity;
-            //        }
+            await strategy.ExecuteAsync(async () =>
+            {
+                // Achieving atomicity between original Catalog database operation and the
+                // IntegrationEventLog thanks to a local transaction
+                using (var transaction = _mainDbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DishAvailabilityOrder entity in entities)
+                        {
+                            var updateItem =
+                                await GetDetachedDishAvailability(entity.Id).ConfigureAwait(false);
 
-            //        await Update(updateItem).ConfigureAwait(false);
-            //        //_mainDbContext.Set<DishAvailability>().Update(updateItem);
-            //    }
-            //    await _mainDbContext.SaveChangesAsync().ConfigureAwait(false);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.WriteLine(ex.Message);
-            //    throw new Exception(ex.Message);
-            //}
-            //return true;
-        //}
+                            if (updateItem == null)
+                            {
+                                continue;
+                            }
+                            if (subtract)
+                            {
+                                if (updateItem.CurrentQuantity - entity.Quantity >= 0)
+                                {
+                                    updateItem.CurrentQuantity -= entity.Quantity;
+                                }
+                                else
+                                {
+                                    throw new Exception("Supply quantity too low!");
+                                }
+                            }
+                            else
+                            {
+                                updateItem.CurrentQuantity += entity.Quantity;
+                            }
+
+                            await Update(updateItem).ConfigureAwait(false);
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            });
+            return true;
+        }
 
 
         public async Task<List<DishAvailabilityDisplay>> GetByPeriod(DateTime date, int numDays)
