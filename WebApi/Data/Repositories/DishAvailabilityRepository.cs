@@ -68,7 +68,10 @@ namespace Data.Repositories
             {
                 foreach (DishAvailabilityOrder entity in entities)
                 {
-                    var updateItem = await _mainDbContext.Set<DishAvailability>().AsNoTracking().SingleOrDefaultAsync(e => e.Id == entity.Id);
+                    var updateItem = 
+                        await _mainDbContext.Set<DishAvailability>()
+                            .AsNoTracking()
+                            .SingleOrDefaultAsync(e => e.Id == entity.Id);
 
                     if (subtract)
                     {

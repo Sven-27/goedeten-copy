@@ -8,18 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using OmniKassa;
-using System.Collections.Specialized;
 using OmniKassa.Model.Response;
 using OmniKassa.Exceptions;
 using OmniKassa.Model.Enums;
 using OmniKassa.Model;
 using OmniKassa.Model.Order;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
 using OmniKassa.Model.Response.Notification;
 using Endpoint = OmniKassa.Endpoint;
 using Microsoft.Extensions.Options;
@@ -113,87 +107,93 @@ namespace Logic.Services
 
         public async Task<RedirectResult> Create(OrderEasyDto data)
         {
-            var listUpdates = data.Cart
-                                    .Select(item => new DishAvailabilityOrder
-                                    {
-                                        Id = item.Dish.Id,
-                                        Quantity = item.Quantity
-                                    })
-                                    .ToList();
-
-            if (await _dishAvailabilityRepository.Update(listUpdates, true))
+            try
             {
-                try
+                var listUpdates = data.Cart
+                        .Select(item => new DishAvailabilityOrder
+                        {
+                            Id = item.Dish.Id,
+                            Quantity = item.Quantity
+                        })
+                        .ToList();
+
+                if (await _dishAvailabilityRepository.Update(listUpdates, true))
                 {
-                    var sum_dishes = data.Cart.Sum(c => c.Quantity * c.Price);
-                    var deliveries = data.Cart.GroupBy(c => c.Dish.Date).ToList().Count;
-                    var orderTotalPrice = sum_dishes + (deliveries * 2.5m);
-                    var deliveryList = data.Cart
-                        .GroupBy(c => c.Dish.Date)
-                        .Select(t =>
-                        new
-                        {
-                            DeliveryDate = t.Key,
-                            DeliveryPrice = 2.50m,
-                            Price = t.Sum(u => (u.Price * u.Quantity)),
-                        }).ToList();
-                    List<OrderDeliveryDto> orderDeliveries = new List<OrderDeliveryDto>();
-                    foreach (var item1 in deliveryList)
+                    try
                     {
-                        var dishesByDelivery = data.Cart.Where(c => c.Dish.Date == item1.DeliveryDate).ToList();
-                        var newDelivery = new OrderDeliveryDto()
+                        var sum_dishes = data.Cart.Sum(c => c.Quantity * c.Price);
+                        var deliveries = data.Cart.GroupBy(c => c.Dish.Date).ToList().Count;
+                        var orderTotalPrice = sum_dishes + (deliveries * 2.5m);
+                        var deliveryList = data.Cart
+                            .GroupBy(c => c.Dish.Date)
+                            .Select(t =>
+                            new
+                            {
+                                DeliveryDate = t.Key,
+                                DeliveryPrice = 2.50m,
+                                Price = t.Sum(u => (u.Price * u.Quantity)),
+                            }).ToList();
+                        List<OrderDeliveryDto> orderDeliveries = new List<OrderDeliveryDto>();
+                        foreach (var item1 in deliveryList)
                         {
-                            DeliveryPrice = item1.DeliveryPrice,
-                            DeliveryDate = item1.DeliveryDate,
-                            TotalPrice = item1.Price + item1.DeliveryPrice,
-                            DishOrders = _mapper.Map<List<OrderCartDto>, List<OrderDishDto>>(dishesByDelivery)
+                            var dishesByDelivery = data.Cart.Where(c => c.Dish.Date == item1.DeliveryDate).ToList();
+                            var newDelivery = new OrderDeliveryDto()
+                            {
+                                DeliveryPrice = item1.DeliveryPrice,
+                                DeliveryDate = item1.DeliveryDate,
+                                TotalPrice = item1.Price + item1.DeliveryPrice,
+                                DishOrders = _mapper.Map<List<OrderCartDto>, List<OrderDishDto>>(dishesByDelivery)
+                            };
+                            orderDeliveries.Add(newDelivery);
                         };
-                        orderDeliveries.Add(newDelivery);
-                    };
-                    var newOrder = new OrderDto
+                        var newOrder = new OrderDto
+                        {
+                            OrderDate = data.OrderDate,
+                            TotalAmount = orderTotalPrice,
+                            FirstName = data.FirstName,
+                            LastName = data.LastName,
+                            Street = data.Street,
+                            HouseNumber = data.HouseNumber,
+                            AddHouseNumber = data.AddHouseNumber,
+                            Zipcode = data.ZipCode,
+                            City = data.City,
+                            Email = data.Email,
+                            Phone = data.Phone,
+                            Details = data.Details,
+                            Dietdetails = data.Dietdetails,
+                            Status = OrderStatus.New,
+                            Deliveries = orderDeliveries,
+                            Transactions = null
+                        };
+                        var mapNewOrder = _mapper.Map<OrderDto, Order>(newOrder);
+                        var res = await _orderRepository.Create(mapNewOrder).ConfigureAwait(false);
+                        if (res != null)
+                        {
+                            string partOfNumber = res.Id < 99999 ? res.Id.ToString().Trim() : res.Id.ToString().Substring(res.Id.ToString().Length - 5);
+                            res.OrderNumber = res.OrderDate.ToString("yyMMdd") + partOfNumber.PadLeft(5, '0');
+                            await _orderRepository.Update(res).ConfigureAwait(false);
+                            // orderNumber is saved         
+                            //return _mapper.Map<Order, OrderDto>(res);
+                            var finalres = _mapper.Map<Order, OrderDto>(res);
+                            var placeOrder = await PlaceOrder(finalres);
+                            //return final result;
+                            return placeOrder;
+                        }
+                    }
+                    catch (Exception ex)
                     {
-                        OrderDate = data.OrderDate,
-                        TotalAmount = orderTotalPrice,
-                        FirstName = data.FirstName,
-                        LastName = data.LastName,
-                        Street = data.Street,
-                        HouseNumber = data.HouseNumber,
-                        AddHouseNumber = data.AddHouseNumber,
-                        Zipcode = data.ZipCode,
-                        City = data.City,
-                        Email = data.Email,
-                        Phone = data.Phone,
-                        Details = data.Details,
-                        Dietdetails = data.Dietdetails,
-                        Status = OrderStatus.New,
-                        Deliveries = orderDeliveries,
-                        Transactions = null
-                    };
-                    var mapNewOrder = _mapper.Map<OrderDto, Order>(newOrder);
-                    var res = await _orderRepository.Create(mapNewOrder).ConfigureAwait(false);
-                    if (res != null)
-                    {
-                        string partOfNumber = res.Id < 99999 ? res.Id.ToString().Trim() : res.Id.ToString().Substring(res.Id.ToString().Length - 5);
-                        res.OrderNumber = res.OrderDate.ToString("yyMMdd") + partOfNumber.PadLeft(5, '0');
-                        await _orderRepository.Update(res).ConfigureAwait(false);
-                        // orderNumber is saved         
-                        //return _mapper.Map<Order, OrderDto>(res);
-                        var finalres = _mapper.Map<Order, OrderDto>(res);
-                        var placeOrder = await PlaceOrder(finalres);
-                        //return final result;
-                        return placeOrder;
+                        await _dishAvailabilityRepository.Update(listUpdates, false);
+                        Debug.WriteLine(ex.Message);
+                        throw new Exception(ex.Message);
                     }
                 }
-                catch (Exception ex)
-                {
-                    await _dishAvailabilityRepository.Update(listUpdates, false);
-                    Debug.WriteLine(ex.Message);
-                    return null;
-                }
+                // await _dishAvailabilityRepository.Update(listUpdates, false);
+                return new RedirectResult("nosupply");
             }
-            // await _dishAvailabilityRepository.Update(listUpdates, false);
-            return new RedirectResult("nosupply");
-
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<RedirectResult> PlaceOrder(OrderDto order)

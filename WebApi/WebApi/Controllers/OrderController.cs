@@ -109,6 +109,7 @@ namespace WebApi.Controllers
                 catch (Exception ex)
                 {
                     Debug.WriteLine(ex.Message);
+                    throw new Exception(ex.Message);
                     return BadRequest(false);
                 }
             return BadRequest(false);
