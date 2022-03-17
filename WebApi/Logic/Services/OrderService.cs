@@ -207,6 +207,7 @@ namespace Logic.Services
             catch (RabobankSdkException ex)
             {
                 Debug.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
                 return null;
             }
         }
