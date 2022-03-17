@@ -25,7 +25,7 @@ namespace Data.Repositories
         Task<DishAvailability> GetByIdWithTracking(int id);
         Task<DishAvailability> Create(DishAvailability entity);
         Task Update(DishAvailability entity);
-        Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract);
+        //Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract);
         Task Delete(int id);
         Task<List<DishAvailabilityDisplay>> GetByPeriod(DateTime date, int numDays);
         Task<List<DishAvailabilityPlanning>> GetByDate(DateTime date, int id);
@@ -62,48 +62,48 @@ namespace Data.Repositories
 
         }
 
-        public async Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract)
-        {
-            try
-            {
-                foreach (DishAvailabilityOrder entity in entities)
-                {
-                    var updateItem = 
-                        await _mainDbContext.Set<DishAvailability>()
-                            .AsNoTracking()
-                            .SingleOrDefaultAsync(e => e.Id == entity.Id).ConfigureAwait(false);
+        //public async Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract)
+        //{
+            //try
+            //{
+            //    foreach (DishAvailabilityOrder entity in entities)
+            //    {
+            //        var updateItem = 
+            //            await _mainDbContext.Set<DishAvailability>()
+            //                .AsNoTracking()
+            //                .SingleOrDefaultAsync(e => e.Id == entity.Id).ConfigureAwait(false);
 
-                    _mainDbContext.Entry(updateItem).State = EntityState.Detached;
+            //        _mainDbContext.Entry(updateItem).State = EntityState.Detached;
 
-                    if (subtract)
-                    {
-                        if (updateItem.CurrentQuantity - entity.Quantity >= 0)
-                        {
-                            updateItem.CurrentQuantity -= entity.Quantity;
-                            // _mainDbContext.Set<DishAvailability>().Update(updateItem);
-                        }
-                        else
-                        {
-                            throw new Exception("Supply quantity too low!");
-                        }
-                    }
-                    else
-                    {
-                        updateItem.CurrentQuantity += entity.Quantity;
-                    }
+            //        if (subtract)
+            //        {
+            //            if (updateItem.CurrentQuantity - entity.Quantity >= 0)
+            //            {
+            //                updateItem.CurrentQuantity -= entity.Quantity;
+            //                // _mainDbContext.Set<DishAvailability>().Update(updateItem);
+            //            }
+            //            else
+            //            {
+            //                throw new Exception("Supply quantity too low!");
+            //            }
+            //        }
+            //        else
+            //        {
+            //            updateItem.CurrentQuantity += entity.Quantity;
+            //        }
 
-                    await Update(updateItem).ConfigureAwait(false);
-                    //_mainDbContext.Set<DishAvailability>().Update(updateItem);
-                }
-                await _mainDbContext.SaveChangesAsync().ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
-                throw new Exception(ex.Message);
-            }
-            return true;
-        }
+            //        await Update(updateItem).ConfigureAwait(false);
+            //        //_mainDbContext.Set<DishAvailability>().Update(updateItem);
+            //    }
+            //    await _mainDbContext.SaveChangesAsync().ConfigureAwait(false);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.WriteLine(ex.Message);
+            //    throw new Exception(ex.Message);
+            //}
+            //return true;
+        //}
 
 
         public async Task<List<DishAvailabilityDisplay>> GetByPeriod(DateTime date, int numDays)

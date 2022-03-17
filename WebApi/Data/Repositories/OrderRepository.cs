@@ -38,7 +38,9 @@ namespace Data.Repositories
         private readonly MainDbContext _mainDbContext;
         private readonly IDishAvailabilityRepository _dishAvailabilityRepository;
 
-        public OrderRepository(MainDbContext mainDbContext, IDishAvailabilityRepository dishAvailabilityRepository) : base(mainDbContext)
+        public OrderRepository(
+            MainDbContext mainDbContext, 
+            IDishAvailabilityRepository dishAvailabilityRepository) : base(mainDbContext)
         {
             _mainDbContext = mainDbContext;
             _dishAvailabilityRepository = dishAvailabilityRepository;
@@ -83,7 +85,26 @@ namespace Data.Repositories
                                                                 Quantity = dish.Quantity
                                                             }))
                                                             .ToList();
-                        await _dishAvailabilityRepository.Update(listUpdates, false);
+
+                        var updateIds = listUpdates.Select(d => d.Id).ToList();
+
+                        var undoDishAvailabilities = await _dishAvailabilityRepository
+                            .GetAll()
+                            .Where(d => updateIds.Contains(d.Id))
+                            .ToListAsync()
+                            .ConfigureAwait(false);
+
+                        foreach (var listUpdate in listUpdates)
+                        {
+                            var dishAvailability = undoDishAvailabilities.SingleOrDefault(d => d.Id == listUpdate.Id);
+                            if (dishAvailability != null)
+                            {
+                                dishAvailability.CurrentQuantity += listUpdate.Quantity;
+                            }
+
+                            await _dishAvailabilityRepository.Update(dishAvailability).ConfigureAwait(false);
+                        }
+                        //await _dishAvailabilityRepository.Update(listUpdates, false);
                     }
                     await _mainDbContext.SaveChangesAsync();
                 }
