@@ -8,7 +8,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { IDish } from "models/Dish";
 import styles from "styles/customer/dishInfo/DishInfo.module.scss";
 import Link from "next/link";
-import agent from "adapters/agent";
 
 const Accordion = withStyles({
 	root: {
@@ -70,16 +69,8 @@ interface Props {
 
 export default function CustomizedAccordions({ info }: Props) {
 	const [expanded, setExpanded] = useState<string | false>("");
-  const [ingredients, setIngredients] = useState<string>("");
 	const ref = useRef<any>();
-
-  // useEffect(() => {
-  //   const getIngredients = async() => {
-  //     const response = await agent.
-  //   }
-  //   getIngredients()
-  // }, [])
-
+  
 	useEffect(() => {
 		const onBodyClick = (event: any) => {
 			if (ref.current.contains(event.target)) {
@@ -144,12 +135,14 @@ export default function CustomizedAccordions({ info }: Props) {
 					<Typography>Ingrediënten</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
-					<Typography className={styles.titles}>Ingrediënten:</Typography>
+					<Typography className={styles.titles}>
+            Ingrediënten:
+						<br></br>
+						<br></br>
+            </Typography>
 					<Typography>
-						{/* {info.ingredients.map((item) => item.name).join(", ")} */}
-						<br></br>
             {info.allIngredientsField}
-						<br></br>
+						{/* {info.ingredients.map((item) => item.name).join(", ")} */}
 					</Typography>
 					{/* <Typography className={styles.letop}>
 						<b>* Let op:</b> De ingrediënten kunnen altijd afwijken ivm het
@@ -158,7 +151,7 @@ export default function CustomizedAccordions({ info }: Props) {
 						afrekenen.
 					</Typography> */}
 			 </AccordionDetails>
-				{/* <AccordionDetails>
+				<AccordionDetails>
 					<Typography className={styles.titles}>Allergenen:</Typography>
 					<Typography className={styles.geen}>
 						{info.allergens.length !== 0 ? (
@@ -173,7 +166,7 @@ export default function CustomizedAccordions({ info }: Props) {
 						verschillende (soorten) gerechten bereid worden, hierdoor kunnen er
 						altijd sporen van allergenen voorkomen in de gerechten.
 					</Typography>
-				</AccordionDetails> */}
+				</AccordionDetails>
 			</Accordion>
 			<Accordion
 				expanded={expanded === "panel3"}

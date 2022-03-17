@@ -134,6 +134,24 @@ export default function DishDetailTabs({
       </TabPanel>
       <TabPanel value={value} index={1}>
         <TextField
+          {...methods.register("ingredients", { maxLength: 500 })}
+          id="ingredients"
+          fullWidth={true}
+          label="ingredienten"
+          multiline
+          rows={5}
+          value={dish.allIngredientsField}
+          onChange={(e) => handleDescriptionChange(e.target.value)}
+          variant="outlined"
+        />
+        {methods.formState.errors.description &&
+          methods.formState.errors.description.type === "maxLength" && (
+            <p style={{ color: "red" }}>
+              {" "}
+              Mag niet langer dan 500 karakters zijn...
+            </p>
+          )}
+        {/* <TextField
           {...methods.register("ingredients")}
           id="ingredients"
           fullWidth={true}
@@ -145,11 +163,11 @@ export default function DishDetailTabs({
               : ingredients.map((item) => item.name).join(", ")
           }
           variant="outlined"
-        />
+        /> */}
         <div className="dish__row2__column2__small__container">
-          <Button variant="contained" color="primary" onClick={handleOpen}>
+          {/* <Button variant="contained" color="primary" onClick={handleOpen}>
             Ingredienten wijzigen
-          </Button>
+          </Button> */}
           <DishIngredientsEdit
             ingredients={ingredients}
             dishId={dish.id}
