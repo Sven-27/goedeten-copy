@@ -71,7 +71,9 @@ namespace Data.Repositories
                     var updateItem = 
                         await _mainDbContext.Set<DishAvailability>()
                             .AsNoTracking()
-                            .SingleOrDefaultAsync(e => e.Id == entity.Id);
+                            .SingleOrDefaultAsync(e => e.Id == entity.Id).ConfigureAwait(false);
+
+                    _mainDbContext.Entry(updateItem).State = EntityState.Detached;
 
                     if (subtract)
                     {
@@ -89,9 +91,11 @@ namespace Data.Repositories
                     {
                         updateItem.CurrentQuantity += entity.Quantity;
                     }
-                    _mainDbContext.Set<DishAvailability>().Update(updateItem);
+
+                    await Update(updateItem).ConfigureAwait(false);
+                    //_mainDbContext.Set<DishAvailability>().Update(updateItem);
                 }
-                await _mainDbContext.SaveChangesAsync();
+                await _mainDbContext.SaveChangesAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
