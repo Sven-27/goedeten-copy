@@ -1,5 +1,4 @@
 import styles from "styles/customer/Processing.module.scss";
-// import useInterval from "data/useInterval";
 import agent from "adapters/agent";
 import { useStateSafe } from "data/useStateSafe";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -32,8 +31,6 @@ const Processing = () => {
   const router = useRouter();
   const { tomaatTextTaglineDonkerGroen } = Logos;
  
-
-
   useInterval(async () => {
     const order_id = router.query.order_id?.toString();   
     

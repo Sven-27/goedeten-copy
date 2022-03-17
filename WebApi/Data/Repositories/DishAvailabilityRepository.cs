@@ -62,39 +62,68 @@ namespace Data.Repositories
 
         }
 
+        public async Task<DishAvailability> GetDetachedDishAvailability(int id)
+        {
+            var dishAvailability = await _mainDbContext.DishAvailabilities
+                .SingleOrDefaultAsync(u => u.Id == id)
+                .ConfigureAwait(false);
+            // Now detach it to avoid:
+            // The instance of entity type 'User' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked.
+            // When attaching existing entities, ensure that only one entity instance with a given key value is attached
+            _mainDbContext.Entry(dishAvailability).State = EntityState.Detached;
+            return dishAvailability;
+        }
+
         public async Task<bool> Update(List<DishAvailabilityOrder> entities, bool subtract)
         {
-            try
-            {
-                foreach (DishAvailabilityOrder entity in entities)
-                {
-                    var updateItem = await _mainDbContext.Set<DishAvailability>().AsNoTracking().SingleOrDefaultAsync(e => e.Id == entity.Id);
+            var strategy = _mainDbContext.Database.CreateExecutionStrategy();
 
-                    if (subtract)
-                    {
-                        if (updateItem.CurrentQuantity - entity.Quantity >= 0)
-                        {
-                            updateItem.CurrentQuantity -= entity.Quantity;
-                            // _mainDbContext.Set<DishAvailability>().Update(updateItem);
-                        }
-                        else
-                        {
-                            throw new Exception("Supply quantity too low!");
-                        }
-                    }
-                    else
-                    {
-                        updateItem.CurrentQuantity += entity.Quantity;
-                    }
-                    _mainDbContext.Set<DishAvailability>().Update(updateItem);
-                }
-                await _mainDbContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
+            await strategy.ExecuteAsync(async () =>
             {
-                Debug.WriteLine(ex.Message);
-                return false;
-            }
+                // Achieving atomicity between original Catalog database operation and the
+                // IntegrationEventLog thanks to a local transaction
+                using (var transaction = _mainDbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (DishAvailabilityOrder entity in entities)
+                        {
+                            var updateItem =
+                                await GetDetachedDishAvailability(entity.Id).ConfigureAwait(false);
+
+                            if (updateItem == null)
+                            {
+                                continue;
+                            }
+                            if (subtract)
+                            {
+                                if (updateItem.CurrentQuantity - entity.Quantity >= 0)
+                                {
+                                    updateItem.CurrentQuantity -= entity.Quantity;
+                                }
+                                else
+                                {
+                                    throw new Exception("Supply quantity too low!");
+                                }
+                            }
+                            else
+                            {
+                                updateItem.CurrentQuantity += entity.Quantity;
+                            }
+
+                            await Update(updateItem).ConfigureAwait(false);
+                        }
+
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+            });
             return true;
         }
 

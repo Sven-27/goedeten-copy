@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Data.Repositories
@@ -38,7 +37,9 @@ namespace Data.Repositories
         private readonly MainDbContext _mainDbContext;
         private readonly IDishAvailabilityRepository _dishAvailabilityRepository;
 
-        public OrderRepository(MainDbContext mainDbContext, IDishAvailabilityRepository dishAvailabilityRepository) : base(mainDbContext)
+        public OrderRepository(
+            MainDbContext mainDbContext, 
+            IDishAvailabilityRepository dishAvailabilityRepository) : base(mainDbContext)
         {
             _mainDbContext = mainDbContext;
             _dishAvailabilityRepository = dishAvailabilityRepository;
@@ -49,7 +50,8 @@ namespace Data.Repositories
                 .AsNoTracking().Where(o => o.Id == Id)
                 .Include(o => o.Deliveries).ThenInclude(d => d.DishOrders).ThenInclude(dishOrder => dishOrder.Dish).ThenInclude(dishOrder => dishOrder.Cook)
                 .Include(o => o.Transactions)
-                .SingleOrDefaultAsync();
+                .SingleOrDefaultAsync()
+                .ConfigureAwait(false);
 
             return dish;
         }
@@ -64,7 +66,8 @@ namespace Data.Repositories
                     order = await _mainDbContext.Orders
                             .Include(o => o.Transactions)
                             .Include(o => o.Deliveries).ThenInclude(d => d.DishOrders)
-                            .SingleOrDefaultAsync(o => o.Id == transaction.OrderId);
+                            .SingleOrDefaultAsync(o => o.Id == transaction.OrderId)
+                            .ConfigureAwait(false);
                     order.Transactions.Add(transaction);
 
                     if ((int)order.Status < 3)
@@ -83,7 +86,8 @@ namespace Data.Repositories
                                                                 Quantity = dish.Quantity
                                                             }))
                                                             .ToList();
-                        await _dishAvailabilityRepository.Update(listUpdates, false);
+
+                        await _dishAvailabilityRepository.Update(listUpdates, false).ConfigureAwait(false);
                     }
                     await _mainDbContext.SaveChangesAsync();
                 }

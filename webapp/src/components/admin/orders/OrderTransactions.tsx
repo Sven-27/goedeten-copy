@@ -1,4 +1,3 @@
-import { FormControl, InputLabel, OutlinedInput, TextField, Typography } from "@material-ui/core";
 import React from "react";
 import { useStore } from "contexts/admin/store";
 import { observer } from "mobx-react";
@@ -14,9 +13,8 @@ export default observer(function OrderTransactions() {
   return (
     <div className={styles.transactionTable}>
 
-
     <DataTable
-    columnData={[
+        columnData={[
         {
             id: 'id',
             name: 'Id',

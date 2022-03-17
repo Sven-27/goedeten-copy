@@ -54,14 +54,23 @@ namespace CrossCuttingConcerns.EntityFrameworkGenerics
 
         public virtual async Task<TEntity> Create(TEntity entity)
         {
-            await _mainDbContext.Set<TEntity>().AddAsync(entity);
-            await _mainDbContext.SaveChangesAsync();
-            return entity;
+            try
+            {
+                await _mainDbContext.Set<TEntity>().AddAsync(entity);
+                await _mainDbContext.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
 
         public virtual async Task Update(TEntity entity)
         {
-              try
+            try
             {
                 _mainDbContext.Set<TEntity>().Update(entity);
                 await _mainDbContext.SaveChangesAsync();
@@ -69,6 +78,7 @@ namespace CrossCuttingConcerns.EntityFrameworkGenerics
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
+                throw;
             }
         }
 

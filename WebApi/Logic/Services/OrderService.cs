@@ -1,31 +1,27 @@
-﻿using AutoMapper;
-using CrossCuttingConcerns.Enums;
-using Data.DataObjects;
-using Data.Repositories;
-using Logic.DataTransferObjects;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using OmniKassa;
-using System.Collections.Specialized;
-using OmniKassa.Model.Response;
-using OmniKassa.Exceptions;
-using OmniKassa.Model.Enums;
-using OmniKassa.Model;
-using OmniKassa.Model.Order;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Primitives;
-using OmniKassa.Model.Response.Notification;
-using Endpoint = OmniKassa.Endpoint;
-using Microsoft.Extensions.Options;
-using CrossCuttingConcerns.Settings;
-using Microsoft.AspNetCore.Mvc;
+using AutoMapper;
+using CrossCuttingConcerns.Enums;
 using CrossCuttingConcerns.PagingSorting;
+using CrossCuttingConcerns.Settings;
+using Data.DataObjects;
+using Data.Repositories;
+using Logic.DataTransferObjects;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using OmniKassa;
+using OmniKassa.Exceptions;
+using OmniKassa.Model;
+using OmniKassa.Model.Enums;
+using OmniKassa.Model.Order;
+using OmniKassa.Model.Response;
+using OmniKassa.Model.Response.Notification;
+using Environment = OmniKassa.Environment;
 
 namespace Logic.Services
 {
@@ -41,10 +37,8 @@ namespace Logic.Services
         Task<bool> RetrieveUpdates(ApiNotification notification);
 
         Task<bool> Update(OrderDto order);
-
-
-
     }
+
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
@@ -79,7 +73,20 @@ namespace Logic.Services
 
             if (omniKassa == null)
             {
-                omniKassa = Endpoint.Create(OmniKassa.Environment.SANDBOX, SIGNING_KEY, TOKEN);
+
+#if DEBUG
+            omniKassa ??= 
+                Endpoint.Create(
+                    OmniKassa.Environment.SANDBOX, 
+                    _appSettings.SigningKey, 
+                    _appSettings.Token);
+#else
+                omniKassa ??=
+                    Endpoint.Create(
+                        OmniKassa.Environment.PRODUCTION,
+                        _appSettings.SigningKey,
+                        _appSettings.Token);
+#endif
             }
         }
 
@@ -93,6 +100,7 @@ namespace Logic.Services
 
             return _mapper.Map<List<OrderDto>>(results);
         }
+
         public async Task<List<OrderDeliveryDto>> GetAllDeliveries()
         {
             var results = await _orderDeliveryRepository
@@ -114,34 +122,39 @@ namespace Logic.Services
         public async Task<RedirectResult> Create(OrderEasyDto data)
         {
             var listUpdates = data.Cart
-                                    .Select(item => new DishAvailabilityOrder
-                                    {
-                                        Id = item.Dish.Id,
-                                        Quantity = item.Quantity
-                                    })
-                                    .ToList();
-
-            if (await _dishAvailabilityRepository.Update(listUpdates, true))
+                .Select(item => new DishAvailabilityOrder
+                {
+                    Id = item.Dish.Id,
+                    Quantity = item.Quantity
+                })
+                .ToList();
+            try
             {
+    
+
+                if (!await _dishAvailabilityRepository.Update(listUpdates, true))
+                {
+                    throw new Exception("Update dish availability failed => Create Order service!");
+                }
                 try
                 {
                     var sum_dishes = data.Cart.Sum(c => c.Quantity * c.Price);
                     var deliveries = data.Cart.GroupBy(c => c.Dish.Date).ToList().Count;
-                    var orderTotalPrice = sum_dishes + (deliveries * 2.5m);
+                    var orderTotalPrice = sum_dishes + deliveries * 2.5m;
                     var deliveryList = data.Cart
                         .GroupBy(c => c.Dish.Date)
                         .Select(t =>
-                        new
-                        {
-                            DeliveryDate = t.Key,
-                            DeliveryPrice = 2.50m,
-                            Price = t.Sum(u => (u.Price * u.Quantity)),
-                        }).ToList();
-                    List<OrderDeliveryDto> orderDeliveries = new List<OrderDeliveryDto>();
+                            new
+                            {
+                                DeliveryDate = t.Key,
+                                DeliveryPrice = 2.50m,
+                                Price = t.Sum(u => u.Price * u.Quantity)
+                            }).ToList();
+                    var orderDeliveries = new List<OrderDeliveryDto>();
                     foreach (var item1 in deliveryList)
                     {
                         var dishesByDelivery = data.Cart.Where(c => c.Dish.Date == item1.DeliveryDate).ToList();
-                        var newDelivery = new OrderDeliveryDto()
+                        var newDelivery = new OrderDeliveryDto
                         {
                             DeliveryPrice = item1.DeliveryPrice,
                             DeliveryDate = item1.DeliveryDate,
@@ -149,7 +162,8 @@ namespace Logic.Services
                             DishOrders = _mapper.Map<List<OrderCartDto>, List<OrderDishDto>>(dishesByDelivery)
                         };
                         orderDeliveries.Add(newDelivery);
-                    };
+                    }
+
                     var newOrder = new OrderDto
                     {
                         OrderDate = data.OrderDate,
@@ -173,40 +187,46 @@ namespace Logic.Services
                     var res = await _orderRepository.Create(mapNewOrder).ConfigureAwait(false);
                     if (res != null)
                     {
-                        string partOfNumber = res.Id < 99999 ? res.Id.ToString().Trim() : res.Id.ToString().Substring(res.Id.ToString().Length - 5);
+                        var partOfNumber = res.Id < 99999
+                            ? res.Id.ToString().Trim()
+                            : res.Id.ToString().Substring(res.Id.ToString().Length - 5);
                         res.OrderNumber = res.OrderDate.ToString("yyMMdd") + partOfNumber.PadLeft(5, '0');
                         await _orderRepository.Update(res).ConfigureAwait(false);
                         // orderNumber is saved         
                         //return _mapper.Map<Order, OrderDto>(res);
                         var finalres = _mapper.Map<Order, OrderDto>(res);
                         var placeOrder = await PlaceOrder(finalres);
-                        //return finalres;
+                        //return final result;
                         return placeOrder;
                     }
                 }
                 catch (Exception ex)
                 {
-                    await _dishAvailabilityRepository.Update(listUpdates, false);
+                    //await _dishAvailabilityRepository.Update(listUpdates, false);
                     Debug.WriteLine(ex.Message);
-                    return null;
+                    throw new Exception(ex.Message);
                 }
-            }
-            // await _dishAvailabilityRepository.Update(listUpdates, false);
-            return new RedirectResult("nosupply");
 
+                return new RedirectResult("nosupply");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<RedirectResult> PlaceOrder(OrderDto order)
         {
             try
             {
-                MerchantOrder merchantOrder = GetOrder(order);
-                MerchantOrderResponse response = await omniKassa.Announce(merchantOrder);
+                var merchantOrder = GetOrder(order);
+                var response = await omniKassa.Announce(merchantOrder);
                 return new RedirectResult(response.RedirectUrl);
             }
             catch (RabobankSdkException ex)
             {
                 Debug.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
                 return null;
             }
         }
@@ -227,14 +247,15 @@ namespace Logic.Services
                     var addTransactions = await _orderRepository.AddTransactions(results);
                     //string str_addTransactions =  Newtonsoft.Json.JsonConvert.SerializeObject(addTransactions);
                     //await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Transactions", str_addTransactions).ConfigureAwait(false);
-                }
-                while (response.MoreOrderResultsAvailable);
+                } while (response.MoreOrderResultsAvailable);
             }
             catch (RabobankSdkException ex)
             {
                 Debug.WriteLine(ex.Message);
-                string str_response =  Newtonsoft.Json.JsonConvert.SerializeObject(ex.Message);
-                await _emailService.TestEmail("f.vandergeld@bee-international.nl", "Error in RetrieveUpdates", str_response).ConfigureAwait(false);
+                var str_response = JsonConvert.SerializeObject(ex.Message);
+                await _emailService
+                    .TestEmail("f.vandergeld@bee-international.nl", "Error in RetrieveUpdates", str_response)
+                    .ConfigureAwait(false);
                 return false;
             }
 
@@ -254,7 +275,6 @@ namespace Logic.Services
                 Debug.WriteLine(ex.Message);
                 return false;
             }
-
         }
 
         public MerchantOrder GetOrder(OrderDto orderDto)
@@ -273,24 +293,24 @@ namespace Logic.Services
             //         .WithVatCategory(VatCategory.LOW)
             //         .Build();
 
-            CustomerInformation customerInformation = new CustomerInformation.Builder()
-                    .WithTelephoneNumber(orderDto.Phone)
-                    // .WithInitials("J.D.")
-                    // .WithGender(Gender.M)
-                    .WithEmailAddress(orderDto.Email)
-                    // .WithDateOfBirth("20-03-1987")
-                    .Build();
+            var customerInformation = new CustomerInformation.Builder()
+                .WithTelephoneNumber(orderDto.Phone)
+                // .WithInitials("J.D.")
+                // .WithGender(Gender.M)
+                .WithEmailAddress(orderDto.Email)
+                // .WithDateOfBirth("20-03-1987")
+                .Build();
 
-            Address shippingDetails = new Address.Builder()
-                    .WithFirstName(orderDto.FirstName)
-                    .WithLastName(orderDto.LastName)
-                    .WithStreet(orderDto.Street)
-                    .WithHouseNumber(orderDto.HouseNumber.ToString())
-                    .WithHouseNumberAddition(orderDto.AddHouseNumber)
-                    .WithPostalCode(orderDto.Zipcode)
-                    .WithCity(orderDto.City)
-                    .WithCountryCode(CountryCode.NL)
-                    .Build();
+            var shippingDetails = new Address.Builder()
+                .WithFirstName(orderDto.FirstName)
+                .WithLastName(orderDto.LastName)
+                .WithStreet(orderDto.Street)
+                .WithHouseNumber(orderDto.HouseNumber.ToString())
+                .WithHouseNumberAddition(orderDto.AddHouseNumber)
+                .WithPostalCode(orderDto.Zipcode)
+                .WithCity(orderDto.City)
+                .WithCountryCode(CountryCode.NL)
+                .Build();
 
             // Address billingDetails = new Address.Builder()
             //         .WithFirstName("John")
@@ -303,20 +323,20 @@ namespace Logic.Services
             //         .WithCountryCode(CountryCode.NL)
             //         .Build();
 
-            MerchantOrder order = new MerchantOrder.Builder()
-                    .WithMerchantOrderId(orderDto.OrderNumber + "O" + orderDto.Id.ToString())
-                    //.WithDescription("An example description")
-                    //.WithOrderItems(new List<OrderItem>(new OrderItem[] { orderItem }))
-                    .WithAmount(Money.FromDecimal(Currency.EUR, orderDto.TotalAmount))
-                    .WithCustomerInformation(customerInformation)
-                    .WithShippingDetail(shippingDetails)
-                    //.WithBillingDetail(billingDetails)
-                    .WithLanguage(Language.NL)
-                    .WithMerchantReturnURL(RETURN_URL)
-                    .WithPaymentBrand(PaymentBrand.IDEAL)
-                    .WithPaymentBrandForce(PaymentBrandForce.FORCE_ONCE)
-                    // .WithInitiatingParty("LIGHTSPEED")
-                    .Build();
+            var order = new MerchantOrder.Builder()
+                .WithMerchantOrderId(orderDto.OrderNumber + "O" + orderDto.Id)
+                //.WithDescription("An example description")
+                //.WithOrderItems(new List<OrderItem>(new OrderItem[] { orderItem }))
+                .WithAmount(Money.FromDecimal(Currency.EUR, orderDto.TotalAmount))
+                .WithCustomerInformation(customerInformation)
+                .WithShippingDetail(shippingDetails)
+                //.WithBillingDetail(billingDetails)
+                .WithLanguage(Language.NL)
+                .WithMerchantReturnURL(RETURN_URL)
+                .WithPaymentBrand(PaymentBrand.IDEAL)
+                .WithPaymentBrandForce(PaymentBrandForce.FORCE_ONCE)
+                // .WithInitiatingParty("LIGHTSPEED")
+                .Build();
 
             return order;
         }
@@ -333,6 +353,7 @@ namespace Logic.Services
                 Debug.WriteLine(ex.Message);
                 return false;
             }
+
             return true;
         }
     }
