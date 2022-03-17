@@ -96,7 +96,7 @@ namespace Data.Repositories
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                return false;
+                throw new Exception(ex.Message);
             }
             return true;
         }
