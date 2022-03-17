@@ -93,25 +93,34 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> PlaceOrder(OrderEasyDto entity)
         {
-            if (ModelState.IsValid)
-                try
+
+            try
+            {
+                // check TotalAmount
+                var totalAmount = CheckTotalAmount(entity);
+                if (totalAmount != entity.TotalAmount)
+                    return BadRequest("Total amount " + entity.TotalAmount.ToString(CultureInfo.InvariantCulture)
+                                                      + " of input data is wrong .... it has to be " +
+                                                      totalAmount.ToString(CultureInfo.InvariantCulture));
+                // TotalAmount is good
+                var createdOrder = await _service
+                    .Create(entity)
+                    .ConfigureAwait(false);
+                if (createdOrder != null)
                 {
-                    // check TotalAmount
-                    var totalAmount = CheckTotalAmount(entity);
-                    if (totalAmount != entity.TotalAmount) return BadRequest("Total amount " + entity.TotalAmount.ToString(CultureInfo.InvariantCulture)
-                    + " of input data is wrong .... it has to be " + totalAmount.ToString(CultureInfo.InvariantCulture));
-                    // TotalAmount is good
-                    var createdOrder = await _service
-                        .Create(entity)
-                        .ConfigureAwait(false);
-                    if (createdOrder != null) return Ok(createdOrder);
+                    return Ok(createdOrder);
                 }
-                catch (Exception ex)
+                else
                 {
-                    Debug.WriteLine(ex.Message);
-                    throw new Exception(ex.Message);
-                    return BadRequest(false);
+                    throw new Exception("createdOrder is null?!");
                 }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                throw new Exception(ex.Message);
+                return BadRequest(false);
+            }
             return BadRequest(false);
         }
 
