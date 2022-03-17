@@ -86,7 +86,7 @@
     width: 100%;
     display: grid;
     place-items: center;
-    padding-bottom: 10px;
+    margin-bottom: 0.8rem;
     
     h1{
       margin-top: 0.3rem;
@@ -94,7 +94,7 @@
 
     .letOp{
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
 
       @include mqtp($tablet){
         font-size: 1.2rem;
@@ -125,6 +125,7 @@
 
     h1{
       margin-top: 0.3rem;
+      margin-bottom: 0.8rem;
     }
   }
 }

@@ -36,7 +36,7 @@
     .logos{
       margin-top: 5px;
       grid-area: 1/1/2/4;
-      
+      margin-bottom: 0.8rem;      
 
       .logo{
         width: 40px;
@@ -58,6 +58,7 @@
       grid-area: 2/1/3/4;
       background: none;
       color: $darkgreen;
+      margin-bottom: 1.2rem;
     }
 
     .hamburgerContainer{
@@ -92,6 +93,7 @@
       grid-area: 3/2/4/4;
       display: flex;
       align-items: center;
+      margin-bottom: 1.2rem;
     }
 
     .of{
@@ -99,6 +101,7 @@
       text-transform: uppercase;
       font-style: italic;
       padding-left: 0.4rem;
+      margin-bottom: 1.2rem;
     }
 
     .footerLogo{
@@ -112,5 +115,6 @@
 
     .infoGoedEten{
       grid-area: 5/2/6/4;
+      margin-bottom: 0.8rem;
     }
 }

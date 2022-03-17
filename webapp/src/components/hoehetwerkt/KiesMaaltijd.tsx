@@ -2,7 +2,7 @@ import styles from "styles/customer/hoehetwerkt/KiesMaaltijd.module.scss"
 import {Logos} from "data/logos"
 
 const KiesMaaltijd = () => {
-  const {cloche, clocheRed} = Logos
+  const {cloche} = Logos
 
   return (
     <div className={styles.kies_maaltijd}>
@@ -10,7 +10,7 @@ const KiesMaaltijd = () => {
         <img className={styles.cloche_img} src={cloche} alt="cloche-icon" />
       </figure>
       <p className={styles.text1}>
-        Klik op de cloche bij de gewenste maaltijd om het gerecht te bestellen
+        Klik op de cloche bij de gewenste maaltijd om het gerecht te bestellen.
       </p>
       <span className={styles.text_options}>of</span>
       <figure className={styles.cloche_containerMiddle}>
