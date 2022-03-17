@@ -180,7 +180,7 @@ namespace Logic.Services
                         //return _mapper.Map<Order, OrderDto>(res);
                         var finalres = _mapper.Map<Order, OrderDto>(res);
                         var placeOrder = await PlaceOrder(finalres);
-                        //return finalres;
+                        //return final result;
                         return placeOrder;
                     }
                 }

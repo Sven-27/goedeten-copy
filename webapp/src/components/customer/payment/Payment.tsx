@@ -92,11 +92,11 @@ export default observer(function Payment() {
         totalAmount: total,
       };
       //watching at the object IOrderEasy
-      //console.log("ORDER", order1);
+      console.log("ORDER", order1);
       ///Api call
       const res = await agent.orders.create(order1);
       //watching at the resultat = object IOrder
-      //console.log(res);
+      console.log(res);
       router.replace(res.url);
     }
   };

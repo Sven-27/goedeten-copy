@@ -9,6 +9,7 @@ using OmniKassa.Exceptions;
 using OmniKassa.Model.Response.Notification;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace WebApi.Controllers
 {
@@ -97,8 +98,8 @@ namespace WebApi.Controllers
                 {
                     // check TotalAmount
                     var totalAmount = CheckTotalAmount(entity);
-                    if (totalAmount != entity.TotalAmount) return BadRequest("Total amount " + entity.TotalAmount.ToString()
-                    + " of input data is wrong .... it has to be " + totalAmount.ToString());
+                    if (totalAmount != entity.TotalAmount) return BadRequest("Total amount " + entity.TotalAmount.ToString(CultureInfo.InvariantCulture)
+                    + " of input data is wrong .... it has to be " + totalAmount.ToString(CultureInfo.InvariantCulture));
                     // TotalAmount is good
                     var createdOrder = await _service
                         .Create(entity)
@@ -112,7 +113,6 @@ namespace WebApi.Controllers
                 }
             return BadRequest(false);
         }
-
 
         [Authorize(Roles = AuthRoles.SuperAdmin + "," + AuthRoles.Admin)]
         // GET: api/order/5
@@ -148,6 +148,7 @@ namespace WebApi.Controllers
                 .ConfigureAwait(false)) return Ok(true);
             return BadRequest(false);
         }
+
         // [AllowAnonymous]
         // // DELETE: api/order/1
         // [HttpDelete("{orderId}")]

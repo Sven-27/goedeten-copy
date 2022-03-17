@@ -4,7 +4,6 @@ import { CartItem } from "models/Cart";
 import styles from "styles/customer/purchase/Purchase.module.scss";
 import { useStore } from "contexts/customer/store";
 import { observer } from "mobx-react";
-// import OrderList from "./OrderList";
 import dynamic from "next/dynamic";
 import agent from "adapters/agent";
 const OrderList = dynamic(() => import("./OrderList"), { ssr: false });

@@ -46,6 +46,12 @@ namespace WebApi
             //            .AllowCredentials());
             //});
 
+            services.AddElmahIo(o =>
+            {
+                o.ApiKey = "daf4a2960824433d8b556edba7b6dd3d";
+                o.LogId = new Guid("eab7f31e-9620-4ac7-ab65-8fe0f462a173");
+            });
+
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
