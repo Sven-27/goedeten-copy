@@ -71,7 +71,23 @@ namespace Logic.Services
             TOKEN = _appSettings.Token;
             RETURN_URL = _appSettings.ReturnUrl;
 
-            if (omniKassa == null) omniKassa = Endpoint.Create(Environment.SANDBOX, SIGNING_KEY, TOKEN);
+            if (omniKassa == null)
+            {
+
+#if DEBUG
+            omniKassa ??= 
+                Endpoint.Create(
+                    OmniKassa.Environment.SANDBOX, 
+                    _appSettings.SigningKey, 
+                    _appSettings.Token);
+#else
+                omniKassa ??=
+                    Endpoint.Create(
+                        OmniKassa.Environment.PRODUCTION,
+                        _appSettings.SigningKey,
+                        _appSettings.Token);
+#endif
+            }
         }
 
         public async Task<List<OrderDto>> GetAll()
