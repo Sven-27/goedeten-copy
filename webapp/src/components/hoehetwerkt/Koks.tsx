@@ -1,10 +1,8 @@
 import styles from "styles/customer/hoehetwerkt/Koks.module.scss"
-import {Logos} from "data/logos"
+import { Logos } from "data/logos"
 
 const Koks = () => {
-  const { 
-    jitske
-  } = Logos
+  const { jitske } = Logos
   return (
     <div className={styles.koks}>
       <span className={styles.calendarButton}>Alle Koks</span>
