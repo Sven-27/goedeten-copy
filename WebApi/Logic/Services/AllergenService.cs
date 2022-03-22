@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -64,7 +63,6 @@ namespace Logic.Services
 
             return _mapper.Map<List<AllergenDto>>(allergens);
         }
-
 
         public async Task<PaginatedList<AllergenDto>> GetList(PaginatedListDto paginatedList)
         {

@@ -60,8 +60,6 @@ namespace Logic.Services
             return _mapper.Map<List<DishCategoryDto>>(result);
         }
 
-
-       
         public async Task<bool> Create(DishCategoryDto entity)
         {
             

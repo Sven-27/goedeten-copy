@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CrossCuttingConcerns.EntityFrameworkGenerics;
 using CrossCuttingConcerns.Enums;
-using Microsoft.EntityFrameworkCore;
 
 namespace Data.DataObjects
 {

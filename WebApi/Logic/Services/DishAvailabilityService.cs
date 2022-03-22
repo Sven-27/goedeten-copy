@@ -34,17 +34,17 @@ namespace Logic.Services
 
         public async Task<bool> Create(DishAvailabilityDto entity)
         {
-                try
-                {
-                    var newEntity = _mapper.Map<DishAvailabilityDto, DishAvailability>(entity);
-                    var result = await _repository.Create(newEntity).ConfigureAwait(false);
-                    return result != null;  //? true : false;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.Message);
-                    return false;
-                }
+            try
+            {
+                var newEntity = _mapper.Map<DishAvailabilityDto, DishAvailability>(entity);
+                var result = await _repository.Create(newEntity).ConfigureAwait(false);
+                return result != null;  //? true : false;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return false;
+            }
             
         }
 

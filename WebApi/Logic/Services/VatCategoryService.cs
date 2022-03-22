@@ -6,8 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -19,7 +17,8 @@ namespace Logic.Services
       
         Task<List<VatCategoryDto>> GetAll();
         Task<bool> Update(VatCategoryDto entity);
-         }
+    }
+
     public class VatCategoryService : IVatCategoryService
     {
 
@@ -34,9 +33,6 @@ namespace Logic.Services
             _mapper = mapper;
         }
 
-      
-
-      
         public async Task<List<VatCategoryDto>> GetAll()
         {
             try
@@ -72,12 +68,10 @@ namespace Logic.Services
             }
         }
 
-      
         public async Task<bool> Update(VatCategoryDto entity)
         {
             try
             {
-
                 var result = _mapper
                     .Map<VatCategoryDto, VatCategory>(entity);
                 await _repository.Update(result).ConfigureAwait(false);
