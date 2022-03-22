@@ -5,8 +5,11 @@ import KiesMaaltijd from "./KiesMaaltijd";
 import Bezorging from "./Bezorging"
 import Koks from "./Koks"
 import Duurzaam from "./Duurzaam"
+import { useRouter } from "next/router";
  
 const HoeHetWerkt = () => {
+  const router = useRouter();
+
   return (
     <main className={styles.hoehetwerkt}>
       <section className={styles.ontvangen}>
@@ -41,6 +44,14 @@ const HoeHetWerkt = () => {
         <h1>Waarom is jouw maaltijd duurzaam?</h1>
         <Duurzaam />
       </section>
+      <div className={styles.backButtonContainer}>
+        <button 
+          className={styles.calendarButton}
+          onClick={() => router.back()}
+        >
+          Terug
+        </button>
+      </div>
     </main>
   );
 };

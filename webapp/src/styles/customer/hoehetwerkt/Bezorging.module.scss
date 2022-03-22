@@ -23,6 +23,11 @@
         font-size: 1.1rem;
       }
 
+      @include mqtl($mobile_ls){
+        width: 6.8rem;
+        height: 1.6rem;
+      }
+
         @include mqml($mobile_ls){
           width: 7rem;
           font-size: 1rem;
@@ -50,6 +55,11 @@
         width: 7.6rem;
         height: 2.1rem;
         font-size: 1.1rem;
+      }
+
+      @include mqtl($mobile_ls){
+        width: 6.8rem;
+        height: 1.6rem;
       }
 
       @include mqml($mobile_ls){

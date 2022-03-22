@@ -16,10 +16,11 @@
 
   @include mqtl($tablet_l){
     grid-template-columns: 100px repeat(2, auto);
+    max-width: 730px;
   }
 
-  @include mqtl($tablet_l){
-      max-width: 730px;
+  @include mqtl($mobile_ls){
+    grid-template-columns: 100px repeat(2, auto);
     }
 
   p{
@@ -52,6 +53,11 @@
       width: 5.9rem;
       height: 2rem;
       font-size: 1rem;
+    }
+
+    @include mqtl($mobile_ls){
+      width: 5.6rem;
+      height: 1.6rem;
     }
 
     @include mqtl($tablet_l){

@@ -14,14 +14,14 @@ const {
 } = Logos;
 const titles = [
 	{
-		name: "Seizoensgebonden",
+		name: "Gezonde aarde",
 		source: seizoenGroen,
-		url: "seizoen",
+		url: "gezondeaarde",
 	},
 	{
-		name: "Lokaal",
+		name: "Lokaal en seizoensgebonden",
 		source: lokaalGroen,
-		url: "lokaal",
+		url: "lokaalenseizoensgebonden",
 	},
 	{
 		name: "Van Knol Tot Blad",
@@ -59,34 +59,23 @@ const Duurzaamheid = () => {
 					<h2>Duurzaamheid</h2>
 					<br></br>
 					<p>
-						Duurzaamheid is een enorm breed begrip en er kunnen vele discussies
-						over gevoerd worden. Wanneer we zeggen dat we het meest duurzame
-						maaltijdbestelplatform van Nederland zijn, bedoelen we daar heel
-						veel mee en ook eigenlijk weer heel weinig. Met het laatste bedoelen
-						we meer dat we onze maaltijdaanbieders niet te veel restricties
-						willen opleggen. We geloven namelijk niet dat wij alwetend zijn als
-						het gaat om duurzaamheid. Verre van! We geloven wel dat we
-						gezamenlijk veel verder komen om duurzaamheid de juiste definitie te
-						geven.
+						Duurzaamheid is een enorm breed begrip en er kunnen vele discussies over gevoerd worden. 
+            Wanneer we zeggen dat we het meest duurzame maaltijdbestelplatform van Nederland zijn, bedoelen we dat ook. 
+            Echter zit er nog wel beweging in het begrip en we willen het graag samen met jou en de koks verder verfijnen.
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Duurzaamheid is een enorm breed begrip en er kunnen vele discussies
-						over gevoerd worden. Wanneer we zeggen dat we het meest duurzame
-						maaltijdbestelplatform van Nederland zijn, bedoelen we daar heel
-						veel mee en ook eigenlijk weer heel weinig. Met het laatste bedoelen
-						we meer dat we onze maaltijdaanbieders niet te veel restricties
-						willen opleggen. We geloven namelijk niet dat wij alwetend zijn als
-						het gaat om duurzaamheid. Verre van! We geloven wel dat we
-						gezamenlijk veel verder komen om duurzaamheid de juiste definitie te
-						geven.
+						We weten namelijk dat wij niet alwetend zijn als het gaat om duurzaamheid. 
+            We geloven wel dat we gezamenlijk veel verder komen om duurzaamheid de juiste definitie te geven. 
+            Hoe GoedEten tegen duurzaamheid aankijkt, leggen we je graag uit aan de hand van de 5 pijlers binnen het concept. 
+            Op deze manier weet jij als klant goed waarom je een gerecht kiest en weet de kok hoe er binnen het 
+            concept een super lekkere maaltijd gekookt kan worden.
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Wil je meer lezen over onze vijf pijlers? Klik op de desbetreffende
-						pijler meer informatie.
+						Wil je meer lezen over onze vijf duurzaamheidspijlers? Klik dan op de desbetreffende pijler hieronder voor meer informatie.
 					</p>
 					<br></br>
 					<br></br>
@@ -97,14 +86,7 @@ const Duurzaamheid = () => {
 					<div className={styles.pijlers} key={index}>
 						<div className={styles.avatar}>
 							<Link href={`/pijler/${title.url}`}>
-								{/* <a onClick={() => router.push({
-										pathname: `/pijler/[name]`,
-										query: { name: title.url },
-										})
-									}
-									> */}
 								<img src={title.source} alt={`pijler_${title.name}`} />
-								{/* </a> */}
 							</Link>
 						</div>
 						<div className={styles.tekst}>

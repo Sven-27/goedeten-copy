@@ -26,8 +26,7 @@ const Initiatiefnemers = () => {
 					<h2>Initiatiefnemers Goedeten</h2>
 					<br></br>
 					<p>
-						Maak kennis met de initiatiefnemers van Stichting GoedEten &
-						Coöperatie GoedEten, Jitske Bloemsma en Claudia Vork.
+						Maak kennis met de initiatiefnemers van Stichting GoedEten, Jitske Bloemsma en Claudia Vork.
 					</p>
 				</div>
 				<br></br>
@@ -35,29 +34,28 @@ const Initiatiefnemers = () => {
 					<h2>Claudia</h2>
 					<br></br>
 					<p>
-						Als je opgeleid bent als diëtist en een enorme kookgek bent, is het
-						misschien wel een beetje vreemd dat je een maaltijdbezorgplatform
-						gaat opbouwen. Toch is het voor mij logisch. Hoewel ik het
-						hartstikke toejuich als je thuis lekkere, verse maaltijden kookt,
-						snap ik ook dat je af en toe iets wilt bestellen. Omdat je even geen
-						zin hebt om het zelf te doen of omdat je nieuwe smaken en gerechten
-						wilt ontdekken. Echter is de keuze voor voedzame en duurzame opties
-						daarbinnen nog minimaal of erg aan de prijs. En omdat ik altijd
-						graag kijk naar 'wat wel' (wat is er wel mogelijk en hoe kan het
-						wel?), ben ik ontzettend trots dat we al die punten bij GoedEten
-						samen hebben kunnen brengen. Als creatieveling denk ik graag in
-						concepten, maar boven alles moet het praktisch, haalbaar, heerlijk
-						en eerlijk zijn. En laat ik nu precies op het juiste moment Jitske
-						ontmoet hebben en steken we elkaar aan met ons enthousiasme. Al het
-						bovengenoemde maken we mogelijk voor jou.
+						Als je opgeleid bent als diëtist en een enorme kookgek bent, is het misschien wel een beetje vreemd dat je 
+            een maaltijdbezorgplatform gaat opbouwen. Toch is het voor mij logisch. Hoewel ik het hartstikke toejuich 
+            als je thuis lekkere, verse maaltijden kookt, snap ik ook dat je af en toe iets wilt bestellen.
 					</p>
 					<br></br>
-					<aside>
-						<p>
+					<p>
+						Omdat je even geen zin hebt om het zelf te doen of omdat je nieuwe smaken en gerechten wilt ontdekken. 
+            Echter is de keuze voor voedzame en duurzame opties daarbinnen nog minimaal of erg aan de prijs. 
+            En omdat ik altijd graag kijk naar 'wat wel' (“wat is er wel mogelijk en hoe kan het wel?”), ben ik ontzettend 
+            trots dat we al die punten bij GoedEten samen hebben kunnen brengen.
+					</p>
+					<br></br>
+					<p>
+						Als creatieveling denk ik graag in concepten, maar boven alles moet het praktisch, haalbaar, heerlijk en eerlijk zijn. 
+            En laat ik nu precies op het juiste moment Jitske ontmoet hebben en steken we elkaar aan met ons enthousiasme. 
+            Al het bovengenoemde maken we mogelijk voor jou.
+					</p>
+					<br></br>
+						<p className={styles.italic}>
 							"Wat is er dan wel mogelijk? Hoe kan het wel? Door alleen de
 							hobbels en obstructies te zien, komt er niets van de grond."
 						</p>
-					</aside>
 					<br></br>
 					<br></br>
 					<br></br>
@@ -66,28 +64,28 @@ const Initiatiefnemers = () => {
 					<h2>Jitske</h2>
 					<br></br>
 					<p>
-						Zolang als ik ondernemer ben (sinds 2014) is mijn missie om de markt
-						van gemaksvoeding te verduurzamen. Ik vond (en vind nog steeds) dat
-						het aanbod in fast food onevenredig verdeeld is. Ongezond eten is er
-						er in veelvoud te verkrijgen en ook nog eens voor een zeer lage
-						prijs. Ik houd zelf ontzetten van eten en ben een echte bourgondiër.
-						Of eigenlijk, ik wás een echte bourgondiër. Halverwege mijn 20ste
-						kreeg ik veel onduidelijke klachten, waardoor ik me onder andere ben
-						gaan verdiepen in voeding. Ik kwam erachter dat ik prikkelbaar
-						darmsyndroom had. Althans, bij gebrek aan een andere diagnose, kreeg
-						ik deze stempel. Door mijzelf een ander voedingspatroon aan te
-						leren, kwam ik erachter hoeveel voeding kan betekenen voor je
-						algehele gezondheid. Sindsdien is het mijn persoonlijke missie
-						geworden om gezond (en biologische) voeding toegankelijker te maken.
+						Zolang ik ondernemer ben (sinds 2014), is het mijn missie om de markt van gemaksvoeding te verduurzamen. 
+            Ik vond (en vind nog steeds) dat het aanbod in fast food onevenredig verdeeld is. 
+            Ongezond eten is in veelvoud te verkrijgen en ook nog eens voor een zeer lage prijs.
 					</p>
 					<br></br>
-					<aside className={styles.aside}>
-						<p>
+					<p>
+						Ik houd zelf ontzettend van eten en ben een echte bourgondiër. Of eigenlijk, ik wás een echte bourgondiër. 
+            Halverwege mijn 20ste kreeg ik veel onduidelijke klachten, waardoor ik me onder andere ben gaan verdiepen in voeding. 
+            Ik kwam erachter dat ik prikkelbaar darmsyndroom had. Althans, bij gebrek aan een andere diagnose, kreeg ik deze stempel.
+					</p>
+					<br></br>
+					<p>
+						Door mijzelf een ander voedingspatroon aan te leren, kwam ik erachter hoeveel voeding kan betekenen voor je 
+            algehele gezondheid. Sindsdien is het mijn persoonlijke missie geworden om gezond (en biologische) 
+            voeding toegankelijker te maken.
+					</p>
+					<br></br>
+						<p className={styles.italic}>
 							"Door mijzelf een ander voedingspatroon aan te leren, kwam ik
 							erachter hoeveel voeding kan betekenen voor je algehele
 							gezondheid."
 						</p>
-					</aside>
 					<br></br>
 					<br></br>
 					<br></br>
@@ -98,7 +96,7 @@ const Initiatiefnemers = () => {
 					<p>
 						Hoe voeg je nu al die waarden samen in een bestelplatform? Zodat je
 						de duurzaamheid kunt borgen en tegelijkertijd ontzettend lekkere
-						maaltijden kunt bezorgen? we vertellen jou graag meer over de kijk
+						maaltijden kunt bezorgen? we vertellen je graag meer over de kijk
 						op duurzaamheid aan de hand van 5 pijlers.
 					</p>
 				</div>

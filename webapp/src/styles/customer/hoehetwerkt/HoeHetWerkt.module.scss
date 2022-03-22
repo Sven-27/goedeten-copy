@@ -128,4 +128,11 @@
       margin-bottom: 0.8rem;
     }
   }
+
+  .backButtonContainer{
+    height: 5rem;
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
 }

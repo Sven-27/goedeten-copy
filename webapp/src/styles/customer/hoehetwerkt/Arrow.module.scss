@@ -24,6 +24,11 @@
             height: 2rem;
           }
 
+          @include mqtl($mobile_ls){
+            width: 6.8rem;
+            height: 1.6rem;
+          }
+
           @include mqml($mobile_ls){
             width: 6rem;
           } 
@@ -92,6 +97,11 @@
             @include mqml($mobile_ls){
               width: 6rem;
             } 
+
+            @include mqtl($mobile_ls){
+              width: 6.8rem;
+              height: 1.6rem;
+            }
 
             @include mqtl($tablet_l){
             width: 7rem;

@@ -13,7 +13,6 @@ import { Logos } from "data/logos";
 const Accordion = withStyles({
 	root: {
 		borderRadius: "5pt",
-		//   border: "1px solid rgb(28, 58, 44)",
 		boxShadow: "none",
 		width: "15,76125rem",
 		marginLeft: "3rem",
@@ -36,7 +35,6 @@ const Accordion = withStyles({
 
 const AccordionSummary = withStyles({
 	root: {
-		//   backgroundColor: "rgb(255, 255, 219)",
 		color: "rgb(28, 58, 44)",
 		borderBottom: "1px solid rgba(0, 0, 0, .125)",
 		height: 96,
@@ -67,7 +65,7 @@ const AccordionDetails = withStyles((theme) => ({
 const GoedEten = () => {
 	const [expanded, setExpanded] = React.useState<string | false>("");
 	const ref = useRef<any>();
-	const { duurzaamGroen, tomaatTextTaglineDonkerGroen } = Logos;
+	const { tomaatTextTaglineDonkerGroen } = Logos;
 
 	const handleChange =
 		(panel: string) => (event: React.ChangeEvent<{}>, newExpanded: boolean) => {
@@ -140,15 +138,10 @@ const GoedEten = () => {
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography>
-								Duurzaamheid is een enorm breed begrip en er kunnen vele
-								discussies over gevoerd worden. Wanneer we zeggen dat we het
-								meest duurzame maaltijdbestelplatform van Nederland zijn,
-								bedoelen we daar heel veel mee en ook eigenlijk weer heel
-								weinig.Duurzaamheid is een enorm breed begrip en er kunnen vele
-								discussies over gevoerd worden. Wanneer we zeggen dat we het
-								meest duurzame maaltijdbestelplatform van Nederland zijn,
-								bedoelen we daar heel veel mee en ook eigenlijk weer heel
-								weinig.
+								Duurzaamheid is een enorm breed begrip en er kunnen vele discussies over gevoerd worden. 
+                Wanneer we zeggen dat we het meest duurzame maaltijdbestelplatform van Nederland zijn, 
+                bedoelen we dat ook. Echter zit er nog wel beweging in het begrip en we willen het graag samen 
+                met jou en de koks verder verfijnen. Hoe GoedEten tegen duurzaamheid aankijkt, leggen we je graag uit.
 								<br></br>
 								<Link href="/duurzaamheid">
 									<button className={styles.generalButton}>Lees meer</button>
@@ -180,10 +173,10 @@ const GoedEten = () => {
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography>
-								Coöperatie GoedEten in Den Haag is de eerste maaltijdaanbieder.
-								Deze coöperatie bestaat uit een groep koks die dingen delen en
-								samen regelen en zo dus vol aandacht op het koken kunnen
-								storten. Wat jij dan weer terugproeft.
+								In Den Haag zijn we de eerste coöperatie gestart en zijn 
+                daarmee dus de eerste maaltijdaanbieder op het platform van stichting GoedEten. 
+                Deze coöperatie bestaat uit een groep koks die samen dingen delen en regelen en 
+                zo dus vol aandacht op het koken kunnen storten. Wat jij dan weer terug proeft.
 								<br></br>
 								<Link href="/cooperatiedh">
 									<button className={styles.generalButton}>Lees meer</button>
@@ -215,9 +208,8 @@ const GoedEten = () => {
 						</AccordionSummary>
 						<AccordionDetails>
 							<Typography>
-								Heb je vragen over de stichting of coöperatie, of wil je graag
-								via social media op de hoogte blijven van alle nieuwtjes, check
-								dan hier de contactinformatie.
+								Heb je vragen over GoedEten of wil je graag via social media op de hoogte blijven van alle nieuwtjes? 
+                Check dan hier de contactinformatie.
 								<br></br>
 								<Link href="/contact">
 									<button className={styles.generalButton}>

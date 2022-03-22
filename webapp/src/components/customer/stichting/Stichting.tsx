@@ -89,25 +89,20 @@ const Stichting = () => {
 					<h2>Stichting goedeten</h2>
 					<br></br>
 					<p>
-						Stichting GoedEten is de eigenaar van het meest duurzame en sociaal
-						maatschappelijke maaltijdbestelplatform van Nederland. We vonden
-						het, in tijden van de huidige platformeconomie, wel tijd worden voor
-						een platform met een sociale insteek. Eén zonder winstoogmerk en
-						veel aandacht voor mens en natuur. Zo ontstond het GoedEten
-						platform.
+						Stichting GoedEten is de eigenaar van het meest duurzame en sociaal 
+            maatschappelijke maaltijdbestelplatform van Nederland. We vonden het, 
+            in tijden van de huidige platformeconomie, wel tijd worden voor een platform met een sociale en duurzame insteek. 
+            Eén zonder winstoogmerk en met veel aandacht voor mens en natuur. Zo ontstond het GoedEten-platform.
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Hoe duurzaam zijn we? Op ons platform werken we met vijf
-						duurzaamheidspijlers. Deze pijlers communiceren we vooraf met onze
-						maaltijd aanbieders. We informeren de koks over wat de mogelijkheden
-						zijn op het gebied van duurzaam voedsel. We zeggen niet wat ze niet
-						mogen of juist wel, maar laten de keuze aan de kok. Zo kan een kok
-						voldoen aan één van de duurzaamheidspijlers of aan alle vijf. Op het
-						bestelplatform geven we per gerecht en kok informatie over aan welke
-						duurzaamheidspijler het voldoet en waarom. Zo kan jij als klant
-						altijd bewust de keuze maken voor wat je eet.{" "}
+						Hoe duurzaam zijn we? Op het platform werken we met vijf duurzaamheidspijlers. 
+            Deze pijlers communiceren we vooraf met onze maaltijdaanbieders. We informeren de koks over de mogelijkheden 
+            op het gebied van duurzaam voedsel. De keuze laten we bij hem/haar/hen; zo kan een kok voldoen aan één van 
+            de duurzaamheidspijlers of aan alle vijf. Op het bestelplatform vind je de informatie per
+            gerecht en kok; zo kun je lezen aan welke duurzaamheidspijler(s) het voldoet en waarom. 
+            Op die manier kun jij als klant altijd bewust de keuze maken over wat je eet. 
 						<a href="/duurzaamheid">
 							Lees hier meer over onze duurzaamheidspijlers.
 						</a>
@@ -115,57 +110,52 @@ const Stichting = () => {
 					<br></br>
 					<br></br>
 					<p>
-						Een commercieel bedrijf in een stichting, dat klinkt misschien een
-						beetje onlogisch. Wij vinden natuurlijk van niet. Als het gaat om
-						eigenaarschap geloven wij dat een bedrijf duurzamer kan bestaan
-						wanneer het bedrijf in eigendom van zichzelf (lees: haar missie) is
-						en niet in die van aandeelhouders of andere financieel
-						belanghebbenden. Onze missie is om de voedselindustrie positief te
-						veranderen. Geld speelt hierin een belangrijke rol en met name hoe
-						het geld verdeeld wordt. Wij staan voor een zo eerlijk mogelijke
-						betaling voor alle ketens in de bereiding van onze maaltijden. We
-						geloven dat wanneer er hoge leningen terugbetaald moeten worden of
-						dividenten uitbetaald moeten worden, deze drukken op eerlijke lonen
-						voor onze maaltijdbereiders en producenten van onze producten.
+						Een commercieel bedrijf in een stichting, dat klinkt misschien een beetje onlogisch. 
+            Wij vinden natuurlijk van niet. Als het gaat om eigenaarschap geloven wij dat een bedrijf 
+            duurzamer kan bestaan wanneer het bedrijf in eigendom van zichzelf (lees: haar missie) is en niet in die 
+            van aandeelhouders of andere financieel belanghebbenden.
 						<br></br>
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Om de kwaliteit van onze maaltijden te waarborgen en grip te houden
-						op onze duurzaamheidspijlers, werken we voornamelijk met coöperaties
-						van koks in verschillende steden. Dit zijn coöperaties van koks die
-						gezamenlijk inkopen bij (lokale) preferred suppliers, een keuken
-						delen en andere randzaken combineren. Wil je meer weten over onze
-						coöperatie in Den Haag klik dan <a href="/cooperatiedh">hier</a>.
+						Onze missie is om de voedselindustrie positief te veranderen. Geld speelt hierin een belangrijke rol en met 
+            name hoe het geld verdeeld wordt. Zo worden de boer, fietser, kok en anderen binnen de keten op een zo 
+            eerlijk mogelijke manier beloond. We geloven dat - wanneer er hoge leningen terugbetaald moeten worden of 
+            dividend uitbetaald moeten worden - deze drukken op eerlijke lonen voor onze maaltijdbereiders en producenten 
+            van onze producten.
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Ook het ontwikkelen van het GoedEten platform doen we op een sociaal
-						maatschappelijke manier. Het platform had niet kunnen bestaan zonder
-						de samenwerking met Stichting Bee-Ideas. Bee-Ideas investeert in
-						software projecten met impact op mens, maatschappij en milieu. Zij
-						bieden mensen die op dit moment een uitkering krijgen via het UWV de
-						mogelijkheid om een traject te volgen in samenwerking met een
-						opdrachtgever met een software vraag. Tijdens dit project leren zij
-						alles over IT (programmeren, user experience, digitale vormgeving,
-						etc.). Samen bouwen wij aan het GoedEten platform en het resultaat
-						mag er zijn!
+						Om de kwaliteit van onze maaltijden te waarborgen en grip te houden op onze duurzaamheidspijlers, 
+            werken we voornamelijk met coöperaties van koks in verschillende steden/gebieden. 
+            Dit zijn coöperaties van koks die gezamenlijk inkopen bij (lokale) leveranciers, 
+            een keuken delen en andere randzaken combineren. Wil je meer weten over onze coöperatie in Den Haag? 
+            <a href="/cooperatiedh">Lees dan hier meer</a>
 					</p>
 					<br></br>
 					<br></br>
 					<p>
-						Het idee kwam niet uit de lucht vallen. Hier hebben twee mensen best
-						wel een beetje over nagedacht. Meet de initiatiefnemers van
-						GoedEten:
+						Ook het ontwikkelen van het GoedEten platform doen we op een sociaal maatschappelijke manier. 
+            Het platform had niet kunnen bestaan zonder de samenwerking met Stichting Bee-Ideas. 
+            Bee-Ideas investeert in softwareprojecten met impact op mens, maatschappij en milieu. Zij bieden mensen die op dit 
+            moment een uitkering krijgen via het UWV de mogelijkheid om een traject te volgen in samenwerking met een opdrachtgever 
+            met een softwarevraag. Tijdens dit project leerden zij alles over IT (programmeren, gebruiksvriendelijkheid, 
+            digitale vormgeving, etc.). Samen bouwden wij aan het GoedEten-platform en het resultaat mag er zijn!
+					</p>
+					<br></br>
+					<br></br>
+					<p>
+				   	Het idee van GoedEten kwam niet uit de lucht vallen. Hier hebben twee mensen best wel een beetje over nagedacht. 
+             Maak kennis met de initiatiefnemers van GoedEten:
 					</p>
 					<br></br>
 					<br></br>
 				</div>
 			</div>
 			<div className={styles.initiatiefnemers}>
-				<h1> Maak kennis met de initiatiefnemers</h1>
+				<h1> Maak kennis met de initiatiefnemers van GoedEten</h1>
 				<div className={styles.Claudia}>
 					<div className={styles.Claudia_img}>
 						<img src="/assets/images/Claudia.png" alt="Claudia Vork" />
@@ -184,10 +174,8 @@ const Stichting = () => {
 							</AccordionSummary>
 							<AccordionDetails>
 								<Typography>
-									Opgeleid als diëtist en dan toch een maaltijdbestelplatform
-									opbouwen. Dat is toch vreemd? Voor Claudia niet, want op dit
-									platform komt namelijk alles samen wat zij belangrijk vindt.
-									Hoe bekijkt deze creatieveling het koken en eten?
+									Opgeleid als diëtist en dan toch een maaltijdbestelplatform opbouwen. Dat is toch vreemd? Voor Claudia niet, 
+                  want op dit platform komt namelijk alles samen wat zij belangrijk vindt. Hoe bekijkt deze creatieveling het koken en eten?
 									<br></br>
 									<br></br>
 									<Link href="/initiatiefnemers">
@@ -216,10 +204,9 @@ const Stichting = () => {
 							</AccordionSummary>
 							<AccordionDetails>
 								<Typography>
-									Vroeger stond Jitske nog dagelijks te koken vanuit de fysieke
-									keuken in de Reinkenstraat. Die tijd is inmiddels voorbij,
-									maar de missie & visie van GoetEten wordt zeker doorgezet. Hoe
-									zit dat met die visie en is Jitske nu een bourgondiër of niet?
+									Vroeger stond Jitske nog dagelijks te koken vanuit de fysieke zaak in de Reinkenstraat. 
+                  Die tijd is inmiddels voorbij, maar de missie & visie van GoetEten wordt zeker doorgezet. 
+                  Hoe zit dat met die visie en is Jitske nu een bourgondiër of niet?
 									<br></br>
 									<br></br>
 									<Link href="/initiatiefnemers">

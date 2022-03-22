@@ -16,14 +16,11 @@ import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { useRouter } from 'next/router';
 import { socialMedia } from 'data/socialMedia';
 
-// const ContactImage = "assets/images/initiatiefnemers.png"
-
 const Contact = () => {
   const router = useRouter();
 
   return (
     <div className={styles.container}>
-      {/* <img className={styles.photo} src={ContactImage} /> */}
       <img className={styles.photo} />
 
       <div className={styles.bar1}></div>
@@ -46,10 +43,10 @@ const Contact = () => {
             <ListItemIcon className={styles.contacttype}>
               <MailOutlineIcon className={styles.contacticon} />
             </ListItemIcon>
-            <a href="mailto:info@goedeten.nl">
+            <a href="mailto:info@goedeten.online">
               <ListItemText className={styles.contactinfo}
                 primary={"Emailadres"}
-                secondary={"info@goedeten.nl"}
+                secondary={"info@goedeten.online"}
               />
             </a>
           </ListItem>

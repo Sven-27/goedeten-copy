@@ -24,10 +24,11 @@ const SimpleCookGridList = () => {
                 key={tile.id}
                 className={styles.simpleCookGridList__tile}
               >
-                <a onClick={() => (cooksStore.selectedCook = tile)}>
+                <a 
+                  className={styles.imageContainer}
+                  onClick={() => (cooksStore.selectedCook = tile)}>
                   <img src={tile.photo} alt={tile.name} />
                 </a>
-                <img src={tile.photo} alt={tile.name} />
                 <ImageListItemBar
                   position="bottom"
                   title={tile.name}

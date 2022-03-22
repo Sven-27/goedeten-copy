@@ -1,5 +1,5 @@
 import Layout from "components/customer/layout/Layout";
-import LokaalPage from "components/customer/pijlers/Lokaal";
+import LokaalPage from "components/customer/pijlers/Lokaalenseizoensgebonden";
 
 const Lokaal = () => {
   return (

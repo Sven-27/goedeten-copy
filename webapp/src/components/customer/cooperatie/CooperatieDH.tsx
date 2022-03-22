@@ -24,39 +24,41 @@ const CooperatieDH = () => {
 				<h2>cooperatie goedeten <br></br> Den Haag </h2>
 				<br></br>
 				<p>
-				Coöperatie GoedEten in Den Haag is de eerste maaltijdaanbieder op het platform van GoedEten. 
-				Deze coöperatie bestaat uit een groep koks die samen dingen delen en regelen. 
-				Zo maakt de coöperatie gebruik van de keuken van de Kookfabriek in het pand van The New Farm en kopen ze samen in bij preferred suppliers. 
-				De koks kunnen op deze manier hun aandacht en passie in het koken stoppen, 
-				zonder dat ze alle randzaken zelf hoeven te regelen. Dit maakt de coöperatie geschikt voor mensen die heel goed kunnen koken,
-				maar niet perse veel verstand hebben van (of zin hebben in) alle andere dingen die geregeld moeten worden. 
+				In Den Haag zijn we de eerste coöperatie gestart en zijn daarmee dus de eerste maaltijdaanbieder 
+        op het platform van stichting GoedEten. Deze coöperatie bestaat uit een groep koks die samen dingen delen 
+        en regelen en zo dus vol aandacht op het koken kunnen storten. Zo maakt de coöperatie gebruik van de keuken van The
+        Grey Space in het centrum van Den Haag en kopen de koks samen in bij speciaal gekozen leveranciers. 
 				</p>
 				<br></br>
 				<br></br>
 				<p>
-				De coöperatie regelt ook samen het transport naar de klant toe. Dit doen ze in samenwerking met de Haagse Zwam. 
-				De Haagse Zwam kweekt oesterzwammen op koffiedik waardoor een prachtig circulair voedselproduct ontstaat. 
-				Je zou denken: “zwammen en transport…?” Maar dat gaat in dit geval prima samen. 
-				De Haagse Zwam is tevens een sociale onderneming die mensen met een afstand tot de arbeidsmarkt een kans biedt. 
-				In tijden van corona is hierdoor naast het kweken van de oesterzwammen ook een transportteam ontstaan en brengt ook de maaltijden van coöperatie GoedEten naar de klanten in Den Haag.
+				Zij kunnen op deze manier hun aandacht en passie in het koken stoppen, 
+        zonder dat ze zelf alle randzaken hoeven te regelen. Samen kan er op grotere schaal ingekocht worden, 
+        is er minder afval (voedselverspilling) en kan er in verhouding goedkoper geproduceerd worden.
 				</p>
 				<br></br>
 				<br></br>
 				<p>
-				Coöperatie GoedEten in Den Haag koopt haar producten in bij de volgende leveranciers:
+				Dit maakt de coöperatie geschikt voor mensen die heel goed kunnen koken, 
+        maar niet per se veel verstand hebben van (of zin hebben in) alle andere dingen die geregeld moeten worden. 
+        De coöperatie verzorgt ook samen het transport naar de klant toe. Dit doen ze met hun eigen fietsteam onder leiding van Jelle.
 				</p>
 				<br></br>
 				<br></br>
-				<div className={styles.list}>
-					<ul >
-						<li>Lekkernassuh voor lokale seizoensgebonden groenten en fruit;</li>
-						<li>Hoeve Biesland voor biologisch dynamisch vlees uit de regio;</li>
-						<li>Odin voor alle overige biologische producten;</li>
-						<li>Udea voor alle overige biologische producten;</li>
-					</ul>
-				</div>
+				<p>
+				Dit maakt de coöperatie geschikt voor mensen die heel goed kunnen koken, 
+        maar niet per se veel verstand hebben van (of zin hebben in) alle andere dingen die geregeld moeten worden. 
+        De coöperatie verzorgt ook samen het transport naar de klant toe. Dit doen ze met hun eigen fietsteam onder leiding van Jelle.
+				</p>
 				<br></br>
-				<p>Dit zijn de koks van coöperatie GoedEten.</p>
+				<br></br>
+        <p>
+          Wil jij meer weten over dit samenwerkingsverband? Wil jij als kok werken binnen deze coöperatie? 
+          Of juist duurzame maaltijden door Den Haag fietsen? Op de site van <a target="_blank" href="https:www.goedetendenhaag.nl">
+          Coöperatie GoedEten</a> vind je meer informatie.
+        </p>
+				<br></br>
+				<p>Dit zijn de koks van Coöperatie GoedEten.</p>
 
 					<div className={styles.links}>
 						<Link href="/cooks_static">

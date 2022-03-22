@@ -38,16 +38,12 @@
 		}
 	}
 
-	aside {
+	.italic {
 		width: 100%;
 		display: flex;
-		justify-content: flex-end;
-
-		p {
-			font-weight: 500;
-			font-style: italic;
-			color: #1c3a2c;
-		}
+    font-weight: 500;
+    font-style: italic;
+    color: #1c3a2c;
 	}
 }
 

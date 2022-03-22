@@ -1,5 +1,5 @@
 import Layout from "components/customer/layout/Layout";
-import SeizoenPage from "components/customer/pijlers/Seizoen";
+import SeizoenPage from "components/customer/pijlers/Gezondeaarde";
 
 const Seizoen = () => {
   return (
