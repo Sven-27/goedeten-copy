@@ -6,13 +6,10 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
 {
-
     public interface ILocationService
     {
         Task<LocationDto> GetById(int id);
@@ -24,6 +21,7 @@ namespace Logic.Services
         Task<bool> Update(LocationDto entity);
         Task<bool> Delete(int id);
     }
+
     public class LocationService : ILocationService
     {
 

@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -33,7 +32,7 @@ namespace Logic.Services
             ICustomerRepository customerRepository,
             IMapper mapper)
         {
-            this._customerRepository = customerRepository;
+            _customerRepository = customerRepository;
             _mapper = mapper;
         }
 
@@ -54,7 +53,6 @@ namespace Logic.Services
 
             return _mapper.Map<List<CustomerDto>>(customers);
         }
-
 
         public async Task<PaginatedList<CustomerDto>> GetList(PaginatedListDto paginatedList)
         {

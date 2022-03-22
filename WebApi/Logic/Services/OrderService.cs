@@ -227,7 +227,7 @@ namespace Logic.Services
             {
                 Debug.WriteLine(ex.Message);
                 throw new Exception(ex.Message);
-                return null;
+                // return null;
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Threading.Tasks;
 using AutoMapper;
 using CrossCuttingConcerns.PagingSorting;
@@ -115,7 +114,6 @@ namespace Logic.Services
             }
         }
 
-
         public async Task<bool> Update(DishDisplayDto dish)
         {
             try
@@ -131,8 +129,6 @@ namespace Logic.Services
                 return false;
             }
         }
-
-
 
         public async Task<bool> SetAllergens(int dishId, List<int> allergens)
         {

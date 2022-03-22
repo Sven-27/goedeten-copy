@@ -69,9 +69,6 @@ namespace Logic.Services
             return _mapper.Map<List<CuisineDto>>(resultList);
         }
 
-        
-
-
         public async Task<CuisineDto> GetById(int id)
         {
             var result = await _repository
@@ -97,7 +94,5 @@ namespace Logic.Services
                 return false;
             }
         }
-
-       
     }
 }

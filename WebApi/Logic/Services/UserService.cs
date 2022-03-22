@@ -8,9 +8,7 @@ using Logic.DataTransferObjects;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -18,7 +16,7 @@ namespace Logic.Services
 
     public interface IUserService
     {
-        Task<UserDto> Authenticate(string username, string password, Boolean login);
+        Task<UserDto> Authenticate(string username, string password, bool login);
         Task<IEnumerable<UserDto>> GetAll();
         Task<UserDto> GetById(int id);
         Task<UserDto> Create(UserDto userDto, string password);
@@ -43,7 +41,7 @@ namespace Logic.Services
             _mapper = mapper;
         }
 
-        public async Task<UserDto> Authenticate(string username, string password, Boolean login )
+        public async Task<UserDto> Authenticate(string username, string password, bool login )
         {
             if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
@@ -65,8 +63,6 @@ namespace Logic.Services
             _mapper.Map<UserDto>(result);
 
         }
-
-
 
         public async Task<UserDto> Create(UserDto userDto, string password)
         {
@@ -93,7 +89,6 @@ namespace Logic.Services
             return _mapper.Map<UserDto>(user);
         }
 
-
         public async Task Delete(int id)
         {
             var user = await _repository.GetById(id).ConfigureAwait(false);
@@ -101,7 +96,6 @@ namespace Logic.Services
             {
                 return;
             }
-
             await _repository.Delete(id).ConfigureAwait(false);
         }
 

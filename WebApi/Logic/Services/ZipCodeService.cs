@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using CrossCuttingConcerns.PagingSorting;
 using CrossCuttingConcerns.Settings;
 using Newtonsoft.Json;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
 namespace Logic.Services

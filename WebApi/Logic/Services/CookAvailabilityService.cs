@@ -37,7 +37,7 @@ namespace Logic.Services
                 {
                     var newEntity = _mapper.Map<CookAvailabilityDto, CookAvailability>(entity);
                     var result = await _repository.Create(newEntity).ConfigureAwait(false);
-                    return result != null ? true : false;
+                    return result != null;
                 }
                 catch (Exception ex)
                 {

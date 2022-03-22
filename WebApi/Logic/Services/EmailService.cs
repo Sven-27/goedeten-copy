@@ -2,13 +2,11 @@
 using CrossCuttingConcerns.Settings;
 using Data.DataObjects;
 using Data.Repositories;
-using Logic.DataTransferObjects;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -28,7 +26,7 @@ namespace Logic.Services
         private readonly IUserRepository _userRepository;
         private readonly IMailKitService _mailKitService;
         private readonly IDishAvailabilityRepository _dishAvailabilityRepository;
-        private readonly AppSettings appSettings;
+        private readonly AppSettings _appSettings;
         public EmailService(
             IUserRepository userRepository,
             IMailKitService mailKitService,
@@ -38,7 +36,7 @@ namespace Logic.Services
             _userRepository = userRepository;
             _mailKitService = mailKitService;
             _dishAvailabilityRepository = dishAvailabilityRepository;
-            appSettings = settings.Value;
+            _appSettings = settings.Value;
         }
 
         public async Task<bool> TestEmail(string email, string title, string body)
@@ -110,11 +108,11 @@ namespace Logic.Services
                 return false;
             }
             //var resetCode = System.Web.HttpUtility.UrlEncode(user.ResetCodeHash);
-            var iets = new UserHelpers(appSettings);
+            var iets = new UserHelpers(_appSettings);
             var tokenString = iets.UserTokenCreate(user.Id.ToString(), user.Role.ToString());
 
 
-            var urlLocation = appSettings.ActivateAccountUrl;
+            var urlLocation = _appSettings.ActivateAccountUrl;
             const string subject = "Reset uw wachtwoord voor Goed Eten!";
 
             var htmlContent = ResetPassword(urlLocation, tokenString);
@@ -142,13 +140,12 @@ namespace Logic.Services
 
             var resetCode = System.Web.HttpUtility.UrlEncode(user.ResetCodeHash);
 
-            var urlLocation = appSettings.ActivateAccountUrl;
+            var urlLocation = _appSettings.ActivateAccountUrl;
             const string subject = "Bevestig uw inschrijving bij Goed Eten";
 
             var htmlContent = isAdmin ?
 
-
-                // ======================================================
+            // ======================================================
                 AdminEmail(urlLocation, email, resetCode) :
                 CooksEmail(urlLocation, email, resetCode);
             //==============================================================

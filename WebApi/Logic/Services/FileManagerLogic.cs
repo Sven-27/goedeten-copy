@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
 using Logic.DataTransferObjects;
-using System;
 
 namespace Logic.Services
 {    
@@ -28,8 +27,6 @@ namespace Logic.Services
             await blobContainer.CreateIfNotExistsAsync(Azure.Storage.Blobs.Models.PublicAccessType.Blob);
             var newFileName = GenerateFileName(image.ImageFile.FileName, prefix);
 
-
-            
             var blobClient = blobContainer.GetBlobClient(newFileName);
 
             await blobClient.UploadAsync(image.ImageFile.OpenReadStream());
@@ -61,9 +58,8 @@ namespace Logic.Services
         }
         private string GenerateFileName(string fileName, string prefix)
         {
-            string strFileName = string.Empty;
             string[] strName = fileName.Split('.');
-                        strFileName = prefix+"/"+"ge" + Path.GetRandomFileName().Replace(".","")+"." + strName[strName.Length - 1];
+            var strFileName = prefix+"/"+"ge" + Path.GetRandomFileName().Replace(".","")+"." + strName[strName.Length - 1];
             return strFileName;
         }
     }

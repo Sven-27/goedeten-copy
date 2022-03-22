@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Logic.Services
@@ -17,7 +16,6 @@ namespace Logic.Services
         Task<IngredientDto> GetById(int ingredientId);
         Task<IngredientDto> GetByIdWithTracking(int ingredientId);
         Task<List<IngredientDto>> GetAll();
-
         Task<PaginatedList<IngredientDto>> GetList(PaginatedListDto paginatedList);
 
         Task<bool> Create(IngredientDto ingredient);
@@ -130,12 +128,15 @@ namespace Logic.Services
                 return false;
             }
         }
+
         public async Task<bool> CreateBundle(List<IngredientDto> entityList)
         {
             try
             {
                 var newEntityList = _mapper.Map<List<IngredientDto>, List<Ingredient>>(entityList);
-                await _ingredientRepository.CreateBundle(newEntityList).ConfigureAwait(false);
+                await _ingredientRepository
+                    .CreateBundle(newEntityList)
+                    .ConfigureAwait(false);
                 return true;
             }
             catch (Exception ex)
