@@ -35,6 +35,9 @@ const Footer = () => {
 					<Link href="/terms">
 						<a className={styles.link}>Algemene Voorwaarden</a>
 					</Link>
+					<Link href="/faq">
+						<a className={styles.link}>FAQ</a>
+					</Link>
 				</section>
 				<section className={styles.icons}>
 					<Link href={instagram}>

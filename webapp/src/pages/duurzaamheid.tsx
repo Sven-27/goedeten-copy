@@ -9,7 +9,7 @@ const Duurzaamheid = () => {
 			description="Duurzaamheid"
 			ogImage=""
 			url=""
-			showHeader={false}
+			showHeader={ false }
       showFooter={ true }
 		>
 			<Duurzaamheidpage />

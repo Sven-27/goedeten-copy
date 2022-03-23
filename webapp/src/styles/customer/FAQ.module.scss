@@ -3,9 +3,33 @@
 @import "styles/queries";
 
 .faq {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 3rem;
+  height: 100%;
+  width: 100%;
+  padding: 1rem 1.2rem;
+  color: $darkgreen;
+  background-image: url("/assets/images/backgroundimage.png");
+  background-repeat: none;
+  background-size: cover;
+  background-position: center; 
+  text-align: center;
+
+  .title{
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .vragen{
+    text-align: left;
+
+    .subtitle{
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .antwoorden{
+      margin-bottom: 1rem;
+    }
+  }
 }

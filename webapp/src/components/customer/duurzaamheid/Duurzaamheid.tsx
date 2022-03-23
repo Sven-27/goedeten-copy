@@ -36,7 +36,7 @@ const titles = [
 	{
 		name: "Duurzaam Voor Je Lijf",
 		source: duurzaamGroen,
-		url: "duurzaam",
+		url: "duurzaamvoorjelijf",
 	},
 ];
 //#endregion
