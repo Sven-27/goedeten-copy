@@ -13,27 +13,75 @@
   background-position: center; 
   text-align: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
   .title{
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 2rem;
     width: 100%;
     max-width: 600px;
+    margin-bottom: 2rem;
+
+    @include mqtp($tablet){
+      font-size: 3rem;
+    }
+
+    @include mqtl($tablet_l){
+      font-size: 3rem;
+    }
   }
 
   .vragen{
     text-align: left;
+    width: 100%;
+    max-width: 600px;
+
+    @include mqtl($laptop){
+      max-width: 700px;
+    }
+
+    .links{
+      color: $lightgreen;
+    }
 
     .subtitle{
       font-size: 0.9rem;
       font-weight: 600;
       margin-bottom: 1rem;
+      text-align: center;
+
+      @include mqtp($tablet){
+        font-size: 1.5rem;
+      }
+
+      @include mqtl($tablet_l){
+        font-size: 1.5rem;
+      }
     }
 
     .antwoorden{
       margin-bottom: 1rem;
+
+      @include mqtp($tablet){
+        font-size: 1.2rem;
+      }
+
+      @include mqtl($tablet_l){
+        font-size: 1.2rem;
+      }
+    }
+
+    .overig{
+      margin-bottom: 1rem;
+
+      @include mqtp($tablet){
+        font-size: 1.2rem;
+      }
+
+      @include mqtl($tablet_l){
+        font-size: 1.2rem;
+      }
     }
   }
 }

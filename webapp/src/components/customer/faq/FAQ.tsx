@@ -51,7 +51,7 @@ const FAQ = () => {
           <h3 className={styles.subtitle}>Hoe weet ik of een maaltijd duurzaam is?</h3>
           <p className={styles.antwoorden}>
             Bij elke maaltijd zie je boven de foto een of meer iconen staan. Deze iconen geven aan, 
-            aan welke <a href="/duurzaamheid">duurzaamheidspijlers</a> de maaltijd voldoet. 
+            aan welke <a className={styles.links} href="/duurzaamheid">duurzaamheidspijlers</a> de maaltijd voldoet. 
             Ook kun je door op de maaltijd te klikken, meer lezen over het gerecht en waarom deze 
             desbetreffende duurzaamheidspijler(s) mag voeren
           </p>
@@ -94,8 +94,8 @@ const FAQ = () => {
             door de kok hoe je het goed en lekker opwarmt; dit zie je terug bij de gerechtenpagina).
           </p>
           <p className={styles.overig}>
-            Staat jouw vraag er niet bij? Kijk dan ook eens bij <a href="/hoehetwerkt">Zo werkt het</a>. En anders kun je natuurlijk ook altijd 
-            even <a href="/contact">contact</a> met ons opnemen.
+            Staat jouw vraag er niet bij? Kijk dan ook eens bij <a className={styles.links} href="/hoehetwerkt">Zo werkt het</a>. En anders kun je natuurlijk ook altijd 
+            even <a className={styles.links} href="/contact">contact</a> met ons opnemen.
           </p>
       </main>
       <button 
