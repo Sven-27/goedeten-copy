@@ -41,6 +41,19 @@
   .calendarButton{
     width: 4rem;
     height: 1.4rem;
+    margin-top: 0.4rem;
+
+    @include mqml($mobile_ls){
+      margin-top: 0;
+    }
+
+    @include mqtp($tablet){
+      margin-top: 0;
+    }
+
+    @include mqtl($laptop){
+      margin-top: 0;
+    }
 
     &:hover{
       cursor: default;
@@ -70,7 +83,9 @@
 
     .text1{
       grid-area: 1/2/2/3;
-      margin-bottom: 1rem;      
+      margin-bottom: 1rem;  
+      display: flex;
+      align-self: center;   
     }
     .text_options{
       grid-area: 2/2/3/3;
@@ -83,14 +98,33 @@
 
   .jitske{
     grid-area: 3/1/4/2;
-    width: 3rem;
+    width: 3.5rem;
     border-radius: 50%;
     border: 1px solid $lightgreen;
-    // margin: 0 auto;
+    margin: 0 auto;
+
+    @include mqml($mobile_ls){
+      width: 3rem;
+    }
+
+    @include mqtp($tablet){
+      width: 4.5rem;
+    }
+
+    @include mqtl($tablet_l){
+      width: 4.1rem;
+    }
+
+    @include mqtl($laptop){
+      width: 4rem;
+    }
   }
 
   .text2{
     grid-area: 3/2/4/2;
-    margin-bottom: 1.2rem;
+    
+    @include mqtl($tablet){
+      margin-top: 0.3rem;
+    }
   }
 }

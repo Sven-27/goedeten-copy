@@ -29,7 +29,7 @@
   .ontvangen{
     display: grid;
     place-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3.5rem;
     width: 100%;
 
     @include mqtl($tablet_l){
@@ -113,6 +113,7 @@
   .koksContainer{
     display: grid;
     place-items: center;
+    padding-bottom: 1rem;
     
     h1{
       margin-top: 0.3rem;
