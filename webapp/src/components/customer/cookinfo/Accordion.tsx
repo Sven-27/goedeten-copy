@@ -104,13 +104,9 @@ export default function CustomizedAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-             {!cooksStore.selectedCook!.address &&
-              !cooksStore.selectedCook!.phoneNumber && 
-              !cooksStore.selectedCook!.email ? "Geen gegevens beschikbaar" :
-               `Adres: ${cooksStore.selectedCook!.address}
-                Telefoon: ${cooksStore.selectedCook!.phoneNumber}
-                Email: ${cooksStore.selectedCook!.email}
-                `}
+             {!cooksStore.selectedCook!.address ? "Geen adres beschikbaar" : `Adres: ${cooksStore.selectedCook!.address}`}
+             {!cooksStore.selectedCook!.phoneNumber ? "Geen telefoon beschikbaar" :  `Telefoon: ${cooksStore.selectedCook!.phoneNumber}`}
+             {!cooksStore.selectedCook!.email ? "Geen email beschikbaar" : `Email: ${cooksStore.selectedCook!.email}`}
           </Typography>
         </AccordionDetails>
       </Accordion>
