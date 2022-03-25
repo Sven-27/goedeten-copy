@@ -104,9 +104,13 @@ export default function CustomizedAccordions() {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            adres: {cooksStore.selectedCook!.address}
-            telefoon: {cooksStore.selectedCook!.phoneNumber}
-            email: {cooksStore.selectedCook!.email}
+             {!cooksStore.selectedCook!.address &&
+              !cooksStore.selectedCook!.phoneNumber && 
+              !cooksStore.selectedCook!.email ? "Geen gegevens beschikbaar" :
+               `Adres: ${cooksStore.selectedCook!.address}
+                Telefoon: ${cooksStore.selectedCook!.phoneNumber}
+                Email: ${cooksStore.selectedCook!.email}
+                `}
           </Typography>
         </AccordionDetails>
       </Accordion>
