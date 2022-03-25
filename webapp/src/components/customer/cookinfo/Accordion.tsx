@@ -98,18 +98,22 @@ export default function CustomizedAccordions() {
           </Typography>
         </AccordionDetails>
       </Accordion>
+          { !cooksStore.selectedCook!.address &&
+            !cooksStore.selectedCook!.phoneNumber && 
+            !cooksStore.selectedCook!.email ? null : 
       <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4d-content" id="panel4d-header">
           <Typography>Contact Informatie</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-             {!cooksStore.selectedCook!.address ? "Geen adres beschikbaar" : `Adres: ${cooksStore.selectedCook!.address}`}
-             {!cooksStore.selectedCook!.phoneNumber ? "Geen telefoon beschikbaar" :  `Telefoon: ${cooksStore.selectedCook!.phoneNumber}`}
-             {!cooksStore.selectedCook!.email ? "Geen email beschikbaar" : `Email: ${cooksStore.selectedCook!.email}`}
+             Adres:    {!cooksStore.selectedCook!.address ? "Geen adres beschikbaar" : cooksStore.selectedCook!.address}<br />
+             Telefoon: {!cooksStore.selectedCook!.phoneNumber ? "Geen telefoon beschikbaar" : cooksStore.selectedCook!.phoneNumber}<br />
+             Email:    {!cooksStore.selectedCook!.email ? "Geen email beschikbaar" : cooksStore.selectedCook!.email}
           </Typography>
         </AccordionDetails>
       </Accordion>
+          }
     </div>
   );
 }
