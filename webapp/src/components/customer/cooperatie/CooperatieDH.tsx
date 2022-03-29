@@ -54,7 +54,7 @@ const CooperatieDH = () => {
 				<br></br>
         <p>
           Wil jij meer weten over dit samenwerkingsverband? Wil jij als kok werken binnen deze coöperatie? 
-          Of juist duurzame maaltijden door Den Haag fietsen? Op de site van <a href="https:www.goedetendenhaag.nl" target="_blank" rel="noreferrer noopener">
+          Of juist duurzame maaltijden door Den Haag fietsen? Op de site van <a href="https://www.goedetendenhaag.nl" target="_blank" rel="noreferrer noopener">
           Coöperatie GoedEten</a> vind je meer informatie.
         </p>
 
