@@ -15,12 +15,14 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 import { useRouter } from 'next/router';
 import { socialMedia } from 'data/socialMedia';
+import HomeButton from "./../../custom_controls/HomeButton";
 
 const Contact = () => {
   const router = useRouter();
 
   return (
     <div className={styles.container}>
+      <HomeButton/>
       <img className={styles.photo} />
 
       <div className={styles.bar1}></div>

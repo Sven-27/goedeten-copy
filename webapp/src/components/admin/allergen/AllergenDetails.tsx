@@ -7,18 +7,15 @@ import { observer } from "mobx-react"
 
 
 export default observer(function AllergenDetails() {
-    const {allergenStore} = useStore();
-    const {btnCancel, handleChangeForm,
-      handleCancel, handleCreate,handleSave} = allergenStore 
+  const {allergenStore} = useStore();
+  const {btnCancel, handleChangeForm,
+    handleCancel, handleCreate,handleSave} = allergenStore 
 
-
-    const {register, handleSubmit,  formState: { errors } } = useForm<IAllergen>({
-      mode:"onSubmit",
-      })
-      const onSubmit: SubmitHandler<IAllergen> = data => data;
-    
-    
-
+  const {register, handleSubmit,  formState: { errors } } = useForm<IAllergen>({
+    mode:"onSubmit",
+    })
+    const onSubmit: SubmitHandler<IAllergen> = data => data;
+  
   return (
     <div >
       <form onSubmit={handleSubmit(onSubmit)}

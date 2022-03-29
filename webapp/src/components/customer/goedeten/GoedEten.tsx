@@ -9,6 +9,7 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Logos } from "data/logos";
+import HomeButton from "./../../custom_controls/HomeButton";
 
 const Accordion = withStyles({
 	root: {
@@ -74,6 +75,7 @@ const GoedEten = () => {
 
 	return (
 		<div className={styles.goedeten}>
+			
 			<div className={styles.gelogo}>
 				<Image
 					className={styles.gelogo}
@@ -82,9 +84,13 @@ const GoedEten = () => {
 					width="250"
 					height="80"
 				/>
+				
 			</div>
-
+			<div >
+				<HomeButton/>
+			</div>
 			<div className={styles.gecontainer}>
+
 				<div className={styles.geimage}>
 					<img
 						src="/assets/images/goedetenstichting.jpg"

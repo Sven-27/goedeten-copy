@@ -1,12 +1,13 @@
 import React from "react"
 import styles from "styles/customer/FAQ.module.scss"
 import { useRouter } from "next/router"
-
+import HomeButton from "./../../custom_controls/HomeButton";
 const FAQ = () => {
   const router = useRouter() 
 
   return (
 	  <div className={styles.faq}>
+      <HomeButton/>
         <h2 className={styles.title}>Veelgestelde vragen</h2>
       <main className={styles.vragen}>
           <h3 className={styles.subtitle}>Waarom moet ik voor 11:00 uur bestellen?</h3>

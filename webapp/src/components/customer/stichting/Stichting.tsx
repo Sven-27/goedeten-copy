@@ -9,6 +9,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useRouter } from "next/router";
+import HomeButton from "./../../custom_controls/HomeButton";
 
 const Accordion = withStyles({
 	root: {
@@ -73,6 +74,7 @@ const Stichting = () => {
 		};
 	return (
 		<div className={styles.container}>
+			<HomeButton/>
 			<div className={styles.photo}></div>
 			<div className={styles.bar}></div>
 			<div className={styles.text}>

@@ -4,6 +4,8 @@ import { Typography } from "@material-ui/core";
 import { useRouter } from "next/router";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "next/link";
+import HomeButton from "./../../custom_controls/HomeButton";
+
 //#region
 const {
 	duurzaamGroen,
@@ -44,6 +46,7 @@ const Duurzaamheid = () => {
 	const router = useRouter();
 	return (
 		<div className={styles.container}>
+			<HomeButton/>
 			<div className={styles.photo}></div>
 			<div className={styles.bar}></div>
 			<div className={styles.text}>

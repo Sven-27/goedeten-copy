@@ -3,12 +3,13 @@ import styles from "styles/customer/Privacy.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 import { Logos } from "data/logos";
-
+import HomeButton from "./../../custom_controls/HomeButton";
 const Privacy = () => {
 	const { tomaatTextTaglineDonkerGroen } = Logos;
 
 	return (
 		<div className={styles.container}>
+			<HomeButton/>
 			<div className={styles.gelogo}>
 				<Image
 					className={styles.gelogo}

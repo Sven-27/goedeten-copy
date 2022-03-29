@@ -3,12 +3,13 @@ import styles from "styles/customer/Terms.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { Logos } from "data/logos";
-
+import HomeButton from "./../../custom_controls/HomeButton";
 const Terms = () => {
 	const { tomaatTextTaglineDonkerGroen } = Logos;
 
 	return (
 		<div className={styles.container}>
+			<HomeButton/>
 			<div className={styles.gelogo}>
 				<Image
 					className={styles.gelogo}

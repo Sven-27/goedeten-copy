@@ -6,12 +6,14 @@ import Bezorging from "./Bezorging"
 import Koks from "./Koks"
 import Duurzaam from "./Duurzaam"
 import { useRouter } from "next/router";
- 
+import HomeButton from "./../custom_controls/HomeButton";
+
 const HoeHetWerkt = () => {
   const router = useRouter();
 
   return (
     <main className={styles.hoehetwerkt}>
+      <HomeButton/>
       <section className={styles.ontvangen}>
         <h1>Kies de dag waarop je het wilt ontvangen</h1>
         <p className={styles.optionText}>Je hebt hier 2 opties:</p>

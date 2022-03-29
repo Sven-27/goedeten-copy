@@ -3,10 +3,12 @@ import styles from "styles/customer/cooperatieDH.module.scss";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Typography from "@material-ui/core/Typography";
 import Link from "next/link";
+import HomeButton from "./../../custom_controls/HomeButton";
 
 const CooperatieDH = () => {
 	return (
 		<div className={styles.container}>
+			<HomeButton/>
 			<div className={styles.photo}></div>
 			<div className={styles.bar1}></div>
 			<div className={styles.text}>

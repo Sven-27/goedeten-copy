@@ -29,9 +29,6 @@ const Zipcode = () => {
 
 	const { tomaatText } = Logos;
 
-	// console.log(API)
-	//https://goed-eten-webapi.azurewebsites.net/api/ZipCode/zip/2511BZ
-	//const res: AxiosResponse = await axios.get(`${API}api/ZipCode/zip/${zipcode}`)
 	const checkZipcode = async (zipcode: string) => {
 		try {
 			const res = await agent.zipCodes.byZip(zipcode);
