@@ -190,12 +190,14 @@ export default class PlanningStore {
   
   enableDish = async (value: IDishPlanning) => {
     try {
+      console.log(value);
       await agent.dishAvailabilities.create(value)
       await this.loadDishesListPerCook()
     } catch (error) {
       console.log(error)
     }
   }
+
   updateDish = async (value: IDishPlanning) => {
     try {
       await agent.dishAvailabilities.updatePlanning(value)

@@ -7,7 +7,8 @@ import theme from "theme";
 import { AppProps } from 'next/app'
 import "styles/globals.scss";
 import { useStore } from "contexts/customer/store";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function MyApp(props: AppProps) {
   const { Component, pageProps } = props;
@@ -21,7 +22,8 @@ export default function MyApp(props: AppProps) {
 
   return (
     // <StoreContext.Provider value = {useStore()}>
-    <>
+    <>        
+      <ToastContainer />
       <Head>
         <title>Goed Eten</title>
         <meta

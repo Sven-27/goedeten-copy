@@ -35,7 +35,6 @@ export default observer(function PlanningDishes() {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     index: IDishPlanning
   ) => {
-    
     (index.planned  //&& index.currentQuantity == index.plannedQuantity ////// toevoegen als algorithm duidelijk is
       ? planningStore.disableDish(index.id)
       : planningStore.enableDish({
@@ -47,8 +46,6 @@ export default observer(function PlanningDishes() {
     if (index.currentQuantity != index.plannedQuantity){
       alert ("Er zijn aantal gerechten verkocht!!!!!")    
     }
-    
-
   };
 
   const handleChange = (
@@ -76,6 +73,7 @@ export default observer(function PlanningDishes() {
       alert("Jij hebt bestelling ! Operatie is onmogelijk! ");
     }
   };
+
   return (
     <div className={styles.container}>
       <Table>
