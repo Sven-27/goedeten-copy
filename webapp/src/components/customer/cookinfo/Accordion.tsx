@@ -99,7 +99,7 @@ export default function CustomizedAccordions() {
         </AccordionDetails>
       </Accordion>
           { !cooksStore.selectedCook!.address &&
-            !cooksStore.selectedCook!.phoneNumber && 
+            !cooksStore.selectedCook!.phoneNumber &&
             !cooksStore.selectedCook!.email ? null : 
       <Accordion square expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel4d-content" id="panel4d-header">
