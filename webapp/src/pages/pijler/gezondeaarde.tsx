@@ -4,7 +4,7 @@ import SeizoenPage from "components/customer/pijlers/Gezondeaarde";
 const Seizoen = () => {
   return (
     <Layout
-    title="Goed Eten: Seizoensgebonden"
+    title="Goed Eten: Gezonde aarde"
 			description="Seizoensgebonden"
 			ogImage=""
 			url=""

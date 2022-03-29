@@ -54,17 +54,11 @@ const CooperatieDH = () => {
 				<br></br>
         <p>
           Wil jij meer weten over dit samenwerkingsverband? Wil jij als kok werken binnen deze coöperatie? 
-          Of juist duurzame maaltijden door Den Haag fietsen? Op de site van <a href="https:www.goedetendenhaag.nl">
+          Of juist duurzame maaltijden door Den Haag fietsen? Op de site van <a href="https:www.goedetendenhaag.nl" target="_blank" rel="noreferrer noopener">
           Coöperatie GoedEten</a> vind je meer informatie.
         </p>
-				<br></br>
-				<p>Dit zijn de koks van Coöperatie GoedEten.</p>
 
 					<div className={styles.links}>
-						<Link href="/cooks_static">
-							<button className={styles.generalButton}>Koks GoedEten</button>
-						</Link>
-						<br></br>
 						<div className={styles.buttonCenter}>
 							<Link href="/">
 								<button className={styles.generalButton}>POSTCODE CHECK</button>

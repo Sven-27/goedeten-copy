@@ -88,8 +88,8 @@ export default function DishDetailTabs({ dish, handleChangeForm }: Props) {
             indicator: classes.customTabIndicator,
           }}
         >
-          <Tab label="Lokaal" {...a11yProps(0)} />
-          <Tab label="Seizoensgebonden " {...a11yProps(1)} />
+          <Tab label="Lokaal en seizoensgebonden" {...a11yProps(0)} />
+          <Tab label="Gezonde aarde" {...a11yProps(1)} />
           <Tab label="Duurzaam voor je lijf" {...a11yProps(2)} />
           <Tab label="Van knol tot blad" {...a11yProps(3)} />
           <Tab label="Plantaardige eiwitten" {...a11yProps(4)} />

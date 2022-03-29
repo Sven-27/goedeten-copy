@@ -122,14 +122,14 @@ export default observer(function DishInfo(id: { id: string }) {
 					position="top"
 					actionIcon={
 						<IconButton>
-							<Tooltip title="Lokaal">
+							<Tooltip title="Lokaal en seizoensgebonden">
 								<img
 									className={styles.iconImage}
 									src={lokaalGroen}
 									style={{ display: ip1 ? "inline" : "none" }}
 								/>
 							</Tooltip>
-							<Tooltip title="Seizoensgebonden">
+							<Tooltip title="Gezonde aarde">
 								<img
 									className={styles.iconImage}
 									src={seizoenGroen}

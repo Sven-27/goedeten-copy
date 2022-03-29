@@ -197,7 +197,7 @@ export default function CustomizedAccordions({ info }: Props) {
 				</AccordionSummary>
 				{info.p1 ? (
         <AccordionDetails>
-						<Typography className={styles.titles}>Lokaal:</Typography>
+						<Typography className={styles.titles}>Lokaal en seizoensgebonden</Typography>
 						<Typography>{info.p1}</Typography>
 					 </AccordionDetails> 
 				) : (
@@ -205,7 +205,7 @@ export default function CustomizedAccordions({ info }: Props) {
 				)}
 				{info.p2 ? (
 					<AccordionDetails>
-						<Typography className={styles.titles}>Seizoensgebonden:</Typography>
+						<Typography className={styles.titles}>Gezonde aarde</Typography>
 						<Typography>{info.p2}</Typography>
 					 </AccordionDetails>
 				) : (
